@@ -6,7 +6,7 @@
                 <div class="col-lg-3 wow fadeIn" data-wow-delay="0.2s">
 
                     <div class="widget-wrapper">
-                    	 <!---<form id="fileupload" action="#cgi.scrIPT_NAME#?event=main.uploadFiles" method="POST" enctype="multipart/form-data">
+                    	 <form id="fileupload" action="#cgi.scrIPT_NAME#?event=main.uploadFiles" method="POST" enctype="multipart/form-data">
 						  <div class="file-field">
 						    <div class="btn btn-primary btn-sm">
 						        <span>Choose file</span>
@@ -17,7 +17,7 @@
 						       <input class="file-path validate" type="text" placeholder="Upload your file">
 						    </div>--->
 						  </div>
-						</form>--->
+						</form>
                         <!---<h4>Categories:</h4>--->
                         <br>
                         <div class="list-group">
@@ -89,12 +89,14 @@
 
                     <!--First row-->
                     <div class="row wow fadeIn" data-wow-delay="0.4s">
+                    	<input name="pdfFile" id="pdfFile" type="hidden" value="#rc.reader.FilePath#" />
                         <div class="col-lg-12">
                         	<dl class="row">
 								<dt class="col-sm-3">File</dt>
-								<dd class="col-sm-9 text-truncate"><abbr title="#rc.reader.FilePath#" >#rc.reader.FilePath#</abbr></dd>
+								<dd class="col-sm-9 text-truncate"><abbr title="#rc.reader.FilePath#" ><a href="##" id="pdfLink"> #rc.reader.FilePath#</a></abbr></dd>
 	                        </dl>
-                            <iframe id="myIframe" height="800" width="100%" src="http://localhost:8500/CFSummit2017/PDFViewer/index.cfm?event=main.preview&pdfFile=#rc.PDFFile#">
+	                        
+                            <iframe id="myIframe" height="800" width="100%" src="">
 							</iframe>		
                           
                         </div>
@@ -324,17 +326,23 @@
                 </div>
                 <div class="modal-body" style="padding:40px 50px;">
                     <div class="row">
-                        <form class="col-md-12">
+                        <form action="#CGI.SCRIPT_NAME#?event=Main.passwordProtect" method="post"  class="col-md-12">
+                        	<input type="hidden" value="#rc.pdfFile#" name="pdfFile">
                             <div class="row">
                                 
 								<div class="md-form form-group form-sm">
-							        <input type="text" id="Password" class="form-control" >
-					            	<label for="Password">Password</label>
+							        <input type="text" name="newuserpassword" id="newuserpassword" class="form-control" >
+					            	<label for="newuserpassword">New User Password</label>
+							    </div>
+							    
+							    <div class="md-form form-group form-sm">
+							        <input type="text" name="newownerpassword" id="newownerpassword" class="form-control" >
+					            	<label for="newownerpassword">New Owner Password</label>
 							    </div>
 								
                                
                                 <div class="text-center">
-                                    <button type="button" class="btn btn-primary waves-effect waves-light">Submit</button>
+                                    <button name="add_password_btn" id="add_password_btn" type="button" class="btn btn-primary waves-effect waves-light">Submit</button>
 
                                 </div>
                             </div>
@@ -354,3 +362,16 @@
     <!--/ Modal -->
     
 </cfoutput>
+
+
+
+<script >
+	//main = new Main();
+	//http://localhost:8500/CFSummit2017/PDFViewer/index.cfm?event=main.preview&pdfFile=#rc.PDFFile#
+	
+	application.main.loadPDF();
+</script>
+	
+</script>
+	
+</script>
