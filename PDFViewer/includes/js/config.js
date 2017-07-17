@@ -12,8 +12,10 @@ function Config() {
 			index 			: protocol + theActualServer + appFolder + CGIScriptName + "?event=main.index", 
 			preview 		: protocol + theActualServer + appFolder + CGIScriptName + "?event=main.preview",
 			uploadFiles		: protocol + theActualServer + appFolder + CGIScriptName + "?event=main.uploadFiles",
-			passwordProtect	: protocol + theActualServer + appFolder + CGIScriptName + "?event=main.passwordProtect"
-			
+			passwordProtect	: protocol + theActualServer + appFolder + CGIScriptName + "?event=main.passwordProtect",
+			sanitize		: protocol + theActualServer + appFolder + CGIScriptName + "?event=main.sanitize",
+			readMetadata	: protocol + theActualServer + appFolder + CGIScriptName + "?event=main.readMetadata",
+			redact			: protocol + theActualServer + appFolder + CGIScriptName + "?event=main.redact"
 		 };
 		 
 		

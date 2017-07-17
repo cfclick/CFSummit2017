@@ -24,8 +24,9 @@
 						    <a href="##" class="list-group-item active">
 						        Preview
 						    </a>
-						    <a href="##" class="list-group-item list-group-item-action" data-toggle="modal" data-target="##basicExample">Read Metadata</a>						    
-						    <a href="##" class="list-group-item list-group-item-action">Sanitize</a>
+						    <a href="##" class="list-group-item list-group-item-action" data-toggle="modal" data-target="##metadata_modal">PDF Properties</a>						    
+						    <a href="##" id="sanitize_meta_btn" class="list-group-item list-group-item-action">Sanitize</a>
+						    <a href="##" id="redact_btn" class="list-group-item list-group-item-action" data-toggle="modal" data-target="##redact_modal">Redact</a>
 						    <a href="##" class="list-group-item list-group-item-action" data-toggle="modal" data-target="##modalLogin">Password Protect</a>
 						    <a href="##" class="list-group-item list-group-item-action disabled">Digital Signature</a>
 						</div>
@@ -39,19 +40,19 @@
 					       
 					        <dl class="row">
 								  <dt class="col-sm-3">Created</dt>
-								  <dd class="col-sm-9">#rc.reader.Created#</dd>
+								  <dd class="col-sm-9" id="rc_reader_created">#rc.reader.Created#</dd>
 								
 								  <dt class="col-sm-3">Modified</dt>
-								  <dd class="col-sm-9">#rc.reader.Modified#</dd>
+								  <dd class="col-sm-9" id="rc_reader_modified">#rc.reader.Modified#</dd>
 								<!---text-truncate --->
 								  <dt class="col-sm-3 ">Producer</dt>
-								  <dd class="col-sm-9 ">#rc.reader.Producer#</dd>
+								  <dd class="col-sm-9 " id="rc_reader_producer">#rc.reader.Producer#</dd>
 								  
 								  <dt class="col-sm-3">Application</dt>
-								  <dd class="col-sm-9">#rc.reader.Application#</dd>
+								  <dd class="col-sm-9" id="rc_reader_application">#rc.reader.Application#</dd>
 								  
 								  <dt class="col-sm-3">Version</dt>
-								  <dd class="col-sm-9">#rc.reader.Version#</dd>
+								  <dd class="col-sm-9" id="rc_reader_version">#rc.reader.Version#</dd>
 								  
 								</dl>
 					    </div>
@@ -113,7 +114,7 @@
 
 
 <!-- Modal -->
-<div class="modal fade" id="basicExample" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="metadata_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
 <!---<div id="basicExample" class="modal modal-lg fade right" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-fluid modal-right" role="document">
@@ -144,26 +145,26 @@
 				            	<!--FORM-->
 						        						        
 						        <div class="md-form form-sm">          
-						            <input type="text" id="Author" class="form-control" value="#rc.reader.Author#">
-						            <label for="Author">Author</label>
+						            <input type="text" id="rc_reader_author" class="form-control" value="#rc.reader.Author#">
+						            <label for="rc_reader_author">Author</label>
 						        </div>
 						        
 						         <div class="md-form form-sm">
-						            <input type="text" id="Subject" class="form-control" value="#rc.reader.Subject#">
-						            <label for="Subject">Subject</label>
+						            <input type="text" id="rc_reader_subject" class="form-control" value="#rc.reader.Subject#">
+						            <label for="rc_reader_subject">Subject</label>
 						        </div>
 						
 						        <div class="md-form form-sm">          
-						            <input type="text" id="Title" class="form-control" value="#rc.reader.Title#">
-						            <label for="Title">Title</label>
+						            <input type="text" id="rc_reader_title" class="form-control" value="#rc.reader.Title#">
+						            <label for="rc_reader_title">Title</label>
 						        </div>
 						        
 						        <div class="md-form form-sm">          
-						            <input type="text" id="Keywords" class="form-control" value="#rc.reader.Keywords#">
-						            <label for="Keyword">Keywords</label>
+						            <input type="text" id="rc_reader_keywords" class="form-control" value="#rc.reader.Keywords#">
+						            <label for="rc_reader_keywords">Keywords</label>
 						        </div>
 						        
-						        <dl class="row">
+						        <!---<dl class="row">
 								  <dt class="col-sm-3">Created</dt>
 								  <dd class="col-sm-9">#rc.reader.Created#</dd>
 								
@@ -182,7 +183,7 @@
 								  <dt class="col-sm-3">Version</dt>
 								  <dd class="col-sm-9">#rc.reader.Version#</dd>
 								  
-								</dl>
+								</dl>--->
 
 						        <!--/FORM-->
 				            </div>
@@ -282,6 +283,7 @@
 								        </tr>
 								    </thead>
 								    <tbody>
+								    	<cfif isStruct( rc.reader.Properties )>
 								    	<cfloop collection="#rc.reader.Properties#" item="prop" >
 								        <tr>
 								            <th scope="row">1</th>
@@ -290,7 +292,7 @@
 								            
 								        </tr>
 								        </cfloop>
-								       
+								       </cfif>
 								
 								    </tbody>
 								</table>
@@ -335,11 +337,11 @@
 					            	<label for="newuserpassword">New User Password</label>
 							    </div>
 							    
-							    <div class="md-form form-group form-sm">
+							   <!--- <div class="md-form form-group form-sm">
 							        <input type="text" name="newownerpassword" id="newownerpassword" class="form-control" >
 					            	<label for="newownerpassword">New Owner Password</label>
 							    </div>
-								
+								--->
                                
                                 <div class="text-center">
                                     <button name="add_password_btn" id="add_password_btn" type="button" class="btn btn-primary waves-effect waves-light">Submit</button>
@@ -353,6 +355,64 @@
                 <div class="modal-footer">
                     <button type="submit" class="btn btn-default btn-default pull-left" data-dismiss="modal">X</button>
                     
+                </div>
+                <!--/.Footer-->
+            </div>
+            <!-- /.Modal content-->
+        </div>
+    </div>
+    <!--/ Modal -->
+    
+    
+    <!-- Modal -->
+    <div class="modal fade" id="redact_modal" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <h4><i class="fa fa-user"></i> Protect PDF </h4>
+                </div>
+                <div class="modal-body" style="padding:40px 50px;">
+                    <div class="row">
+                        <form  class="col-md-12">
+                        	<input type="hidden" value="#rc.pdfFile#" name="pdfFile">
+                            <div class="row">
+								<div class="md-form form-group form-sm">
+							        <input type="text" id="r_x1" value="200" class="form-control" style="width:50px"/>
+					            	<label for="r_x1">x1</label>
+					            </div>
+					            
+					            <div class="md-form form-group form-sm">	
+					            	<input type="text" id="r_y1" value="400" class="form-control" style="width:50px"/>
+					            	<label for="r_y1">y1</label>
+							    </div>
+							</div>			
+							
+							<div class="row">
+								<div style="width:300px;height:100px;border:1px solid ##000;margin-left:50px"></div>
+							</div>				
+											
+							<div class="row pull-right">
+								<div class="md-form form-group form-sm">
+							        <input type="text" id="r_x2" value="400" class="form-control" style="width:50px"/>
+					            	<label for="r_x2">x2</label>
+					            </div>
+					            
+					            <div class="md-form form-group form-sm">	
+					            	<input type="text" id="r_y2" value="500" class="form-control" style="width:50px"/>
+					            	<label for="r_y2">y2</label>
+							    </div>
+							</div>					
+									
+                            
+                        </form>
+                    </div>
+                </div>
+                <!--Footer-->
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-default btn-default pull-right" data-dismiss="modal">X</button>
+                    <button type="button" id="redact_apply_btn" class="btn btn-danger btn-danger pull-right" >Apply</button>
                 </div>
                 <!--/.Footer-->
             </div>
