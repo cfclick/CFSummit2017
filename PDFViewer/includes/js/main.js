@@ -4,12 +4,14 @@ function Main(){
 	this.myIframe 			= $('#myIframe');
 	this.pdfLink 			= $('#pdfLink');
 	this.pdfFile 			= $('#pdfFile');
+	this.orgPdfFile 		= $('#orgPdfFile');
 	this.add_password_btn 	= $('#add_password_btn');
 	this.newuserpassword 	= $('#newuserpassword');
 	this.sanitize_meta_btn 	= $('#sanitize_meta_btn');
 	this.metadata_modal 	= $('#metadata_modal');
 	this.redact_btn			= $('#redact_btn');
 	this.redact_apply_btn   = $('#redact_apply_btn');
+	this.reset_to_btn		= $('#reset_to_btn');
 	
 	/*this.x1 = $("#x1");
 	this.y1 = $("#y1");
@@ -30,7 +32,7 @@ Main.prototype.config = new Config();
 Main.prototype.setEventListeners = function(event){
 	
 	main.pdfLink.on('click', function(event){
-		var url = "http://localhost:8500/CFSummit2017/PDFViewer/index.cfm?event=main.preview&pdfFile=" + main.pdfFile.val();
+		var url = "http://localhost/CFSummit2017/PDFViewer/index.cfm?event=main.preview&pdfFile=" + main.pdfFile.val();
 		main.myIframe.attr("src", url);
 	})
 	
@@ -120,7 +122,12 @@ Main.prototype.setEventListeners = function(event){
 				});
 				
 	
-	
+	main.reset_to_btn.on('click',function(e){
+					var data ={PDFFILE : main.orgPdfFile.val()};
+			    	console.log(data);
+			    	main.loadPDF(data);
+
+				});
 }
 
 Main.prototype.loadPDF = function( pdfobj ){

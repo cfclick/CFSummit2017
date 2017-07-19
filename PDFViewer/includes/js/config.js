@@ -15,7 +15,8 @@ function Config() {
 			passwordProtect	: protocol + theActualServer + appFolder + CGIScriptName + "?event=main.passwordProtect",
 			sanitize		: protocol + theActualServer + appFolder + CGIScriptName + "?event=main.sanitize",
 			readMetadata	: protocol + theActualServer + appFolder + CGIScriptName + "?event=main.readMetadata",
-			redact			: protocol + theActualServer + appFolder + CGIScriptName + "?event=main.redact"
+			redact			: protocol + theActualServer + appFolder + CGIScriptName + "?event=main.redact",
+			resetToOrginal	: protocol + theActualServer + appFolder + CGIScriptName + "?event=main.resetToOrginal"
 		 };
 		 
 		

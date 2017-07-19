@@ -1,4 +1,11 @@
 ﻿<cfoutput>
+<cfparam name="rc.reader.Created" default="">
+<cfparam name="rc.reader.Modified" default="">
+<cfparam name="rc.reader.Producer" default="">
+<cfparam name="rc.reader.Application" default="">
+<cfparam name="rc.reader.Version" default="">
+<cfparam name="rc.reader.FilePath" default="">
+<cfparam name="rc.FileName" default="">
 
 <div class="row">
 
@@ -40,19 +47,19 @@
 					       
 					        <dl class="row">
 								  <dt class="col-sm-3">Created</dt>
-								  <dd class="col-sm-9" id="rc_reader_created">#rc.reader.Created#</dd>
+								  <dd class="col-sm-9" id="rc_reader_created"></dd>
 								
 								  <dt class="col-sm-3">Modified</dt>
-								  <dd class="col-sm-9" id="rc_reader_modified">#rc.reader.Modified#</dd>
+								  <dd class="col-sm-9" id="rc_reader_modified"></dd>
 								<!---text-truncate --->
 								  <dt class="col-sm-3 ">Producer</dt>
-								  <dd class="col-sm-9 " id="rc_reader_producer">#rc.reader.Producer#</dd>
+								  <dd class="col-sm-9 " id="rc_reader_producer"></dd>
 								  
 								  <dt class="col-sm-3">Application</dt>
-								  <dd class="col-sm-9" id="rc_reader_application">#rc.reader.Application#</dd>
+								  <dd class="col-sm-9" id="rc_reader_application"></dd>
 								  
 								  <dt class="col-sm-3">Version</dt>
-								  <dd class="col-sm-9" id="rc_reader_version">#rc.reader.Version#</dd>
+								  <dd class="col-sm-9" id="rc_reader_version"></dd>
 								  
 								</dl>
 					    </div>
@@ -91,6 +98,7 @@
                     <!--First row-->
                     <div class="row wow fadeIn" data-wow-delay="0.4s">
                     	<input name="pdfFile" id="pdfFile" type="hidden" value="#rc.reader.FilePath#" />
+                    	<input name="orgPdfFile" id="orgPdfFile" type="hidden" value="C:\inetpub\wwwroot\CFSummit2017\PDFViewer\uploads\#rc.FileName#" />
                         <div class="col-lg-12">
                         	<dl class="row">
 								<dt class="col-sm-3">File</dt>
@@ -145,22 +153,22 @@
 				            	<!--FORM-->
 						        						        
 						        <div class="md-form form-sm">          
-						            <input type="text" id="rc_reader_author" class="form-control" value="#rc.reader.Author#">
+						            <input type="text" id="rc_reader_author" class="form-control" value="">
 						            <label for="rc_reader_author">Author</label>
 						        </div>
 						        
 						         <div class="md-form form-sm">
-						            <input type="text" id="rc_reader_subject" class="form-control" value="#rc.reader.Subject#">
+						            <input type="text" id="rc_reader_subject" class="form-control" value="">
 						            <label for="rc_reader_subject">Subject</label>
 						        </div>
 						
 						        <div class="md-form form-sm">          
-						            <input type="text" id="rc_reader_title" class="form-control" value="#rc.reader.Title#">
+						            <input type="text" id="rc_reader_title" class="form-control" value="">
 						            <label for="rc_reader_title">Title</label>
 						        </div>
 						        
 						        <div class="md-form form-sm">          
-						            <input type="text" id="rc_reader_keywords" class="form-control" value="#rc.reader.Keywords#">
+						            <input type="text" id="rc_reader_keywords" class="form-control" value="">
 						            <label for="rc_reader_keywords">Keywords</label>
 						        </div>
 						        
@@ -201,40 +209,40 @@
 				            <div class="card-block">
 				            	<dl class="row">
 					            	<dt class="col-sm-3">Center Window On Screen</dt>
-									<dd class="col-sm-9">#rc.reader.CenterWindowOnScreen#</dd>
+									<dd class="col-sm-9" id="rc_reader_CenterWindowOnScreen"></dd>
 									  
 									<dt class="col-sm-3">Changing Document</dt>
-									<dd class="col-sm-9">#rc.reader.ChangingDocument#</dd>
+									<dd class="col-sm-9" id="rc_reader_ChangingDocument"></dd>
 									
 									<dt class="col-sm-3">Commenting</dt>
-									<dd class="col-sm-9">#rc.reader.Commenting#</dd>
+									<dd class="col-sm-9" id="rc_reader_Commenting"></dd>
 									
 									<dt class="col-sm-3">Content Extraction</dt>
-									<dd class="col-sm-9">#rc.reader.ContentExtraction#</dd>
+									<dd class="col-sm-9" id="rc_reader_ContentExtraction"></dd>
 									
 									<dt class="col-sm-3">CopyContent</dt>
-									<dd class="col-sm-9">#rc.reader.CopyContent#</dd>
+									<dd class="col-sm-9" id="rc_reader_CopyContent"></dd>
 									
 									<dt class="col-sm-3">Document Assembly</dt>
-									<dd class="col-sm-9">#rc.reader.DocumentAssembly#</dd>
+									<dd class="col-sm-9" id="rc_reader_DocumentAssembly"></dd>
 									
 									<dt class="col-sm-3">Encryption</dt>
-									<dd class="col-sm-9">#rc.reader.Encryption#</dd>
+									<dd class="col-sm-9" id="rc_reader_Encryption"></dd>
 									
 									<dt class="col-sm-3">Filling Form</dt>
-									<dd class="col-sm-9">#rc.reader.FillingForm#</dd>
+									<dd class="col-sm-9" id="rc_reader_FillingForm"></dd>
 									
 									<dt class="col-sm-3">Fit To Window</dt>
-									<dd class="col-sm-9">#rc.reader.FitToWindow#</dd>
+									<dd class="col-sm-9" id="rc_reader_FitToWindow"></dd>
 									
 									<dt class="col-sm-3">HideMenubar</dt>
-									<dd class="col-sm-9">#rc.reader.HideMenubar#</dd>
+									<dd class="col-sm-9" id="rc_reader_HideMenubar"></dd>
 									
 									<dt class="col-sm-3">HideToolbar</dt>
-									<dd class="col-sm-9">#rc.reader.HideToolbar#</dd>
+									<dd class="col-sm-9" id="rc_reader_HideToolbar"></dd>
 									
 									<dt class="col-sm-3">Hide Window UI</dt>
-									<dd class="col-sm-9">#rc.reader.HideWindowUI#</dd>
+									<dd class="col-sm-9" id="rc_reader_HideWindowUI"></dd>
 								</dl> 
 				            	
 						        
@@ -283,7 +291,7 @@
 								        </tr>
 								    </thead>
 								    <tbody>
-								    	<cfif isStruct( rc.reader.Properties )>
+								    	<cfif isdefined("rc.reader.Properties") and isStruct( rc.reader.Properties )>
 								    	<cfloop collection="#rc.reader.Properties#" item="prop" >
 								        <tr>
 								            <th scope="row">1</th>
@@ -365,8 +373,10 @@
     
     
     <!-- Modal -->
-    <div class="modal fade" id="redact_modal" role="dialog">
-        <div class="modal-dialog">
+    <div class="modal fade right" id="redact_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    	<div class="modal-dialog modal-full-height modal-right" role="document">
+    <!---<div class="modal fade" id="redact_modal" role="dialog">
+        <div class="modal-dialog">--->
 
             <!-- Modal content-->
             <div class="modal-content">
@@ -412,6 +422,7 @@
                 <!--Footer-->
                 <div class="modal-footer">
                     <button type="submit" class="btn btn-default btn-default pull-right" data-dismiss="modal">X</button>
+                    <button type="button" id="reset_to_btn" class="btn btn-danger btn-success pull-right" >Reset</button>
                     <button type="button" id="redact_apply_btn" class="btn btn-danger btn-danger pull-right" >Apply</button>
                 </div>
                 <!--/.Footer-->
