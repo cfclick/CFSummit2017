@@ -20,9 +20,9 @@
 						        <input type="file" name="files[]" multiple>
 						    </div>
 						    <input type="submit" value="Upload your file" name="submit_btn" class="btn btn-primary">
-						    <!---<div class="file-path-wrapper">
+						    <div class="file-path-wrapper">
 						       <input class="file-path validate" type="text" placeholder="Upload your file">
-						    </div>--->
+						    </div>
 						  </div>
 						</form>
                         <!---<h4>Categories:</h4>--->
@@ -98,7 +98,7 @@
                     <!--First row-->
                     <div class="row wow fadeIn" data-wow-delay="0.4s">
                     	<input name="pdfFile" id="pdfFile" type="hidden" value="#rc.reader.FilePath#" />
-                    	<input name="orgPdfFile" id="orgPdfFile" type="hidden" value="C:\inetpub\wwwroot\CFSummit2017\PDFViewer\uploads\#rc.FileName#" />
+                    	<input name="orgPdfFile" id="orgPdfFile" type="hidden" value="#application.cbcontroller.getconfigSettings().uploadFolder#\#rc.FileName#" />
                         <div class="col-lg-12">
                         	<dl class="row">
 								<dt class="col-sm-3">File</dt>

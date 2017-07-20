@@ -173,6 +173,19 @@ Main.prototype.readMetadata = function(){
 			$('#rc_reader_application').html( data.reader.Application );
 			$('#rc_reader_version').html( data.reader.Version );
 			
+			$('#rc_reader_CenterWindowOnScreen').html(data.reader.CenterWindowOnScreen);
+			$('#rc_reader_ChangingDocument').html(data.reader.ChangingDocument);
+			$('#rc_reader_Commenting').html(data.reader.Commenting);
+			$('#rc_reader_ContentExtraction').html(data.reader.ContentExtraction);
+			$('#rc_reader_CopyContent').html(data.reader.CopyContent);
+			$('#rc_reader_DocumentAssembly').html(data.reader.DocumentAssembly);
+			$('#rc_reader_Encryption').html(data.reader.Encryption);
+			$('#rc_reader_FillingForm').html(data.reader.FillingForm);
+			$('#rc_reader_FitToWindow').html(data.reader.FitToWindow);
+			$('#rc_reader_HideMenubar').html(data.reader.HideMenubar);
+			$('#rc_reader_HideToolbar').html(data.reader.HideToolbar);
+			$('#rc_reader_HideWindowUI').html(data.reader.HideWindowUI);
+			
 			//$('#tab'+nextTab).html( data ).append( new Client( main.loggedInIdentity, viewModel ) );
 		},
 		error: function( objRequest, strError ){
