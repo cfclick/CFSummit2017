@@ -12,6 +12,9 @@ function Main(){
 	this.redact_btn			= $('#redact_btn');
 	this.redact_apply_btn   = $('#redact_apply_btn');
 	this.reset_to_btn		= $('#reset_to_btn');
+	this.add_signature_field_btn = $('#add_signature_field_btn');
+	this.fieldName				 = $('#fieldName');
+	this.fileName				 = $('#fileName');
 	
 	/*this.x1 = $("#x1");
 	this.y1 = $("#y1");
@@ -21,6 +24,11 @@ function Main(){
 	this.r_y1 = $("#r_y1");
 	this.r_x2 = $("#r_x2");
 	this.r_y2 = $("#r_y2");
+	
+	this.d_x1 = $("#d_x1");
+	this.d_y1 = $("#d_y1");
+	this.d_x2 = $("#d_x2");
+	this.d_y2 = $("#d_y2");
 	
 	this.setEventListeners();
 	this.loadPDF();
@@ -128,6 +136,41 @@ Main.prototype.setEventListeners = function(event){
 			    	main.loadPDF(data);
 
 				});
+	
+	main.add_signature_field_btn.on('click',function(e){
+			var view_model = {
+						pdfFile: main.pdfFile.val()
+						,newuserpassword: main.newuserpassword.val()
+						,x1:main.d_x1.val()
+						,y1:main.d_y1.val()
+						,x2:main.d_x2.val()
+						,y2:main.d_y2.val()
+						,page:1
+						,fieldName:main.fieldName.val()
+						,fileName:main.fileName.val()
+					};
+					var url = main.config.urls.main.addDigitalSignatureField;
+					
+					$.ajax(	{
+			        	type: "post",
+			        	url: url,		
+			        	data: view_model,
+			       		beforeSend: function( xhr ){  	 
+						},
+			    		success: function( data ){
+			    			//console.log(data);
+			    			main.loadPDF(data);
+			    			//$('#tab'+nextTab).html( data ).append( new Client( main.loggedInIdentity, viewModel ) );
+			    		},
+						error: function( objRequest, strError ){
+			        		console.log(objRequest);   
+			        		console.log(strError);   
+			        	},
+			       	 	async: true
+			    	});		
+	});
+				
+				
 }
 
 Main.prototype.loadPDF = function( pdfobj ){
@@ -144,7 +187,7 @@ Main.prototype.loadPDF = function( pdfobj ){
      	file=pdfobj.PDFFILE;
      	
     var url = main.config.urls.main.preview + "&pdfFile=" + file +'&newuserpassword=' + main.newuserpassword.val();	
-	//var url = "http://localhost:8500/CFSummit2017/PDFViewer/index.cfm?event=main.preview&pdfFile=" + file;
+	main.pdfLink.html(file);
 	main.myIframe.attr("src", url);
 
 }

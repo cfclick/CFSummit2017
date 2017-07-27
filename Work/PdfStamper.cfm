@@ -1,7 +1,7 @@
 <cfscript>
 	
 	//writeDump(createPDF('C:\F\myPDF.pdf'));
-	writeDump(addField('C:\F\blank.pdf','C:\F\blank_signField4.pdf'));
+	writeDump(addField('C:\Temp\pdfs\cl.pdf','C:\Temp\pdfs\cl_signature_field.pdf'));
 	
 	public void function createPdf(String filename) {
 		//Prepare destination file to write to
@@ -75,7 +75,7 @@
         Rectangle = createobject("java","com.lowagie.text.Rectangle");
               
        	PdfAnnotation = createobject("java","com.lowagie.text.pdf.PdfAnnotation");
-        field.setWidget(Rectangle.init(10, 50, 100, 20), PdfAnnotation.HIGHLIGHT_OUTLINE);
+        field.setWidget(Rectangle.init(40, 273, 160, 238), PdfAnnotation.HIGHLIGHT_OUTLINE);
         field.setFlags(PdfAnnotation.FLAGS_PRINT);
         // add the annotation
         

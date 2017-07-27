@@ -35,7 +35,7 @@
 						    <a href="##" id="sanitize_meta_btn" class="list-group-item list-group-item-action">Sanitize</a>
 						    <a href="##" id="redact_btn" class="list-group-item list-group-item-action" data-toggle="modal" data-target="##redact_modal">Redact</a>
 						    <a href="##" class="list-group-item list-group-item-action" data-toggle="modal" data-target="##modalLogin">Password Protect</a>
-						    <a href="##" class="list-group-item list-group-item-action disabled">Digital Signature</a>
+						    <a href="##" class="list-group-item list-group-item-action" data-toggle="modal" data-target="##digital_signature_modal">Digital Signature</a>
 						</div>
                         
                     </div>
@@ -98,6 +98,7 @@
                     <!--First row-->
                     <div class="row wow fadeIn" data-wow-delay="0.4s">
                     	<input name="pdfFile" id="pdfFile" type="hidden" value="#rc.reader.FilePath#" />
+                    	<input name="fileName" id="fileName" type="hidden" value="#rc.FileName#" />
                     	<input name="orgPdfFile" id="orgPdfFile" type="hidden" value="#application.cbcontroller.getconfigSettings().uploadFolder#\#rc.FileName#" />
                         <div class="col-lg-12">
                         	<dl class="row">
@@ -432,6 +433,70 @@
     </div>
     <!--/ Modal -->
     
+    <!-- Modal -->
+    <div class="modal fade right" id="digital_signature_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    	<div class="modal-dialog modal-full-height modal-right" role="document">
+    <!---<div class="modal fade" id="redact_modal" role="dialog">
+        <div class="modal-dialog">--->
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <h4><i class="fa fa-user"></i>Digital Signature</h4>
+                </div>
+                <div class="modal-body" style="padding:40px 50px;">
+                    <div class="row">
+                        <form  class="col-md-12">
+                        	<input type="hidden" value="#rc.pdfFile#" name="pdfFile">
+                            <div class="row">
+								<div class="md-form form-group form-sm">
+							        <input type="text" id="d_x1" value="440" class="form-control" style="width:50px"/>
+					            	<label for="d_x1">x1</label>
+					            </div>
+					            
+					            <div class="md-form form-group form-sm">	
+					            	<input type="text" id="d_y1" value="75" class="form-control" style="width:50px"/>
+					            	<label for="d_y1">y1</label>
+							    </div>
+							</div>			
+							
+							<div class="row">
+								<div style="width:300px;height:100px;border:1px solid ##000;margin-left:50px"></div>
+							</div>				
+											
+							<div class="row pull-right">
+								<div class="md-form form-group form-sm">
+							        <input type="text" id="d_x2" value="570" class="form-control" style="width:50px"/>
+					            	<label for="d_x2">x2</label>
+					            </div>
+					            
+					            <div class="md-form form-group form-sm">	
+					            	<input type="text" id="d_y2" value="38" class="form-control" style="width:50px"/>
+					            	<label for="d_y2">y2</label>
+							    </div>
+							</div>					
+									
+                             <div class="row">
+								<div class="md-form form-group form-sm">
+							        <input type="text" id="fieldName" value="Signature1" class="form-control" />
+					            	<label for="fieldName">Signature Field Name</label>
+					            </div>
+							</div>	
+                        </form>
+                    </div>
+                </div>
+                <!--Footer-->
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-default btn-default pull-right" data-dismiss="modal">X</button>
+                    <button type="button" id="reset_to_btn" class="btn btn-danger btn-success pull-right" >Reset</button>
+                    <button type="button" id="add_signature_field_btn" class="btn btn-danger btn-danger pull-right" >Add Digital Signature Field</button>
+                </div>
+                <!--/.Footer-->
+            </div>
+            <!-- /.Modal content-->
+        </div>
+    </div>
+    <!--/ Modal -->
 </cfoutput>
 
 
