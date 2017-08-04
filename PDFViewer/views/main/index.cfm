@@ -338,7 +338,7 @@
                 <div class="modal-body" style="padding:40px 50px;">
                     <div class="row">
                         <form action="#CGI.SCRIPT_NAME#?event=Main.passwordProtect" method="post"  class="col-md-12">
-                        	<input type="hidden" value="#rc.pdfFile#" name="pdfFile">
+                        	<!---<input type="hidden" value="#rc.pdfFile#" name="pdfFile">--->
                             <div class="row">
                                 
 								<div class="md-form form-group form-sm">
@@ -387,7 +387,7 @@
                 <div class="modal-body" style="padding:40px 50px;">
                     <div class="row">
                         <form  class="col-md-12">
-                        	<input type="hidden" value="#rc.pdfFile#" name="pdfFile">
+                        	<!---<input type="hidden" value="#rc.pdfFile#" name="pdfFile">--->
                             <div class="row">
 								<div class="md-form form-group form-sm">
 							        <input type="text" id="r_x1" value="200" class="form-control" style="width:50px"/>
@@ -447,7 +447,7 @@
                 <div class="modal-body" style="padding:40px 50px;">
                     <div class="row">
                         <form  class="col-md-12">
-                        	<input type="hidden" value="#rc.pdfFile#" name="pdfFile">
+                        	<!---<input type="hidden" value="#rc.pdfFile#" name="pdfFile">--->
                             <div class="row">
 								<div class="md-form form-group form-sm">
 							        <input type="text" id="d_x1" value="440" class="form-control" style="width:50px"/>

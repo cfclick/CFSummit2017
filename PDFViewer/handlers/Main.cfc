@@ -1,4 +1,4 @@
-﻿component output="false"{	function blank(event, rc, prc ){		prc.welcomeMessage = "Welcome to PDF Viewer";				if( !isDefined( "rc.pdfFile" ) )			rc.pdfFile = application.cbcontroller.getconfigSettings().blankPDF;		try
+﻿component output="false"{	function index(event, rc, prc ){		prc.welcomeMessage = "Welcome to PDF Viewer";				if( !isDefined( "rc.pdfFile" ) )			rc.pdfFile = application.cbcontroller.getconfigSettings().blankPDF;		try
         {			if( isdefined("rc.newuserpassword" ) ){				cfpdf( action="getinfo", name="reader", source=rc.pdfFile, password=rc.newuserpassword );				rc.reader = reader;				event.setView("Main/index");			}else{				cfpdf( action="getinfo", name="reader", source=rc.pdfFile );				rc.reader = reader;				event.setView("Main/index");			}
         	
         }

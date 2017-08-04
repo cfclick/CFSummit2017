@@ -1,0 +1,1 @@
+<cfoutput><h1>Redact.index</h1></cfoutput>
