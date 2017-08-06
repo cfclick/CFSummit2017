@@ -33,7 +33,7 @@
 	    currentFolder = getDirectoryFromPath( getCurrentTemplatePath() );
 	    des = currentFolder & "SpeakerFormCFSummit2017_signature_field.pdf";
 	    src = currentFolder & "SpeakerFormCFSummit2017.pdf";
-	    addSignatureField(src,des,'mysignature',1,440,75,570,38);  
+	    addSignatureField(src,des,'manager_signature_field',1,440,75,570,38);  
 	    writeoutput("New signature field create #des#") ;
     </cfscript>
 
