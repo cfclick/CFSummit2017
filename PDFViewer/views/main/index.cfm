@@ -7,119 +7,100 @@
 <cfparam name="rc.reader.FilePath" default="">
 <cfparam name="rc.FileName" default="">
 
+
+<input name="pdfFile" 	 id="pdfFile" 	 type="hidden" value="#rc.reader.FilePath#" />
+<input name="fileName" 	 id="fileName" 	 type="hidden" value="#rc.FileName#" />
+<input name="orgPdfFile" id="orgPdfFile" type="hidden" value="#application.cbcontroller.getconfigSettings().uploadFolder##rc.FileName#" />
+<!---<cfdump var="#rc#">--->
 <div class="row">
 
-                <!--Sidebar-->
-                <div class="col-lg-3 wow fadeIn" data-wow-delay="0.2s">
+    <!--Sidebar-->
+    <div class="col-lg-3 wow fadeIn" data-wow-delay="0.2s">
 
-                    <div class="widget-wrapper">
-                    	 <form id="fileupload" action="#cgi.scrIPT_NAME#?event=main.uploadFiles" method="POST" enctype="multipart/form-data">
-						  <div class="file-field">
-						    <div class="btn btn-primary btn-sm">
-						        <span>Choose file</span>
-						        <input type="file" name="files[]" multiple>
-						    </div>
-						    <input type="submit" value="Upload your file" name="submit_btn" class="btn btn-primary">
-						    <div class="file-path-wrapper">
-						       <input class="file-path validate" type="text" placeholder="Upload your file">
-						    </div>
-						  </div>
-						</form>
-                        <!---<h4>Categories:</h4>--->
-                        <br>
-                        <div class="list-group">
-						    <a href="##" class="list-group-item active">
-						        Preview
-						    </a>
-						    <a href="##" class="list-group-item list-group-item-action" data-toggle="modal" data-target="##metadata_modal">PDF Properties</a>						    
-						    <a href="##" id="sanitize_meta_btn" class="list-group-item list-group-item-action">Sanitize</a>
-						    <a href="##" id="redact_btn" class="list-group-item list-group-item-action" data-toggle="modal" data-target="##redact_modal">Redact</a>
-						    <a href="##" class="list-group-item list-group-item-action" data-toggle="modal" data-target="##modalLogin">Password Protect</a>
-						    <a href="##" class="list-group-item list-group-item-action" data-toggle="modal" data-target="##digital_signature_modal">Digital Signature</a>
-						</div>
-                        
-                    </div>
-                    
-                    <!--Panel-->
-					<div class="card">
-					    <h5 class="card-header primary-color white-text">File Info</h5>
-					    <div class="card-block">
-					       
-					        <dl class="row">
-								  <dt class="col-sm-3">Created</dt>
-								  <dd class="col-sm-9" id="rc_reader_created"></dd>
-								
-								  <dt class="col-sm-3">Modified</dt>
-								  <dd class="col-sm-9" id="rc_reader_modified"></dd>
-								<!---text-truncate --->
-								  <dt class="col-sm-3 ">Producer</dt>
-								  <dd class="col-sm-9 " id="rc_reader_producer"></dd>
-								  
-								  <dt class="col-sm-3">Application</dt>
-								  <dd class="col-sm-9" id="rc_reader_application"></dd>
-								  
-								  <dt class="col-sm-3">Version</dt>
-								  <dd class="col-sm-9" id="rc_reader_version"></dd>
-								  
-								</dl>
-					    </div>
-					</div>
-					<!--/.Panel-->
-
-                    <!---<div class="widget-wrapper wow fadeIn" data-wow-delay="0.4s">
-                        <h4>Subscription form:</h4>
-                        <br>
-                        <div class="card">
-                            <div class="card-block">
-                                <p><strong>Subscribe to our newsletter</strong></p>
-                                <p>Once a week we will send you a summary of the most useful news</p>
-                                <div class="md-form">
-                                    <i class="fa fa-user prefix"></i>
-                                    <input type="text" id="form1" class="form-control">
-                                    <label for="form1">Your name</label>
-                                </div>
-                                <div class="md-form">
-                                    <i class="fa fa-envelope prefix"></i>
-                                    <input type="text" id="form2" class="form-control">
-                                    <label for="form2">Your email</label>
-                                </div>
-                                <button class="btn btn-default">Submit</button>
-
-                            </div>
-                        </div>
-                    </div>
---->
-                </div>
-                <!--/.Sidebar-->
-
-                <!--Main column-->
-                <div class="col-lg-9">
-
-                    <!--First row-->
-                    <div class="row wow fadeIn" data-wow-delay="0.4s">
-                    	<input name="pdfFile" id="pdfFile" type="hidden" value="#rc.reader.FilePath#" />
-                    	<input name="fileName" id="fileName" type="hidden" value="#rc.FileName#" />
-                    	<input name="orgPdfFile" id="orgPdfFile" type="hidden" value="#application.cbcontroller.getconfigSettings().uploadFolder#\#rc.FileName#" />
-                        <div class="col-lg-12">
-                        	<dl class="row">
-								<dt class="col-sm-3">File</dt>
-								<dd class="col-sm-9 text-truncate"><abbr title="#rc.reader.FilePath#" ><a href="##" id="pdfLink"> #rc.reader.FilePath#</a></abbr></dd>
-	                        </dl>
-	                        
-                            <iframe id="myIframe" height="800" width="100%" src="">
-							</iframe>		
-                          
-                        </div>
-                    </div>
-                    <!--/.First row-->
-                    <br>
-                    <hr class="extra-margins">
-                </div>
-                <!--/.Main column-->
-
-            </div>
+        <div class="widget-wrapper">
+        	 <form id="fileupload" action="#cgi.scrIPT_NAME#?event=main.uploadFiles" method="POST" enctype="multipart/form-data">
+			  <div class="file-field">
+			    <div class="btn btn-primary btn-sm">
+			        <span>Choose file</span>
+			        <input type="file" name="files[]" multiple>
+			    </div>
+			    <input type="submit" value="Upload your file" name="submit_btn" class="btn btn-primary">
+			    <div class="file-path-wrapper">
+			       <input class="file-path validate" type="text" placeholder="Upload your file">
+			    </div>
+			  </div>
+			</form>
+            <!---<h4>Categories:</h4>--->
+            <br>
+            <div class="list-group">
+			    <a href="##" class="list-group-item active">
+			        Preview
+			    </a>
+			    <a href="##" class="list-group-item list-group-item-action" data-toggle="modal" data-target="##metadata_modal">PDF Properties</a>						    
+			    <a href="##" id="sanitize_meta_btn" class="list-group-item list-group-item-action">Sanitize</a>
+			    <a href="##" id="redact_btn" class="list-group-item list-group-item-action" data-toggle="modal" data-target="##redact_modal">Redact</a>
+			    <a href="##" class="list-group-item list-group-item-action" data-toggle="modal" data-target="##modalLogin">Password Protect</a>
+			    <a href="##" class="list-group-item list-group-item-action" data-toggle="modal" data-target="##digital_signature_modal">Digital Signature</a>
+			</div>
             
-            <!-- Full Height Modal Right -->
+        </div>
+        
+        <!--Panel-->
+		<div class="card">
+		    <h5 class="card-header primary-color white-text">File Info</h5>
+		    <div class="card-block">
+		       
+		        <dl class="row">
+					  <dt class="col-sm-3">Created</dt>
+					  <dd class="col-sm-9" id="rc_reader_created"></dd>
+					
+					  <dt class="col-sm-3">Modified</dt>
+					  <dd class="col-sm-9" id="rc_reader_modified"></dd>
+					<!---text-truncate --->
+					  <dt class="col-sm-3 ">Producer</dt>
+					  <dd class="col-sm-9 " id="rc_reader_producer"></dd>
+					  
+					  <dt class="col-sm-3">Application</dt>
+					  <dd class="col-sm-9" id="rc_reader_application"></dd>
+					  
+					  <dt class="col-sm-3">Version</dt>
+					  <dd class="col-sm-9" id="rc_reader_version"></dd>
+					  
+					</dl>
+		    </div>
+		</div>
+		<!--/.Panel-->
+
+        
+    </div>
+    <!--/.Sidebar-->
+
+    <!--Main column-->
+    <div class="col-lg-9">
+
+        <!--First row-->
+        <div class="row wow fadeIn" data-wow-delay="0.4s">
+        	
+            <div class="col-lg-12">
+            	<dl class="row">
+					<dt class="col-sm-3">File</dt>
+					<dd class="col-sm-9 text-truncate"><abbr title="#rc.reader.FilePath#" ><a href="##" id="pdfLink">#rc.reader.FilePath#</a></abbr></dd>
+                </dl>
+                
+                <iframe id="myIframe" height="800" width="100%" src="">
+				</iframe>		
+              
+            </div>
+        </div>
+        <!--/.First row-->
+        <br>
+        <hr class="extra-margins">
+    </div>
+    <!--/.Main column-->
+
+</div>
+
+<!-- Full Height Modal Right -->
 
 
 <!-- Modal -->
@@ -387,8 +368,26 @@
                 <div class="modal-body" style="padding:40px 50px;">
                     <div class="row">
                         <form  class="col-md-12">
-                        	<!---<input type="hidden" value="#rc.pdfFile#" name="pdfFile">--->
-                            <div class="row">
+                            <div class="row pull-right" >
+                            	
+                            	<div class="md-form form-group form-sm">
+							        <input type="text" id="r_x2" value="400" class="form-control" style="width:50px"/>
+					            	<label for="r_x2">x2</label>
+					            </div>
+					            
+					            <div class="md-form form-group form-sm">	
+					            	<input type="text" id="r_y2" value="500" class="form-control" style="width:50px"/>
+					            	<label for="r_y2">y2</label>
+							    </div>
+							    
+								
+							</div>			
+							
+							<div class="row">
+								<div style="width:300px;height:100px;border:1px solid ##000;margin-left:50px"></div>
+							</div>				
+											
+							<div class="row pull-left">
 								<div class="md-form form-group form-sm">
 							        <input type="text" id="r_x1" value="200" class="form-control" style="width:50px"/>
 					            	<label for="r_x1">x1</label>
@@ -397,22 +396,6 @@
 					            <div class="md-form form-group form-sm">	
 					            	<input type="text" id="r_y1" value="400" class="form-control" style="width:50px"/>
 					            	<label for="r_y1">y1</label>
-							    </div>
-							</div>			
-							
-							<div class="row">
-								<div style="width:300px;height:100px;border:1px solid ##000;margin-left:50px"></div>
-							</div>				
-											
-							<div class="row pull-right">
-								<div class="md-form form-group form-sm">
-							        <input type="text" id="r_x2" value="400" class="form-control" style="width:50px"/>
-					            	<label for="r_x2">x2</label>
-					            </div>
-					            
-					            <div class="md-form form-group form-sm">	
-					            	<input type="text" id="r_y2" value="500" class="form-control" style="width:50px"/>
-					            	<label for="r_y2">y2</label>
 							    </div>
 							</div>					
 									
@@ -505,9 +488,11 @@
 	//main = new Main();
 	//http://localhost:8500/CFSummit2017/PDFViewer/index.cfm?event=main.preview&pdfFile=#rc.PDFFile#
 	
-	application.main.loadPDF();
-</script>
-	
-</script>
-	
+	//application.main.loadPDF();
+	$(document).ready( function() {
+		
+			
+		/*if( !main )
+			main = new Main();*/
+	});
 </script>

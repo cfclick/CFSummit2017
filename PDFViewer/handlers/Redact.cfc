@@ -37,5 +37,16 @@ component{
 	function index(event,rc,prc){
 		event.setView("Redact/index");
 	}	
-	
+	function doRedact( event, rc, prc ){
+		rc.cord = "#rc.x1#,#rc.y1#,#rc.x2#,#rc.y2#";
+
+		cfpdf(action="redact"
+				, source=rc.pdfFile
+				, overwrite=true ) {
+	 	 		cfpdfparam( coordinates=rc.cord, pages=1);
+  		};
+		cfpdf( action="getinfo", name="reader", source=rc.pdfFile, password=rc.newuserpassword );
+		rc.reader = reader;	  
+		event.renderData( data=rc, type="json" ).nolayout();
+	}
 }

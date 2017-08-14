@@ -15,10 +15,14 @@ function Config() {
 			passwordProtect				: protocol + theActualServer + appFolder + CGIScriptName + "?event=main.passwordProtect",
 			sanitize					: protocol + theActualServer + appFolder + CGIScriptName + "?event=main.sanitize",
 			readMetadata				: protocol + theActualServer + appFolder + CGIScriptName + "?event=main.readMetadata",
-			redact						: protocol + theActualServer + appFolder + CGIScriptName + "?event=main.redact",
+			
 			resetToOrginal				: protocol + theActualServer + appFolder + CGIScriptName + "?event=main.resetToOrginal",
 			addDigitalSignatureField	: protocol + theActualServer + appFolder + CGIScriptName + "?event=main.addDigitalSignatureField"
 		 };
 		 
-		
+		 this.urls.redact = { 
+		 	doRedact						: protocol + theActualServer + appFolder + CGIScriptName + "?event=redact.doRedact",
+		 };
+		 
+		 this.urls.root   =  protocol + theActualServer + appFolder + CGIScriptName ;
 	}
