@@ -97,9 +97,27 @@ Main.prototype.setEventListeners = function(event){
 	});
 	
 	main.reset_to_btn.on('click',function(e){
-		var data ={PDFFILE : main.orgPdfFile.val()};
-    	console.log(data);
-    	main.loadPDF(data);
+		var view_model ={orgPDFFile : main.orgPdfFile.val(),fileName: main.fileName.val()};
+    	var url = main.config.urls.main.resetToOrginal;
+					
+		$.ajax(	{
+        	type: "post",
+        	url: url,		
+        	data: view_model,
+       		beforeSend: function( xhr ){  	 
+			},
+    		success: function( data ){
+    			//console.log(data);
+    			main.loadPDF(data);
+    			//$('#tab'+nextTab).html( data ).append( new Client( main.loggedInIdentity, viewModel ) );
+    		},
+			error: function( objRequest, strError ){
+        		console.log(objRequest);   
+        		console.log(strError);   
+        	},
+       	 	async: true
+    	});		
+    	
 
 	});
 	
