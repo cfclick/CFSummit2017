@@ -242,7 +242,26 @@
     <!-- MDB core JavaScript -->
     <script type="text/javascript" src="includes/js/mdb.min.js"></script>
 
+	<script src="includes/js/my/config.js"></script>
+	<script src="includes/js/my/main.js"></script>
+	
+	<script>
+	$(function() {
+		// activate all drop downs
+		$('.dropdown-toggle').dropdown();
+		// Tooltips
+		$("[rel=tooltip]").tooltip();
+	})
 
+		$(document).ready( function() {
+			application = this;
+			
+			if( !application.main )
+				application.main = new Main();
+			
+			
+		});
+	</script>
 </body>
 
 </html>

@@ -1,72 +1,22 @@
 
-function Main(){
-	main = this;
-	this.myIframe 			= $('#myIframe');
-	this.pdfLink 			= $('#pdfLink');
-	this.pdfFile 			= $('#pdfFile');
-	this.orgPdfFile 		= $('#orgPdfFile');
-	this.add_password_btn 	= $('#add_password_btn');
-	this.newuserpassword 	= $('#newuserpassword');
-	this.sanitize_meta_btn 	= $('#sanitize_meta_btn');
-	this.metadata_modal 	= $('#metadata_modal');
-	this.reset_to_btn		= $('#reset_to_btn');
-	this.add_signature_field_btn = $('#add_signature_field_btn');
-	this.fieldName				 = $('#fieldName');
-	this.fileName				 = $('#fileName');
-	
-	//button
+function Home(){
+	home = this;
+	//buttons
 	this.upload_pdf_btn = $('#upload_pdf_btn');	
 	
-	//modal
-	this.redact_modal		= $('#redact_modal');
-	this.fileUploadModal = $('#fileUploadModal');
-	
-	//DIV
-	this.fileUploadModal_body = $('#fileUploadModal_body');
-	
-	
-	this.d_x1 = $("#d_x1");
-	this.d_y1 = $("#d_y1");
-	this.d_x2 = $("#d_x2");
-	this.d_y2 = $("#d_y2");
 	
 	this.setEventListeners();
-	this.loadPDF();
 }
 
 //Defined application configuration and make is part of main object	
-Main.prototype.config = new Config(); 
+Home.prototype.config = new Config(); 
 
-Main.prototype.setEventListeners = function(event){
+Home.prototype.setEventListeners = function(event){
 	
-	main.pdfLink.on('click', function(event){
+	main.upload_pdf_btn.on('click', function(event){
 		var url = main.config.urls.root + "?event=main.preview&pdfFile=" + main.pdfFile.val();
 		main.myIframe.attr("src", url);
 	})
-	
-	main.add_password_btn.on('click', function(){
-		var view_model = {};
-		view_model.newuserpassword = main.newuserpassword.val();
-		view_model.pdfFile = main.pdfFile.val();
-		var url = main.config.urls.main.passwordProtect;
-		$.ajax(	{
-        	type: "post",
-        	url: url,		
-        	data: view_model,
-       		beforeSend: function( xhr ){  	 
-			},
-    		success: function( data ){
-    			console.log(data);
-    			main.loadPDF(data);
-    			//$('#tab'+nextTab).html( data ).append( new Client( main.loggedInIdentity, viewModel ) );
-    		},
-			error: function( objRequest, strError ){
-        		console.log(objRequest);   
-        		console.log(strError);   
-        	},
-       	 	async: true
-    	});		
-	});
 	
 	main.add_password_btn.on('click', function(){
 		var view_model = {};
@@ -106,25 +56,6 @@ Main.prototype.setEventListeners = function(event){
     		success: function( data ){
     			console.log(data);
     			main.loadPDF(data);
-    			//$('#tab'+nextTab).html( data ).append( new Client( main.loggedInIdentity, viewModel ) );
-    		},
-			error: function( objRequest, strError ){
-        		console.log(objRequest);   
-        		console.log(strError);   
-        	},
-       	 	async: true
-    	});		
-	});
-	
-	main.fileUploadModal.on('shown.bs.modal', function (){
-	  	var url = main.config.urls.main.fileUploadForm;
-		$.ajax(	{
-        	type: "get",
-        	url: url,		
-       		beforeSend: function( xhr ){  	 
-			},
-    		success: function( data ){
-    			main.fileUploadModal_body.html(data);
     			//$('#tab'+nextTab).html( data ).append( new Client( main.loggedInIdentity, viewModel ) );
     		},
 			error: function( objRequest, strError ){
@@ -207,7 +138,7 @@ Main.prototype.setEventListeners = function(event){
 				
 }
 
-Main.prototype.loadPDF = function( pdfobj ){
+Home.prototype.loadPDF = function( pdfobj ){
 	
     if( !pdfobj )
      	file=main.pdfFile.val();
@@ -221,7 +152,7 @@ Main.prototype.loadPDF = function( pdfobj ){
 
 }
 
-Main.prototype.readMetadata = function(){
+Home.prototype.readMetadata = function(){
 	var view_model = {};
 	view_model.newuserpassword = main.newuserpassword.val();
 	view_model.pdfFile = main.pdfFile.val();

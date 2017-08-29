@@ -10,6 +10,7 @@ function Config() {
 		this.urls.main = { 
 	
 			index 						: protocol + theActualServer + appFolder + CGIScriptName + "?event=main.index", 
+			fileUploadForm				: protocol + theActualServer + appFolder + CGIScriptName + "?event=main.fileUploadForm",
 			preview 					: protocol + theActualServer + appFolder + CGIScriptName + "?event=main.preview",
 			uploadFiles					: protocol + theActualServer + appFolder + CGIScriptName + "?event=main.uploadFiles",
 			passwordProtect				: protocol + theActualServer + appFolder + CGIScriptName + "?event=main.passwordProtect",
