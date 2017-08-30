@@ -18,7 +18,7 @@ $(function () {
     $('#fileupload').fileupload({
         // Uncomment the following to send cross-domain cookies:
         //xhrFields: {withCredentials: true},
-        url: 'Documents/uploadFiles'
+        url: '?event=Main.UploadFiles'
     });
 
     // Enable iframe cross-domain access via redirect option:
@@ -27,7 +27,7 @@ $(function () {
         'redirect',
         window.location.href.replace(
             /\/[^\/]*$/,
-            '/Documents/uploadResult'
+            '?event=Main.UploadFiles'
         )
     );
 
@@ -54,7 +54,7 @@ $(function () {
         
         $('#fileupload').fileupload('option', {
         	
-            url: 'Documents/uploadFiles',
+            url: '?event=Main.UploadFiles',
             // Enable image resizing, except for Android and Opera,
             // which actually support image resizing, but fail to
             // send Blob objects via XHR requests:
@@ -66,7 +66,7 @@ $(function () {
         // Upload server status check for browsers with CORS support:
         if ($.support.cors) {
             $.ajax({
-                url: 'Documents/uploadFiles?ping=true',
+                url: '?event=Main.UploadFiles&ping=true',
                 type: 'HEAD'
             }).fail(function () {
                 $('<div class="alert alert-danger"/>')

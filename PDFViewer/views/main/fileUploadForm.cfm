@@ -18,7 +18,7 @@
 					<div class="row">
 					    <div class="col-md-9">
 					    <!-- The file upload form used as target for the file upload widget -->
-					    <form id="fileupload" action="/Documents/uploadFiles" method="POST" enctype="multipart/form-data" onsubmit="return beforeUpload();">
+					    <form id="fileupload" action="?event=Main.uploadFiles" method="POST" enctype="multipart/form-data" onsubmit="return beforeUpload();">
 					        <!-- Redirect browsers with JavaScript disabled to the origin page -->
 					        <!-- The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload -->
 					        <div class="row fileupload-buttonbar">
@@ -168,71 +168,7 @@
 {% } %}
 </script>
 
-       
-
-  <!---<script type="text/javascript">
-	    $(document).ready(function() {
-	        
-	        $('.tree').treegrid({
-	        	
-	            expanderExpandedClass: 'fa fa-folder-open fa-lg text-warning',
-	            expanderCollapsedClass: 'fa fa-folder fa-lg text-warning'/*,
-	            onChange: function() {
-	                alert("Changed: " + $(this).attr("id"));
-	            },
-	            onCollapse: function() {
-	                alert("Collapsed " + $(this).attr("id"));
-	            },
-	            onExpand: function() {
-	                alert("Expanded: " + $(this).attr("id"));
-	            }*/
-	        });
-	        
-	       /* $('#node-1').on("change", function() {
-	            alert("Event from " + $(this).attr("id"));
-	        });*/
-	
-	    });
-	</script>--->
- 
-<!--- <script type="text/javascript" src="includes/js/treeGrid/jquery.treegrid.min.js"></script>
- 			<script type="text/javascript" src="includes/js/treeGrid/jquery.treegrid.bootstrap3.js"></script>
-       --->
-<script>/* */</script>
-<!-- The jQuery UI widget factory, can be omitted if jQuery UI is already included -->
-<script src="includes/js/fileupload/jquery.ui.widget.js"></script>
-<!-- The Templates plugin is included to render the upload/download listings -->
-<script src="//blueimp.github.io/JavaScript-Templates/js/tmpl.min.js"></script>
-<!-- The Load Image plugin is included for the preview images and image resizing functionality -->
-<script src="//blueimp.github.io/JavaScript-Load-Image/js/load-image.all.min.js"></script>
-<!-- The Canvas to Blob plugin is included for image resizing functionality -->
-<script src="//blueimp.github.io/JavaScript-Canvas-to-Blob/js/canvas-to-blob.min.js"></script>
-<!-- blueimp Gallery script -->
-<script src="//blueimp.github.io/Gallery/js/jquery.blueimp-gallery.min.js"></script>
-<!-- The Iframe Transport is required for browsers without support for XHR file uploads -->
-<script src="includes/js/fileupload/jquery.iframe-transport.js"></script>
-<!-- The basic File Upload plugin -->
-<script src="includes/js/fileupload/jquery.fileupload.js"></script>
-<!-- The File Upload processing plugin -->
-<script src="includes/js/fileupload/jquery.fileupload-process.js"></script>
-<!-- The File Upload image preview & resize plugin -->
-<script src="includes/js/fileupload/jquery.fileupload-image.js"></script>
-<!-- The File Upload audio preview plugin -->
-<script src="includes/js/fileupload/jquery.fileupload-audio.js"></script>
-<!-- The File Upload video preview plugin -->
-<script src="includes/js/fileupload/jquery.fileupload-video.js"></script>
-<!-- The File Upload validation plugin -->
-<script src="includes/js/fileupload/jquery.fileupload-validate.js"></script>
-<!-- The File Upload user interface plugin -->
-<script src="includes/js/fileupload/jquery.fileupload-ui.js"></script>
-<!-- The main application script -->
-<script src="includes/js/fileupload/main.js"></script>
-<!-- The XDomainRequest Transport is included for cross-domain file deletion for IE 8 and IE 9 -->
-<!--[if (gte IE 8)&(lt IE 10)]>
-<script src="js/cors/jquery.xdr-transport.js"></script>
-<![endif]-->
 
 
-</div>
 
 

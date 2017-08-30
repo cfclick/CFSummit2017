@@ -73,6 +73,9 @@
             background-size: cover;
         }
     </style>
+	
+	 <!-- JQuery -->
+    <script type="text/javascript" src="includes/js/jquery-3.1.1.min.js"></script>
 
 </head>
 
@@ -230,9 +233,7 @@
 
     <!-- SCRIPTS -->
 
-    <!-- JQuery -->
-    <script type="text/javascript" src="includes/js/jquery-3.1.1.min.js"></script>
-
+   
     <!-- Bootstrap dropdown -->
     <script type="text/javascript" src="includes/js/popper.min.js"></script>
 
