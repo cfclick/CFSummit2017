@@ -35,7 +35,15 @@ component{
 	*/
 		
 	function index(event,rc,prc){
+
+		var pathtosave = application.cbcontroller.getconfigSettings().workFolder & session.sessionID & "/";
+	//	var pathtosave = application.cbcontroller.getconfigSettings().workFolder & session.sessionID & "/";
+		cfdirectory( directory = pathtosave, action = "list", name = "qry_workingfolder", filter = "*.pdf", recurse = "true");
+
+		rc.qry_workingfolder = qry_workingfolder;
 		event.setView("viewer/index");
-	}	
+	}	
+
+
 	
 }
