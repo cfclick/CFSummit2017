@@ -472,7 +472,7 @@
                 <div class="modal-footer">
                     <button type="submit" class="btn btn-default btn-default pull-right" data-dismiss="modal">X</button>
                     <button type="button" id="reset_to_btn" class="btn btn-danger btn-success pull-right" >Reset</button>
-                    <button type="button" id="add_signature_field_btn" class="btn btn-danger btn-danger pull-right" >Add Digital Signature Field</button>
+                    <button type="button" id="add_signature_field_btn" class="btn btn-danger btn-danger pull-right" >Add</button>
                 </div>
                 <!--/.Footer-->
             </div>
