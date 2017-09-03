@@ -33,17 +33,38 @@ component{
 		var rc = event.getCollection();
 	}
 	*/
+	
+	function preview( event, rc, prc ){
 		
-	function index(event,rc,prc){
+		rc.pathtosave = application.cbcontroller.getconfigSettings().workFolder & session.sessionID & "\";
+		rc.pathAndName = rc.pathtosave & rc.fileName;
+		var binaryobj = filereadBinary( rc.pathAndName  );
+		//cfpdf( action="getinfo", name="reader", source=rc.pdfFile);
+		
+		event.renderData( data=binaryobj, type="PDF" ).nolayout();
+	}
+		
+	function mypdffiles(event,rc,prc){
 
-		var pathtosave = application.cbcontroller.getconfigSettings().workFolder & session.sessionID & "/";
+		rc.pathtosave = application.cbcontroller.getconfigSettings().workFolder & session.sessionID & "\";
+		rc.currentWorkingURL = application.cbcontroller.getconfigSettings().urls.workingpdf & session.sessionID & "/";
+		
+	//	writeDump(rc);
 	//	var pathtosave = application.cbcontroller.getconfigSettings().workFolder & session.sessionID & "/";
-		cfdirectory( directory = pathtosave, action = "list", name = "qry_workingfolder", filter = "*.pdf", recurse = "true");
-
+		cfdirectory( directory =rc.pathtosave, action = "list", name = "qry_workingfolder", filter = "*.pdf", recurse = "false");
 		rc.qry_workingfolder = qry_workingfolder;
-		event.setView("viewer/index");
+		
 	}	
 
-
+	
+	function workbench(event,rc,prc){
+		rc.homepage = application.cbcontroller.getconfigSettings().urls.homepage;
+		rc.pathtosave = application.cbcontroller.getconfigSettings().workFolder & session.sessionID & "\";
+		rc.pathAndName = rc.pathtosave & rc.fileName;
+		/*rc.currentWorkingURL = application.cbcontroller.getconfigSettings().urls.workingpdf & session.sessionID & "/";
+		rc.currentWorkingURLAndName = rc.currentWorkingURL & rc.fileName;
+		*/
+		event.setView("viewer/index");
+	}
 	
 }
