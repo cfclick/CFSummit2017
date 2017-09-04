@@ -18,14 +18,14 @@
 	}
 </style>
 <cfoutput>
-
+	<input type="hidden" name="fileName" id="fileName" value="#rc.fileName#" />
 	<div class="container" style="padding-top:100px">
 	
 		<div class="row">
 			<div class="col-sm-2 col-md-2 col-lg-2">
 				<button type="button" class="btn btn-outline-info waves-effect btn-block" data-toggle="modal" 
 				        data-target="##digital_signature_modal">
-					Sign
+					Signature
 				</button>
 				<button type="button" class="btn btn-outline-info waves-effect btn-block" data-toggle="modal" data-target="##redact_modal">
 					Redact
@@ -45,7 +45,7 @@
 				<div class="row wow fadeIn" data-wow-delay="0.4s">
 					<div class="col-sm-12 col-md-12 col-lg-12">
 						<div class="fluidMedia">
-							<iframe src="#rc.homepage#?event=viewer.preview&fileName=#rc.fileName#" frameborder="0">
+							<iframe id="pdf_iframe" src="#rc.homepage#?event=viewer.preview&fileName=#rc.fileName#" frameborder="0">
 							</iframe>
 						</div>
 					</div>
@@ -147,13 +147,11 @@
 			<!-- /.Modal content-->
 		</div>
 	</div><!--/ Modal -->
-	<!-- ============================================ END SIGNATURE MODAL 
-	=============================================== -->
+	<!-- ========================================END SIGNATURE MODAL============================================= -->
 	
 	
 	
-	<!-- ================================================ REDACT MODAL 
-	================================================== -->
+	<!-- ================================================REDACT MODAL================================================== -->
 	<!-- Modal -->
 	<div class="modal fade right" id="redact_modal" tabindex="-1" role="dialog"
 	     aria-labelledby="myModalLabel" aria-hidden="true">
@@ -233,6 +231,17 @@
 			<!-- /.Modal content-->
 		</div>
 	</div><!--/ Modal -->
-	<!-- ============================================== END REDACT MODAL 
-	================================================ -->
+	<!-- ==============================================END REDACT MODAL================================================ -->
 </cfoutput>
+
+<script src="includes/js/viewer/viewer.index.js" type="application/javascript" ></script>
+<script src="includes/js/viewer/viewer.digitalsignature.js" type="application/javascript" ></script>
+
+<script >
+
+	$(document).ready( function() {
+		
+		//if( viewerIndex == 'undefined' )	
+			viewerIndex = new ViewerIndex();
+	});
+</script>

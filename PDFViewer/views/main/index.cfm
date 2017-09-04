@@ -417,7 +417,7 @@
     <!--/ Modal -->
     
     <!-- Modal -->
-    <div class="modal fade right" id="digital_signature_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+   <!--- <div class="modal fade right" id="digital_signature_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     	<div class="modal-dialog modal-full-height modal-right" role="document">
     <!---<div class="modal fade" id="redact_modal" role="dialog">
         <div class="modal-dialog">--->
@@ -478,21 +478,17 @@
             </div>
             <!-- /.Modal content-->
         </div>
-    </div>
+    </div>--->
     <!--/ Modal -->
 </cfoutput>
 
 
 
-<script >
-	//main = new Main();
-	//http://localhost:8500/CFSummit2017/PDFViewer/index.cfm?event=main.preview&pdfFile=#rc.PDFFile#
-	
-	//application.main.loadPDF();
+<!---<script >
+
 	$(document).ready( function() {
 		
-			
-		/*if( !main )
-			main = new Main();*/
+		if( !application.viewerIndex )	
+			application.viewerIndex = new ViewerIndex();
 	});
-</script>
+</script>--->

@@ -17,8 +17,15 @@ function Config() {
 			sanitize					: protocol + theActualServer + appFolder + CGIScriptName + "?event=main.sanitize",
 			readMetadata				: protocol + theActualServer + appFolder + CGIScriptName + "?event=main.readMetadata",
 			
-			resetToOrginal				: protocol + theActualServer + appFolder + CGIScriptName + "?event=main.resetToOrginal",
-			addDigitalSignatureField	: protocol + theActualServer + appFolder + CGIScriptName + "?event=main.addDigitalSignatureField"
+			resetToOrginal				: protocol + theActualServer + appFolder + CGIScriptName + "?event=main.resetToOrginal"
+		 };
+		 
+		 this.urls.digitalsignature = {
+		 	addField	: protocol + theActualServer + appFolder + CGIScriptName + "?event=digitalsignature.addField"
+		 };
+		 
+		 this.urls.viewer = {
+		 	preview	: protocol + theActualServer + appFolder + CGIScriptName + "?event=viewer.preview"
 		 };
 		 
 		 this.urls.redact = { 

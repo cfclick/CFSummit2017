@@ -171,7 +171,7 @@ Main.prototype.setEventListeners = function(event){
 
 	});
 	
-	main.add_signature_field_btn.on('click',function(e){
+	/*main.add_signature_field_btn.on('click',function(e){
 			var view_model = {
 						pdfFile: main.pdfFile.val()
 						,newuserpassword: main.newuserpassword.val()
@@ -202,7 +202,7 @@ Main.prototype.setEventListeners = function(event){
 			        	},
 			       	 	async: true
 			    	});		
-	});
+	});*/
 				
 				
 }
