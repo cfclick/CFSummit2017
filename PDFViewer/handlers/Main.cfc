@@ -33,10 +33,9 @@
 		event.setView("Main/fileUploadForm").noLayout();
 	}
   
-	
+	/*
 	function preview( event, rc, prc ){
 		
-writeDump(rc);
 		if( !isDefined( "rc.pdfFile" ) )
 			rc.pdfFile = application.cbcontroller.getconfigSettings().blankPDF;
 		
@@ -55,6 +54,7 @@ writeDump(rc);
 		
 		event.renderData( data=binaryobj, type="PDF" ).nolayout();
 	}
+	*/
 
 	public any function uploadFiles( event, rc, prc ){
 		
@@ -155,7 +155,7 @@ writeDump(rc);
 			thread name="thumbThread" action="run" priority="low" src=uploadFile.destination dest=thumb {
 				cfpdf( action="thumbnail", source=src, destination=dest, overwrite="yes" );
 			}
-						
+			sleep(200);		
 		    //rc.files.append({success:true}); 
 			setNextEvent(event="main.index",queryString="pdfFileName=#uploadResult.ServerFile#"); 
      

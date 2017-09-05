@@ -1,12 +1,12 @@
 ﻿<!-- blueimp Gallery styles -->
-<link rel="stylesheet" href="//blueimp.github.io/Gallery/css/blueimp-gallery.min.css">
+<!--- <link rel="stylesheet" href="//blueimp.github.io/Gallery/css/blueimp-gallery.min.css">
 <link rel="stylesheet" href="includes/css/fileUpload/jquery.fileupload.css">
 <link rel="stylesheet" href="includes/css/fileupload/jquery.fileupload-ui.css">
 <link rel="stylesheet" href="includes/css/style.css">
 <!-- CSS adjustments for browsers with JavaScript disabled -->
 <noscript><link rel="stylesheet" href="includes/css/fileupload/jquery.fileupload-noscript.css"></noscript>
 <noscript><link rel="stylesheet" href="includes/css/fileupload/jquery.fileupload-ui-noscript.css"></noscript>
-
+ --->
 
 <div class="container ">
 	<!--First row-->

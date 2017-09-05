@@ -13,10 +13,10 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <!-- Bootstrap core CSS -->
-    <link href="includes/css/bootstrap.min.css" rel="stylesheet">
+    <link href="includes/MDB/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Material Design Bootstrap -->
-    <link href="includes/css/mdb.min.css" rel="stylesheet">
+    <link href="includes/MDB/css/mdb.min.css" rel="stylesheet">
 
     <!-- Template styles -->
     <style rel="stylesheet">
@@ -223,7 +223,7 @@
         <!--Copyright-->
         <div class="footer-copyright">
             <div class="container-fluid">
-                © 2015 Copyright: <a href="https://www.MDBootstrap.com"> MDBootstrap.com </a>
+                © 2017 Copyright: <a href="https://www.myacrobat.com"> myacrobat.com </a>
 
             </div>
         </div>
@@ -237,13 +237,13 @@
 
    
     <!-- Bootstrap dropdown -->
-    <script type="text/javascript" src="includes/js/popper.min.js"></script>
+    <script type="text/javascript" src="includes/MDB/js/popper.min.js"></script>
 
     <!-- Bootstrap core JavaScript -->
-    <script type="text/javascript" src="includes/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="includes/MDB/js/bootstrap.min.js"></script>
 
     <!-- MDB core JavaScript -->
-    <script type="text/javascript" src="includes/js/mdb.min.js"></script>
+    <script type="text/javascript" src="includes/MDB/js/mdb.min.js"></script>
 
 	<script src="includes/js/my/config.js"></script>
 	<script src="includes/js/my/main.js"></script>
@@ -269,7 +269,7 @@
 	 <script>/* */</script>
 <!-- The jQuery UI widget factory, can be omitted if jQuery UI is already included -->
 
-<script type="text/javascript" src="includes/js/fileUpload/jquery.ui.widget.js"></script>
+<!--- <script type="text/javascript" src="includes/js/fileUpload/jquery.ui.widget.js"></script>
 <!-- The Templates plugin is included to render the upload/download listings -->
 <script type="text/javascript" src="//blueimp.github.io/JavaScript-Templates/js/tmpl.min.js"></script>
 <!-- The Load Image plugin is included for the preview images and image resizing functionality -->
@@ -295,7 +295,7 @@
 <!-- The File Upload user interface plugin -->
 <script type="text/javascript" src="includes/js/fileUpload/jquery.fileupload-ui.js"></script>
 <!-- The main application script -->
-<script type="text/javascript" src="includes/js/fileUpload/main.js"></script>
+<script type="text/javascript" src="includes/js/fileUpload/main.js"></script> --->
 <!-- The XDomainRequest Transport is included for cross-domain file deletion for IE 8 and IE 9 -->
 <!--[if (gte IE 8)&(lt IE 10)]>
 <script src="js/cors/jquery.xdr-transport.js"></script>

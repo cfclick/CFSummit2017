@@ -36,14 +36,21 @@ component{
 		
 	function index(event,rc,prc){
 		event.setView("Redact/index");
-	}	
+	}	
+
+
 	function doRedact( event, rc, prc ){
 		rc.cord = "#rc.x1#,#rc.y1#,#rc.x2#,#rc.y2#";
 
-		cfpdf(action="redact"
+		rc.pathtosave = application.cbcontroller.getconfigSettings().workFolder & session.sessionID & "\";
+		rc.pathAndName = rc.pathtosave & rc.fileName;
+		var source = trim( rc.pathAndName );
+		var destination = GetTempDirectory() & session.sessionID & '_' & rc.fileName;
+
+		cfpdf( action="redact"
 				, source=rc.pdfFile
 				, overwrite=true ) {
-	 	 		cfpdfparam( coordinates=rc.cord, pages=1);
+	 	 		cfpdfparam( coordinates=rc.cord, pages=rc.page);
   		};
 		cfpdf( action="getinfo", name="reader", source=rc.pdfFile, password=rc.newuserpassword );
 		rc.reader = reader;	  

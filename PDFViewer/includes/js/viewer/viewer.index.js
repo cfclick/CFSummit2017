@@ -30,8 +30,7 @@ ViewerIndex.prototype.setEventListeners = function(event){
 }
 
 ViewerIndex.prototype.preview = function( fileName, istemp ){
-	
-	    	
+		    	
     var url = main.config.urls.viewer.preview + "&fileName=" + fileName + '&istemp=' + istemp;	
 	viewerIndex.pdf_iframe.attr("src", url);
 
