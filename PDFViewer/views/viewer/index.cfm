@@ -1,178 +1,247 @@
-﻿<div class="container">
+﻿<style>
+	.fluidMedia {
+	position: relative;
+	padding-bottom: 94.00%; /* proportion value to aspect ratio 16:9 (9 / 16 = 0.5625 or 56.25%) */
+	padding-top: 20px;
+	height: 0;
+	overflow: hidden;
+	}
+	.fluidMedia iframe {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	}
+	.modal-heade-black{
+	color:#000000;
+	}
+</style>
 <cfoutput>
-	<h3>Viewer Handler</h3>
+	<input type="hidden" name="fileName" id="fileName" value="#rc.fileName#" />
+	<div class="container" style="padding-top:100px">
+	
+		<div class="row">
+			<div class="col-sm-2 col-md-2 col-lg-2">
+				<button type="button" class="btn btn-outline-info waves-effect btn-block" data-toggle="modal" 
+				        data-target="##digital_signature_modal">
+					Signature
+				</button>
+				<button type="button" class="btn btn-outline-info waves-effect btn-block" data-toggle="modal" data-target="##redact_modal">
+					Redact
+				</button>
+				<button type="button" class="btn btn-outline-info waves-effect btn-block">
+					Sanitize
+				</button>				
+				<button type="button" class="btn btn-outline-info waves-effect btn-block">
+					Stamp
+				</button>
+				<button type="button" class="btn btn-outline-info waves-effect btn-block">
+					Properties
+				</button>
+			</div>
+			<div class="col-sm-10 col-md-10 col-lg-10">
+				<!--First row-->
+				<div class="row wow fadeIn" data-wow-delay="0.4s">
+					<div class="col-sm-12 col-md-12 col-lg-12">
+						<div class="fluidMedia">
+							<iframe id="pdf_iframe" src="#rc.homepage#?event=viewer.preview&fileName=#rc.fileName#" frameborder="0">
+							</iframe>
+						</div>
+					</div>
+				</div>
+				<!--/.First row-->
+				<br>
+			</div>
+		</div>
+	</div>
+	
+	<!-- ============================================ SIGNATURE MODAL 
+	=============================================== -->
+	<!-- Modal -->
+	<div class="modal fade right" id="digital_signature_modal" tabindex="-1" role="dialog"
+	     aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-full-height modal-right" role="document">
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header text-center modal-heade-black">
+					<h4>
+						<i class="fa fa-file">
+						</i>
+						Digital Signature
+					</h4>
+					<button type="submit" class="btn btn-default btn-default pull-right" data-dismiss="modal">
+						X
+					</button>
+				</div>
+				<div class="modal-body" style="padding:40px 50px;">
+					<div class="row">
+						<form class="col-md-12">
+							<div class="row">
+								<div class="md-form form-group form-sm">
+									<input type="text" id="d_x1" value="440" class="form-control"
+									       style="width:40px"/>
+									<label for="d_x1">
+										x1
+									</label>
+								</div>
+								
+								<div class="md-form form-group form-sm">
+									<input type="text" id="d_y1" value="75" class="form-control"
+									       style="width:40px"/>
+									<label for="d_y1">
+										y1
+									</label>
+								</div>
+							</div>
+							
+							<div class="row">
+								<div style="width:300px;height:100px;border:1px solid ##000;margin-left:40px">
+								</div>
+							</div>
+							<br>
+							<br>
+							<div class="row pull-right">
+								<div class="md-form form-group form-sm">
+									<input type="text" id="d_x2" value="570" class="form-control"
+									       style="width:40px"/>
+									<label for="d_x2">
+										x2
+									</label>
+								</div>
+								
+								<div class="md-form form-group form-sm">
+									<input type="text" id="d_y2" value="38" class="form-control"
+									       style="width:40px"/>
+									<label for="d_y2">
+										y2
+									</label>
+								</div>
+							</div>
+							<br>
+							<br>
+							<br>
+							<br>
+							<div class="row">
+								<div class="md-form form-group form-sm">
+									<input type="text" id="fieldName" value="Signature1" class="form-control"/>
+									<label for="fieldName">
+										Signature Field Name
+									</label>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+				<!--Footer-->
+				<div class="modal-footer">
+					<button type="button" id="reset_to_btn" class="btn btn-danger btn-success pull-right">
+						Reset
+					</button>
+					<button type="button" id="add_signature_field_btn" class="btn btn-danger btn-danger pull-right">
+						Add
+					</button>
+				</div>
+				<!--/.Footer-->
+			</div>
+			<!-- /.Modal content-->
+		</div>
+	</div><!--/ Modal -->
+	<!-- ========================================END SIGNATURE MODAL============================================= -->
+	
+	
+	
+	<!-- ================================================REDACT MODAL================================================== -->
+	<!-- Modal -->
+	<div class="modal fade right" id="redact_modal" tabindex="-1" role="dialog"
+	     aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-full-height modal-right" role="document">
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header text-center modal-heade-black">
+					<h4>
+						<i class="fa fa-user">
+						</i>
+						Redact 
+					</h4>
+					
+					<button type="submit" class="btn btn-default btn-default pull-right" data-dismiss="modal">
+						X
+					</button>
+				</div>
+				<div class="modal-body" style="padding:40px 50px;">
+					<div class="row">
+						<form class="col-md-12">
+							<div class="row">
+								<div class="md-form form-group form-sm">
+									<input type="text" id="d_x1" value="440" class="form-control"
+									       style="width:40px"/>
+									<label for="d_x1">
+										x1
+									</label>
+								</div>
+								
+								<div class="md-form form-group form-sm">
+									<input type="text" id="d_y1" value="75" class="form-control"
+									       style="width:40px"/>
+									<label for="d_y1">
+										y1
+									</label>
+								</div>
+							</div>
+							
+							<div class="row">
+								<div style="width:300px;height:100px;border:1px solid ##000;margin-left:10px">
+								</div>
+							</div>
+							<br>
+							<br>
+							<div class="row pull-right">
+								<div class="md-form form-group form-sm">
+									<input type="text" id="d_x2" value="570" class="form-control"
+									       style="width:40px"/>
+									<label for="d_x2">
+										x2
+									</label>
+								</div>
+								
+								<div class="md-form form-group form-sm">
+									<input type="text" id="d_y2" value="38" class="form-control"
+									       style="width:40px"/>
+									<label for="d_y2">
+										y2
+									</label>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+				<!--Footer-->
+				<div class="modal-footer">
+					
+					<button type="button" id="reset_to_btn" class="btn btn-danger btn-success pull-right">
+						Reset
+					</button>
+					<button type="button" id="redact_apply_btn" class="btn btn-danger btn-danger pull-right">
+						Apply
+					</button>
+				</div>
+				<!--/.Footer-->
+			</div>
+			<!-- /.Modal content-->
+		</div>
+	</div><!--/ Modal -->
+	<!-- ==============================================END REDACT MODAL================================================ -->
 </cfoutput>
 
- <!--Main column-->
-    <div class="col-sm-12 col-md-12 col-lg-12">
-        <cfdump var = "#rc.qry_workingfolder#" >
-        <!--First row-->
-        <div class="row wow fadeIn" data-wow-delay="0.4s">
-        	
-            <!--Carousel Wrapper-->
-            <div id="multi-item-example" class="carousel slide carousel-multi-item" data-ride="carousel">
+<script src="includes/js/viewer/viewer.index.js" type="application/javascript" ></script>
+<script src="includes/js/viewer/viewer.digitalsignature.js" type="application/javascript" ></script>
 
-                <!--Controls-->
-                <div class="controls-top">
-                    <a class="btn-floating" href="#multi-item-example" data-slide="prev"><i class="fa fa-chevron-left"></i></a>
-                    <a class="btn-floating" href="#multi-item-example" data-slide="next"><i class="fa fa-chevron-right"></i></a>
-                </div>
-                <!--/.Controls-->
+<script >
 
-                <!--Indicators-->
-                <ol class="carousel-indicators">
-                    <li data-target="#multi-item-example" data-slide-to="0" class="active"></li>
-                    <li data-target="#multi-item-example" data-slide-to="1"></li>
-                    <li data-target="#multi-item-example" data-slide-to="2"></li>
-                </ol>
-                <!--/.Indicators-->
-
-                <!--Slides-->
-                <div class="carousel-inner" role="listbox">
-
-                    <!--First slide-->
-                    <cfloop query="rc.qry_workingfolder">
-                        <div class="carousel-item active">
-
-                            <div class="col-md-4">
-                                <div class="card">
-                                    <img class="img-fluid" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(34).jpg" alt="Card image cap">
-                                    <div class="card-body">
-                                        <h4 class="card-title">Card title</h4>
-                                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                        <a class="btn btn-primary">Button</a>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!--<div class="col-md-4 clearfix d-none d-md-block">
-                                <div class="card">
-                                    <img class="img-fluid" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(18).jpg" alt="Card image cap">
-                                    <div class="card-body">
-                                        <h4 class="card-title">Card title</h4>
-                                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                        <a class="btn btn-primary">Button</a>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-md-4 clearfix d-none d-md-block">
-                                <div class="card">
-                                    <img class="img-fluid" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(35).jpg" alt="Card image cap">
-                                    <div class="card-body">
-                                        <h4 class="card-title">Card title</h4>
-                                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                        <a class="btn btn-primary">Button</a>
-                                    </div>
-                                </div>
-                            </div>-->
-
-                        </div>
-                    </cfloop>
-                    <!--/.First slide-->
-
-                    <!--Second slide-->
-                    <!--<div class="carousel-item">
-
-                        <div class="col-md-4">
-                            <div class="card">
-                                <img class="img-fluid" src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(60).jpg" alt="Card image cap">
-                                <div class="card-body">
-                                    <h4 class="card-title">Card title</h4>
-                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                    <a class="btn btn-primary">Button</a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-4 clearfix d-none d-md-block">
-                            <div class="card">
-                                <img class="img-fluid" src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(47).jpg" alt="Card image cap">
-                                <div class="card-body">
-                                    <h4 class="card-title">Card title</h4>
-                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                    <a class="btn btn-primary">Button</a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-4 clearfix d-none d-md-block">
-                            <div class="card">
-                                <img class="img-fluid" src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(48).jpg" alt="Card image cap">
-                                <div class="card-body">
-                                    <h4 class="card-title">Card title</h4>
-                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                    <a class="btn btn-primary">Button</a>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>-->
-                    <!--/.Second slide-->
-
-                    <!--Third slide-->
-                    <!--<div class="carousel-item">
-
-                        <div class="col-md-4">
-                            <div class="card">
-                                <img class="img-fluid" src="https://mdbootstrap.com/img/Photos/Horizontal/Food/4-col/img%20(53).jpg" alt="Card image cap">
-                                <div class="card-body">
-                                    <h4 class="card-title">Card title</h4>
-                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                    <a class="btn btn-primary">Button</a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-4 clearfix d-none d-md-block">
-                            <div class="card">
-                                <img class="img-fluid" src="https://mdbootstrap.com/img/Photos/Horizontal/Food/4-col/img%20(45).jpg" alt="Card image cap">
-                                <div class="card-body">
-                                    <h4 class="card-title">Card title</h4>
-                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                    <a class="btn btn-primary">Button</a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-4 clearfix d-none d-md-block">
-                            <div class="card">
-                                <img class="img-fluid" src="https://mdbootstrap.com/img/Photos/Horizontal/Food/4-col/img%20(51).jpg" alt="Card image cap">
-                                <div class="card-body">
-                                    <h4 class="card-title">Card title</h4>
-                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                    <a class="btn btn-primary">Button</a>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>-->
-                    <!--/.Third slide-->
-
-                </div>
-                <!--/.Slides-->
-
-            </div>
-            <!--/.Carousel Wrapper-->
-            <!--- <div class="col-lg-12">
-            	<dl class="row">
-					<dt>File</dt>
-					<dd>
-						<abbr title="" >
-							<a href="" id="pdfLink">{{FileName}}</a>
-						</abbr>
-					</dd>
-                </dl>
-                <div class="row">
-	                <iframe id="myIframe" height="750" width="100%" src="">
-					</iframe>
-				</div>		
-              
-            </div> --->
-        </div>
-        <!--/.First row-->
-        <br>
-        <hr class="extra-margins">
-    </div>
-    <!--/.Main column-->
-</div>
+	$(document).ready( function() {
+		
+		//if( viewerIndex == 'undefined' )	
+			viewerIndex = new ViewerIndex();
+	});
+</script>

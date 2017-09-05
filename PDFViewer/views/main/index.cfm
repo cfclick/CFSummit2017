@@ -417,7 +417,7 @@
     <!--/ Modal -->
     
     <!-- Modal -->
-    <div class="modal fade right" id="digital_signature_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+   <!--- <div class="modal fade right" id="digital_signature_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     	<div class="modal-dialog modal-full-height modal-right" role="document">
     <!---<div class="modal fade" id="redact_modal" role="dialog">
         <div class="modal-dialog">--->
@@ -472,27 +472,23 @@
                 <div class="modal-footer">
                     <button type="submit" class="btn btn-default btn-default pull-right" data-dismiss="modal">X</button>
                     <button type="button" id="reset_to_btn" class="btn btn-danger btn-success pull-right" >Reset</button>
-                    <button type="button" id="add_signature_field_btn" class="btn btn-danger btn-danger pull-right" >Add Digital Signature Field</button>
+                    <button type="button" id="add_signature_field_btn" class="btn btn-danger btn-danger pull-right" >Add</button>
                 </div>
                 <!--/.Footer-->
             </div>
             <!-- /.Modal content-->
         </div>
-    </div>
+    </div>--->
     <!--/ Modal -->
 </cfoutput>
 
 
 
-<script >
-	//main = new Main();
-	//http://localhost:8500/CFSummit2017/PDFViewer/index.cfm?event=main.preview&pdfFile=#rc.PDFFile#
-	
-	//application.main.loadPDF();
+<!---<script >
+
 	$(document).ready( function() {
 		
-			
-		/*if( !main )
-			main = new Main();*/
+		if( !application.viewerIndex )	
+			application.viewerIndex = new ViewerIndex();
 	});
-</script>
+</script>--->

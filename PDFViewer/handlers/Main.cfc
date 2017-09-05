@@ -36,7 +36,7 @@
 	
 	function preview( event, rc, prc ){
 		
-
+writeDump(rc);
 		if( !isDefined( "rc.pdfFile" ) )
 			rc.pdfFile = application.cbcontroller.getconfigSettings().blankPDF;
 		
@@ -157,7 +157,7 @@
 			}
 						
 		    //rc.files.append({success:true}); 
-			setNextEvent(event="Viewer.index",queryString="pdfFileName=#uploadResult.ServerFile#"); 
+			setNextEvent(event="Viewer.mypdffiles",queryString="pdfFileName=#uploadResult.ServerFile#"); 
      
 		   // return event.renderData(data=uploadFile.destination, type="json").noLayout();
    

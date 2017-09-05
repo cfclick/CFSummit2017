@@ -31,7 +31,8 @@ function configure(){
 
 		handlerCaching 			= false,
 		eventCaching			= false,
-		urls					= { homepage: "http://#CGI.SERVER_NAME#:#CGI.SERVER_PORT#/CFSummit2017/PDFViewer/index.cfm" },
+		urls					= { homepage: "http://#CGI.SERVER_NAME#:#CGI.SERVER_PORT#/CFSummit2017/PDFViewer/index.cfm",
+									workingpdf: "http://#CGI.SERVER_NAME#:#CGI.SERVER_PORT#/CFSummit2017/PDFViewer/uploads/Work/" },
 		environment				= "Development",
 		
 		uploadFolder			= cfroot & "CFSummit2017\PDFViewer\uploads\",
