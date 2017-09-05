@@ -24,10 +24,7 @@
 					</p>
 				</li>
 				<li>
-					<a target="_blank" href="https://mdbootstrap.com/getting-started/" 
-					   class="btn btn-primary btn-lg" rel="nofollow">
-						Sign up!
-					</a>
+					<a id="upload_pdf_btn" class="btn btn-info btn-lg" data-toggle="modal" data-target="#fileUploadModal">Upload PDF</a>
 					<a target="_blank" href="https://mdbootstrap.com/material-design-for-bootstrap/" 
 					   class="btn btn-default btn-lg" rel="nofollow">
 						Learn more
@@ -39,8 +36,14 @@
 	<!--/.First row-->
 	<hr class="extra-margins">
 	
-	<!--Second row-->
 	<div class="row">
+	
+		<cfoutput >
+		 	#myPDFFiles()#
+		</cfoutput>
+	</div>
+	<!--Second row-->
+	<!--- <div class="row">
 		<!--First columnn-->
 		<div class="col-lg-4">
 			<!--Card-->
@@ -119,7 +122,7 @@
 			<!--/.Card-->
 		</div>
 		<!--Third columnn-->
-	</div>
+	</div> --->
 	<!--/.Second row-->
 </div>
 <!--/.Main layout-->

@@ -1,11 +1,12 @@
-<div class="container">
+﻿
+<cffunction name = "myPDFFiles" >
+	<cfset rc.pathtosave = application.cbcontroller.getconfigSettings().workFolder & session.sessionID & "\" />
+	<cfset	rc.currentWorkingURL = application.cbcontroller.getconfigSettings().urls.workingpdf & session.sessionID & "/" />	
+	<cfdirectory directory="#rc.pathtosave#" action="list" name="qry_workingfolder" filter="*.pdf" recurse="false" />
+	<cfset rc.qry_workingfolder = qry_workingfolder />
+	<h4>My PDFs</h4>
 	
-<cfoutput>
-	<h3>Viewer Handler</h3>
-</cfoutput>
-<cfdump var="#rc.qry_workingfolder#">
- <!--Main column-->
-    <div class="col-sm-12 col-md-12 col-lg-12">       
+	<div class="col-sm-12 col-md-12 col-lg-12">       
         <!--First row-->
         <div class="row wow fadeIn" data-wow-delay="0.4s">
             <!--First slide-->           
@@ -32,5 +33,5 @@
         <br>
         <hr class="extra-margins">
     </div>
-    <!--/.Main column-->
-</div>
+	<cfreturn/>
+</cffunction>

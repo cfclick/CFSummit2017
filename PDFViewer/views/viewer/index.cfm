@@ -19,7 +19,7 @@
 </style>
 <cfoutput>
 	<input type="hidden" name="fileName" id="fileName" value="#rc.fileName#" />
-	<div class="container" style="padding-top:100px">
+	<div class="container" style="padding-top:10px">
 	
 		<div class="row">
 			<div class="col-sm-2 col-md-2 col-lg-2">

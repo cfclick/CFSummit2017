@@ -157,7 +157,7 @@ writeDump(rc);
 			}
 						
 		    //rc.files.append({success:true}); 
-			setNextEvent(event="Viewer.mypdffiles",queryString="pdfFileName=#uploadResult.ServerFile#"); 
+			setNextEvent(event="main.index",queryString="pdfFileName=#uploadResult.ServerFile#"); 
      
 		   // return event.renderData(data=uploadFile.destination, type="json").noLayout();
    

@@ -122,7 +122,7 @@
     <!--Mask-->
     <div class="view hm-black-light">
         <div class="full-bg-img flex-center">
-        	<cfoutput><div class="container-fluid">#renderView()#</div></cfoutput>
+        	<cfoutput><div class="container-fluid" style="padding-top:100px">#renderView()#</div></cfoutput>
             
         </div>
     </div>

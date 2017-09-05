@@ -46,8 +46,7 @@ component{
 		event.renderData( data=binaryobj, type="PDF" ).nolayout();
 	}
 		
-	function mypdffiles(event,rc,prc){
-
+	/*function mypdffiles(event,rc,prc){
 		rc.pathtosave = application.cbcontroller.getconfigSettings().workFolder & session.sessionID & "\";
 		rc.currentWorkingURL = application.cbcontroller.getconfigSettings().urls.workingpdf & session.sessionID & "/";
 		
@@ -55,8 +54,8 @@ component{
 	//	var pathtosave = application.cbcontroller.getconfigSettings().workFolder & session.sessionID & "/";
 		cfdirectory( directory =rc.pathtosave, action = "list", name = "qry_workingfolder", filter = "*.pdf", recurse = "false");
 		rc.qry_workingfolder = qry_workingfolder;
-		
-	}	
+		return event.setView("viewer/mypdffiles");
+	}	*/
 
 	
 	function workbench(event,rc,prc){
