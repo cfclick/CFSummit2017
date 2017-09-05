@@ -24,11 +24,32 @@
 					</p>
 				</li>
 				<li>
-					<a id="upload_pdf_btn" class="btn btn-info btn-lg" data-toggle="modal" data-target="#fileUploadModal">Upload PDF</a>
-					<a target="_blank" href="https://mdbootstrap.com/material-design-for-bootstrap/" 
+					<div class="pt-1 pb-4">
+						<form id="fileupload" action="?event=Main.uploadFiles" method="POST" enctype="multipart/form-data" onsubmit="return beforeUpload();">
+							<div class="file-field">
+								<div class="btn btn-primary btn-sm">
+									<span>Choose files</span>
+									<input type="file" name="files[]" multiple>
+								</div>
+								<div class="file-path-wrapper">
+									<input class="file-path validate" type="text" placeholder="Upload one or more files">
+								</div>
+
+								<button type="submit" class="btn btn-primary">
+									<i class="glyphicon glyphicon-upload"></i>
+									<span>Start upload</span>
+								</button>
+							</div>
+
+							
+						</form>
+					</div>
+
+					<!--- <a id="upload_pdf_btn" class="btn btn-info btn-lg" data-toggle="modal" data-target="#fileUploadModal">Upload PDF</a> --->
+					<!--- <a target="_blank" href="https://mdbootstrap.com/material-design-for-bootstrap/" 
 					   class="btn btn-default btn-lg" rel="nofollow">
 						Learn more
-					</a>
+					</a> --->
 				</li>
 			</ul>
 		</div>

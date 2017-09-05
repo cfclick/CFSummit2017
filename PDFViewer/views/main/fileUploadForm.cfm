@@ -14,7 +14,7 @@
 					    <form id="fileupload" action="?event=Main.uploadFiles" method="POST" enctype="multipart/form-data" onsubmit="return beforeUpload();">
 					        <!-- Redirect browsers with JavaScript disabled to the origin page -->
 					        <!-- The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload -->
-					        <div class="row fileupload-buttonbar">
+					        <div class="row ">
 					            <div class="col-lg-7">
 					                <!-- The fileinput-button span is used to style the file input field as button -->
 					                <span class="btn btn-success fileinput-button">

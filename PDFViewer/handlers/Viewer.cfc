@@ -35,13 +35,14 @@ component{
 	*/
 	
 	function preview( event, rc, prc ){
-		if( isdefined('rc.istemp') && rc.istemp )
+		
+		if( isdefined('rc.istemp') && len(rc.istemp) )
 			rc.pathAndName = GetTempDirectory() & session.sessionID & '_' & rc.fileName;
 		else{
 			rc.pathtosave = application.cbcontroller.getconfigSettings().workFolder & session.sessionID & "\";
 			rc.pathAndName = rc.pathtosave & rc.fileName;
 		}
-		//writeDump(rc.pathAndName);abort;
+	
 		var binaryobj = filereadBinary( rc.pathAndName  );
 		event.renderData( data=binaryobj, type="PDF" ).nolayout();
 	}

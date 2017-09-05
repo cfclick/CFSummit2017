@@ -12,9 +12,9 @@
 		      integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" 
 		      crossorigin="anonymous">--->
 		 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">      
-		<link rel="stylesheet" href="../MDB Free/css/bootstrap.min.css" >
-		<link rel="stylesheet" href="../MDB Free/css/mdb.min.css" >		
-		<link rel="stylesheet" href="../MDB Free/css/style.css" >		
+		<link rel="stylesheet" href="../MDB Pro/css/bootstrap.min.css" >
+		<link rel="stylesheet" href="../MDB Pro/css/mdb.min.css" >		
+		<link rel="stylesheet" href="../MDB Pro/css/style.css" >		
 		
 		
 		
@@ -405,10 +405,10 @@
 			</div>
 		</div>
 		--->
-		<script src="../MDB Free/js/jquery-3.1.1.min.js" ></script>
-		<script src="../MDB Free/js/tether.min.js" ></script>
-		<script src="../MDB Free/js/bootstrap.min.js" ></script>
-		<script src="../MDB Free/js/mdb.min.js" ></script>
+		<script src="../MDB Pro/js/jquery-3.1.1.min.js" ></script>
+		<script src="../MDB Pro/js/tether.min.js" ></script>
+		<script src="../MDB Pro/js/bootstrap.min.js" ></script>
+		<script src="../MDB Pro/js/mdb.min.js" ></script>
 		
 		
 		 <script>
