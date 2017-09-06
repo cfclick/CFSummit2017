@@ -24,12 +24,12 @@ function Config() {
 		 	addField	: protocol + theActualServer + appFolder + CGIScriptName + "?event=digitalsignature.addField"
 		 };
 		 
-		 this.urls.viewer = {
-		 	preview	: protocol + theActualServer + appFolder + CGIScriptName + "?event=viewer.preview"
+		 this.urls.redact = {
+		 	add	: protocol + theActualServer + appFolder + CGIScriptName + "?event=redact.add"
 		 };
 		 
-		 this.urls.redact = { 
-		 	doRedact						: protocol + theActualServer + appFolder + CGIScriptName + "?event=redact.doRedact",
+		 this.urls.viewer = {
+		 	preview	: protocol + theActualServer + appFolder + CGIScriptName + "?event=viewer.preview"
 		 };
 		 
 		 this.urls.root   =  protocol + theActualServer + appFolder + CGIScriptName ;
