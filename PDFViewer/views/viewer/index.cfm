@@ -47,18 +47,15 @@
 
 				<div class="row wow fadeIn" data-wow-delay="0.4s">
 					<div class="col-sm-12 col-md-12 col-lg-12">
+						<div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+						  <div class="btn-group mr-2" role="group" aria-label="First group">
+						    <button type="button" name="savr_btn" id="savr_btn" class="btn btn-secondary"><i class="fa fa-floppy-o fa-3x" aria-hidden="true"></i></button>
+						    <button type="button" name="reset_btn" id="reset_btn" class="btn btn-secondary"><i class="fa fa-undo" aria-hidden="true"></i></button>
+						    <button type="button" name="delete_btn" id="delete_btn" class="btn btn-secondary"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+						  </div>
+						  
+						</div>
 						
-						<div class="btn-group" data-toggle="buttons">
-						<label class="btn btn-primary">
-							<input type="radio" name="options" id="option1" autocomplete="off" > <i class="fa fa-floppy-o fa-3x" aria-hidden="true"></i>
-						</label>
-						<label class="btn btn-primary">
-							<input type="radio" name="options" id="option2" autocomplete="off"> <i class="fa fa-undo" aria-hidden="true"></i>
-						</label>
-						<label class="btn btn-danger">
-							<input type="radio" name="options" id="option3" autocomplete="off"> <i class="fa fa-trash-o" aria-hidden="true"></i>
-						</label>
-					</div>
 						<div class="fluidMedia">
 							<iframe id="pdf_iframe" src="#rc.homepage#?event=viewer.preview&fileName=#rc.fileName#" frameborder="0">
 							</iframe>
@@ -237,6 +234,15 @@
 									</label>
 								</div>
 							</div>
+							
+							<div class="row">
+								<div class="md-form form-group form-sm">
+									<input type="text" id="page" class="form-control" value="1" style="width:60px"/>
+									<label for="page">
+										Page Number
+									</label>
+								</div>
+							</div>
 						</form>
 					</div>
 				</div>
@@ -258,14 +264,15 @@
 	<!-- ==============================================END REDACT MODAL================================================ -->
 </cfoutput>
 
-<script src="includes/js/viewer/viewer.index.js" type="application/javascript" ></script>
-<script src="includes/js/viewer/viewer.digitalsignature.js" type="application/javascript" ></script>
+<script src="includes/js/viewer/workbench.js" type="application/javascript" ></script>
+<script src="includes/js/viewer/digitalsignature.js" type="application/javascript" ></script>
+<script src="includes/js/viewer/redact.js" type="application/javascript" ></script>
 
 <script >
 
 	$(document).ready( function() {
 		
 		//if( viewerIndex == 'undefined' )	
-			viewerIndex = new ViewerIndex();
+			workBench = new WorkBench();
 	});
 </script>

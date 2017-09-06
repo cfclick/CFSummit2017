@@ -39,21 +39,21 @@ component{
 	}	
 
 
-	function doRedact( event, rc, prc ){
+	function add( event, rc, prc ){
 		rc.cord = "#rc.x1#,#rc.y1#,#rc.x2#,#rc.y2#";
 
 		rc.pathtosave = application.cbcontroller.getconfigSettings().workFolder & session.sessionID & "\";
 		rc.pathAndName = rc.pathtosave & rc.fileName;
 		var source = trim( rc.pathAndName );
 		var destination = GetTempDirectory() & session.sessionID & '_' & rc.fileName;
-
+		
 		cfpdf( action="redact"
-				, source=rc.pdfFile
+				, source=source
+				, destination=destination
 				, overwrite=true ) {
 	 	 		cfpdfparam( coordinates=rc.cord, pages=rc.page);
   		};
-		cfpdf( action="getinfo", name="reader", source=rc.pdfFile, password=rc.newuserpassword );
-		rc.reader = reader;	  
-		event.renderData( data=rc, type="json" ).nolayout();
+		
+		event.renderData( data=rc.fileName, type="json" ).nolayout();
 	}
 }
