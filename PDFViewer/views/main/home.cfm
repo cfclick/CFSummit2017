@@ -1,12 +1,12 @@
 ﻿<!-- blueimp Gallery styles -->
-<link rel="stylesheet" href="//blueimp.github.io/Gallery/css/blueimp-gallery.min.css">
+<!--- <link rel="stylesheet" href="//blueimp.github.io/Gallery/css/blueimp-gallery.min.css">
 <link rel="stylesheet" href="includes/css/fileUpload/jquery.fileupload.css">
 <link rel="stylesheet" href="includes/css/fileupload/jquery.fileupload-ui.css">
 <link rel="stylesheet" href="includes/css/style.css">
 <!-- CSS adjustments for browsers with JavaScript disabled -->
 <noscript><link rel="stylesheet" href="includes/css/fileupload/jquery.fileupload-noscript.css"></noscript>
 <noscript><link rel="stylesheet" href="includes/css/fileupload/jquery.fileupload-ui-noscript.css"></noscript>
-
+ --->
 
 <div class="container ">
 	<!--First row-->
@@ -24,14 +24,32 @@
 					</p>
 				</li>
 				<li>
-					<a target="_blank" href="https://mdbootstrap.com/getting-started/" 
-					   class="btn btn-primary btn-lg" rel="nofollow">
-						Sign up!
-					</a>
-					<a target="_blank" href="https://mdbootstrap.com/material-design-for-bootstrap/" 
+					<div class="pt-1 pb-4">
+						<form id="fileupload" action="?event=Main.uploadFiles" method="POST" enctype="multipart/form-data" onsubmit="return beforeUpload();">
+							<div class="file-field">
+								<div class="btn btn-primary btn-sm">
+									<span>Choose files</span>
+									<input type="file" name="files[]" multiple>
+								</div>
+								<div class="file-path-wrapper">
+									<input class="file-path validate" type="text" placeholder="Upload one or more files">
+								</div>
+
+								<button type="submit" class="btn btn-primary">
+									<i class="glyphicon glyphicon-upload"></i>
+									<span>Start upload</span>
+								</button>
+							</div>
+
+							
+						</form>
+					</div>
+
+					<!--- <a id="upload_pdf_btn" class="btn btn-info btn-lg" data-toggle="modal" data-target="#fileUploadModal">Upload PDF</a> --->
+					<!--- <a target="_blank" href="https://mdbootstrap.com/material-design-for-bootstrap/" 
 					   class="btn btn-default btn-lg" rel="nofollow">
 						Learn more
-					</a>
+					</a> --->
 				</li>
 			</ul>
 		</div>
@@ -39,8 +57,14 @@
 	<!--/.First row-->
 	<hr class="extra-margins">
 	
-	<!--Second row-->
 	<div class="row">
+	
+		<cfoutput >
+		 	#myPDFFiles()#
+		</cfoutput>
+	</div>
+	<!--Second row-->
+	<!--- <div class="row">
 		<!--First columnn-->
 		<div class="col-lg-4">
 			<!--Card-->
@@ -119,7 +143,7 @@
 			<!--/.Card-->
 		</div>
 		<!--Third columnn-->
-	</div>
+	</div> --->
 	<!--/.Second row-->
 </div>
 <!--/.Main layout-->

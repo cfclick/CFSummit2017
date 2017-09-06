@@ -11,6 +11,7 @@ function DigitalSignature(){
 	this.d_y1 = $("#d_y1");
 	this.d_x2 = $("#d_x2");
 	this.d_y2 = $("#d_y2");
+	this.page = $("#page");
 	
 	
 	this.setEventListeners();
@@ -28,7 +29,7 @@ DigitalSignature.prototype.setEventListeners = function(event){
 						,y1:digitalSignature.d_y1.val()
 						,x2:digitalSignature.d_x2.val()
 						,y2:digitalSignature.d_y2.val()
-						,page:1
+						,page:digitalSignature.page.val()
 						,fieldName:digitalSignature.fieldName.val()
 						,fileName:viewerIndex.fileName.val()
 					};

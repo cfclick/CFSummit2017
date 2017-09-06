@@ -3,7 +3,7 @@
 <cfoutput>
 	<h3>Viewer Handler</h3>
 </cfoutput>
-
+<cfdump var="#rc.qry_workingfolder#">
  <!--Main column-->
     <div class="col-sm-12 col-md-12 col-lg-12">       
         <!--First row-->

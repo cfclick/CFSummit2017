@@ -13,10 +13,10 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <!-- Bootstrap core CSS -->
-    <link href="includes/css/bootstrap.min.css" rel="stylesheet">
+    <link href="includes/MDB/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Material Design Bootstrap -->
-    <link href="includes/css/mdb.min.css" rel="stylesheet">
+    <link href="includes/MDB/css/mdb.min.css" rel="stylesheet">
 
     <!-- Template styles -->
     <style rel="stylesheet">
@@ -90,7 +90,7 @@
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <!---<div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item active">
                             <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
@@ -98,7 +98,7 @@
                         <li class="nav-item">
                             <a class="nav-link" href="#">Features</a>
                         </li>
-                        <li class="nav-item">
+                        <!--- <li class="nav-item">
                             <a class="nav-link" href="#">Pricing</a>
                         </li>
                         <li class="nav-item btn-group">
@@ -109,12 +109,12 @@
                                 <a class="dropdown-item" href="#">Another action</a>
                                 <a class="dropdown-item" href="#">Something else here</a>
                             </div>
-                        </li>
+                        </li> --->
                     </ul>
                     <form class="form-inline">
                         <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
                     </form>
-                </div>--->
+                </div>
             </div>
         </nav>
 
@@ -122,7 +122,7 @@
     <!--Mask-->
     <div class="view hm-black-light">
         <div class="full-bg-img flex-center">
-        	<cfoutput><div class="container-fluid">#renderView()#</div></cfoutput>
+        	<cfoutput><div class="container-fluid" style="padding-top:100px">#renderView()#</div></cfoutput>
             
         </div>
     </div>
@@ -223,7 +223,7 @@
         <!--Copyright-->
         <div class="footer-copyright">
             <div class="container-fluid">
-                © 2015 Copyright: <a href="https://www.MDBootstrap.com"> MDBootstrap.com </a>
+                © 2017 Copyright: <a href="https://www.myacrobat.com"> myacrobat.com </a>
 
             </div>
         </div>
@@ -237,13 +237,13 @@
 
    
     <!-- Bootstrap dropdown -->
-    <script type="text/javascript" src="includes/js/popper.min.js"></script>
+    <script type="text/javascript" src="includes/MDB/js/popper.min.js"></script>
 
     <!-- Bootstrap core JavaScript -->
-    <script type="text/javascript" src="includes/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="includes/MDB/js/bootstrap.min.js"></script>
 
     <!-- MDB core JavaScript -->
-    <script type="text/javascript" src="includes/js/mdb.min.js"></script>
+    <script type="text/javascript" src="includes/MDB/js/mdb.min.js"></script>
 
 	<script src="includes/js/my/config.js"></script>
 	<script src="includes/js/my/main.js"></script>
@@ -269,7 +269,7 @@
 	 <script>/* */</script>
 <!-- The jQuery UI widget factory, can be omitted if jQuery UI is already included -->
 
-<script type="text/javascript" src="includes/js/fileUpload/jquery.ui.widget.js"></script>
+<!--- <script type="text/javascript" src="includes/js/fileUpload/jquery.ui.widget.js"></script>
 <!-- The Templates plugin is included to render the upload/download listings -->
 <script type="text/javascript" src="//blueimp.github.io/JavaScript-Templates/js/tmpl.min.js"></script>
 <!-- The Load Image plugin is included for the preview images and image resizing functionality -->
@@ -295,7 +295,7 @@
 <!-- The File Upload user interface plugin -->
 <script type="text/javascript" src="includes/js/fileUpload/jquery.fileupload-ui.js"></script>
 <!-- The main application script -->
-<script type="text/javascript" src="includes/js/fileUpload/main.js"></script>
+<script type="text/javascript" src="includes/js/fileUpload/main.js"></script> --->
 <!-- The XDomainRequest Transport is included for cross-domain file deletion for IE 8 and IE 9 -->
 <!--[if (gte IE 8)&(lt IE 10)]>
 <script src="js/cors/jquery.xdr-transport.js"></script>

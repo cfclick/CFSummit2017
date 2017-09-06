@@ -19,7 +19,7 @@
 </style>
 <cfoutput>
 	<input type="hidden" name="fileName" id="fileName" value="#rc.fileName#" />
-	<div class="container" style="padding-top:100px">
+	<div class="container" style="padding-top:10px">
 	
 		<div class="row">
 			<div class="col-sm-2 col-md-2 col-lg-2">
@@ -42,15 +42,30 @@
 			</div>
 			<div class="col-sm-10 col-md-10 col-lg-10">
 				<!--First row-->
+				
+				<!--/.First row-->
+
 				<div class="row wow fadeIn" data-wow-delay="0.4s">
 					<div class="col-sm-12 col-md-12 col-lg-12">
+						
+						<div class="btn-group" data-toggle="buttons">
+						<label class="btn btn-primary">
+							<input type="radio" name="options" id="option1" autocomplete="off" > <i class="fa fa-floppy-o fa-3x" aria-hidden="true"></i>
+						</label>
+						<label class="btn btn-primary">
+							<input type="radio" name="options" id="option2" autocomplete="off"> <i class="fa fa-undo" aria-hidden="true"></i>
+						</label>
+						<label class="btn btn-danger">
+							<input type="radio" name="options" id="option3" autocomplete="off"> <i class="fa fa-trash-o" aria-hidden="true"></i>
+						</label>
+					</div>
 						<div class="fluidMedia">
 							<iframe id="pdf_iframe" src="#rc.homepage#?event=viewer.preview&fileName=#rc.fileName#" frameborder="0">
 							</iframe>
 						</div>
 					</div>
 				</div>
-				<!--/.First row-->
+				
 				<br>
 			</div>
 		</div>
@@ -127,6 +142,15 @@
 									<input type="text" id="fieldName" value="Signature1" class="form-control"/>
 									<label for="fieldName">
 										Signature Field Name
+									</label>
+								</div>
+							</div>
+
+							<div class="row">
+								<div class="md-form form-group form-sm">
+									<input type="text" id="page" class="form-control" value="1" style="width:60px"/>
+									<label for="page">
+										Page Number
 									</label>
 								</div>
 							</div>
