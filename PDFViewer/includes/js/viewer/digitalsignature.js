@@ -11,6 +11,7 @@ function DigitalSignature(){
 	this.d_x2 = $("#d_x2");
 	this.d_y2 = $("#d_y2");
 	this.page = $("#page");
+	this.fieldName = $("#fieldName");
 	
 	
 	this.setEventListeners();
@@ -41,8 +42,9 @@ DigitalSignature.prototype.setEventListeners = function(event){
 			       		beforeSend: function( xhr ){  	 
 						},
 			    		success: function( fileName ){
-			    			console.log(fileName);
-			    			workBench.preview( fileName, true );
+			    			//console.log(fileName);
+							workBench.preview( fileName, true );
+							toastr.info('Signature field will not show up if you are using Chrome/Firefox/Safari browesers! download the PDF and open it using Adobe Acrobat Reader.');
 			    			//$('#tab'+nextTab).html( data ).append( new Client( main.loggedInIdentity, viewModel ) );
 			    		},
 						error: function( objRequest, strError ){

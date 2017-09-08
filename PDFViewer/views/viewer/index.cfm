@@ -47,14 +47,14 @@
 
 				<div class="row wow fadeIn" data-wow-delay="0.4s">
 					<div class="col-sm-12 col-md-12 col-lg-12">
-						<div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+						<!--- <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
 						  <div class="btn-group mr-2" role="group" aria-label="First group">
 						    <button type="button" name="savr_btn" id="savr_btn" class="btn btn-secondary"><i class="fa fa-floppy-o fa-3x" aria-hidden="true"></i></button>
 						    <button type="button" name="reset_btn" id="reset_btn" class="btn btn-secondary"><i class="fa fa-undo" aria-hidden="true"></i></button>
 						    <button type="button" name="delete_btn" id="delete_btn" class="btn btn-secondary"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
 						  </div>
 						  
-						</div>
+						</div> --->
 						
 						<div class="fluidMedia">
 							<iframe id="pdf_iframe" src="#rc.homepage#?event=viewer.preview&fileName=#rc.fileName#" frameborder="0">

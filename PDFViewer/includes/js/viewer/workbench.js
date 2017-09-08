@@ -2,9 +2,10 @@ function WorkBench(){
 	workBench = this;
 	
 	//buttons
-	this.save_btn = $('#save_btn');
-	this.reset_btn = $('#reset_btn');
-	this.delete_btn = $('#delete_btn');
+	this.reset_btn   = $('#reset_btn');
+	this.delete_btn  = $('#delete_btn');
+	this.restore_btn = $('#restore_btn');
+
 	
 	//inputs
 	this.fileName = $('#fileName');
@@ -37,9 +38,57 @@ WorkBench.prototype.setEventListeners = function(event){
 			
 	});
 	
-	workBench.save_btn.on('click', function(){
+	workBench.delete_btn.on('click', function(){
+		
+		var view_model = {
+			fileName:workBench.fileName.val()
+		};
+
+		var url = main.config.urls.viewer.delete;
+		$.ajax(	{
+        	type: "post",
+        	url: url,		
+        	data: view_model,
+       		beforeSend: function( xhr ){  	 
+			},
+    		success: function( fileName ){
+    			self.location = main.config.urls.root;
+    			//$('#tab'+nextTab).html( data ).append( new Client( main.loggedInIdentity, viewModel ) );
+    		},
+			error: function( objRequest, strError ){
+        		console.log(objRequest);   
+        		console.log(strError);   
+        	},
+       	 	async: true
+		});		
 		
 	});
+
+	workBench.restore_btn.on('click', function(event){
+
+		var view_model = {
+			fileName:workBench.fileName.val()
+		};
+
+		var url = main.config.urls.viewer.restore;
+		$.ajax(	{
+        	type: "post",
+        	url: url,		
+        	data: view_model,
+       		beforeSend: function( xhr ){  	 
+			},
+    		success: function( fileName ){
+    			workBench.preview( fileName, true );
+    			//$('#tab'+nextTab).html( data ).append( new Client( main.loggedInIdentity, viewModel ) );
+    		},
+			error: function( objRequest, strError ){
+        		console.log(objRequest);   
+        		console.log(strError);   
+        	},
+       	 	async: true
+    	});		
+	})
+	
 				
 }
 

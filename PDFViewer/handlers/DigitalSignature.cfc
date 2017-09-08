@@ -36,13 +36,19 @@ component{
 		
 	function index(event,rc,prc){
 		event.setView("DigitalSignature/index");
-	}		
+	}	
+
+	
 	function addField(event,rc,prc){
 		
-		rc.pathtosave = application.cbcontroller.getconfigSettings().workFolder & session.sessionID & "\";
-		rc.pathAndName = rc.pathtosave & rc.fileName;
+		var destination = application.cbcontroller.getconfigSettings().workFolder & session.sessionID & "\" & rc.fileName;
+		rc.pathAndName = GetTempDirectory() & rc.fileName;
 		var source = trim( rc.pathAndName );
-		var destination = GetTempDirectory() & session.sessionID & '_' & rc.fileName;//"C:\Temp\pdfs\_signfield.pdf";// trim( arguments.destinationPDFPath );
+
+	//	rc.pathtosave = application.cbcontroller.getconfigSettings().workFolder & session.sessionID & "\";
+	//	rc.pathAndName = rc.pathtosave & rc.fileName;
+	//	var source = trim( rc.pathAndName );
+	//	var destination = GetTempDirectory() & session.sessionID & '_' & rc.fileName;//"C:\Temp\pdfs\_signfield.pdf";// trim( arguments.destinationPDFPath );
 		var reader = createobject("java","com.lowagie.text.pdf.PdfReader").init( source );
 		var fileOutputStream = CreateObject("java", "java.io.FileOutputStream").init( destination );
 		var stamper = createobject("java","com.lowagie.text.pdf.PdfStamper").init( reader, fileOutputStream );		
@@ -60,10 +66,13 @@ component{
         stamper.addAnnotation( field, rc.page );
         // close the stamper
     	stamper.close();
+		
 		sleep(200);
-		/*cfpdf( action="getinfo", name="reader", source=destination, password=rc.newuserpassword ?: '' );
-		rc.reader = reader;	*/  
-		//rc['fileName'] = destination;
+
+		cffile(action="copy",
+			   source=destination,
+			   destination=source, mode="644");
+
 		event.renderData( data=rc.fileName, type="json" ).nolayout();
 	}
 	

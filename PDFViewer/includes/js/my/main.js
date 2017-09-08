@@ -14,6 +14,7 @@ function Main(){
 	this.fieldName				 = $('#fieldName');
 	this.fileName				 = $('#fileName');
 	
+	
 	//button
 	this.upload_pdf_btn = $('#upload_pdf_btn');	
 	
@@ -43,6 +44,7 @@ Main.prototype.setEventListeners = function(event){
 		var url = main.config.urls.root + "?event=main.preview&pdfFile=" + main.pdfFile.val();
 		main.myIframe.attr("src", url);
 	})
+
 	
 	main.add_password_btn.on('click', function(){
 		var view_model = {};

@@ -92,16 +92,22 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Features</a>
-                        </li>
-                        <!--- <li class="nav-item">
-                            <a class="nav-link" href="#">Pricing</a>
-                        </li>
-                        <li class="nav-item btn-group">
+                        <cfif CompareNoCase( event.getCurrentEvent() , 'viewer.workbench') eq 0 >
+                            
+                            <li class="nav-item">
+                                <a class="nav-link" href="#" id="restore_btn"><i class="fa fa-undo fa-lg" aria-hidden="true"></i></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#" id="delete_btn"><i class="fa fa-trash-o fa-lg" aria-hidden="true"></i></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#" id="email_btn"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#"><i class="fa fa-share fa-lg" aria-hidden="true"></i></a>
+                            </li>
+                        </cfif>
+                       <!---   <li class="nav-item btn-group">
                             <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown 
                             </a>
                             <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
@@ -122,7 +128,7 @@
     <!--Mask-->
     <div class="view hm-black-light">
         <div class="full-bg-img flex-center">
-        	<cfoutput><div class="container-fluid" style="padding-top:100px">#renderView()#</div></cfoutput>
+        	<cfoutput><div class="container-fluid" style="padding-top:120px">#renderView()#</div></cfoutput>
             
         </div>
     </div>
