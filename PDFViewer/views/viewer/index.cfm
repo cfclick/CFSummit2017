@@ -195,17 +195,17 @@
 						<form class="col-md-12">
 							<div class="row">
 								<div class="md-form form-group form-sm">
-									<input type="text" id="d_x1" value="440" class="form-control"
+									<input type="text" id="r_x1" value="440" class="form-control"
 									       style="width:40px"/>
-									<label for="d_x1">
+									<label for="r_x1">
 										x1
 									</label>
 								</div>
 								
 								<div class="md-form form-group form-sm">
-									<input type="text" id="d_y1" value="75" class="form-control"
+									<input type="text" id="r_y1" value="75" class="form-control"
 									       style="width:40px"/>
-									<label for="d_y1">
+									<label for="r_y1">
 										y1
 									</label>
 								</div>
@@ -219,17 +219,17 @@
 							<br>
 							<div class="row pull-right">
 								<div class="md-form form-group form-sm">
-									<input type="text" id="d_x2" value="570" class="form-control"
+									<input type="text" id="r_x2" value="570" class="form-control"
 									       style="width:40px"/>
-									<label for="d_x2">
+									<label for="r_x2">
 										x2
 									</label>
 								</div>
 								
 								<div class="md-form form-group form-sm">
-									<input type="text" id="d_y2" value="38" class="form-control"
+									<input type="text" id="r_y2" value="38" class="form-control"
 									       style="width:40px"/>
-									<label for="d_y2">
+									<label for="r_y2">
 										y2
 									</label>
 								</div>

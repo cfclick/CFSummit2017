@@ -36,12 +36,12 @@ component{
 	
 	function preview( event, rc, prc ){
 		
-		if( isdefined('rc.istemp') && len(rc.istemp) ){
-			rc.pathAndName = GetTempDirectory() & session.sessionID & '_' & rc.fileName;
-		}else{
+		//if( isdefined('rc.istemp') && len(rc.istemp) ){
+			rc.pathAndName = GetTempDirectory() & rc.fileName;
+		/*}else{
 			rc.pathtosave = application.cbcontroller.getconfigSettings().workFolder & session.sessionID & "\";
 			rc.pathAndName = rc.pathtosave & rc.fileName;
-		}
+		}*/
 	
 		var binaryobj = filereadBinary( rc.pathAndName  );
 		event.renderData( data=binaryobj, type="PDF" ).nolayout();
@@ -61,8 +61,9 @@ component{
 	
 	function workbench(event,rc,prc){
 		rc.homepage = application.cbcontroller.getconfigSettings().urls.homepage;
-		rc.pathtosave = application.cbcontroller.getconfigSettings().workFolder & session.sessionID & "\";
+		rc.pathtosave = GetTempDirectory(); // application.cbcontroller.getconfigSettings().workFolder & session.sessionID & "\";
 		rc.pathAndName = rc.pathtosave & rc.fileName;
+		
 		if( fileexists( rc.pathAndName ) )
 			event.setView("viewer/index");
 		else
