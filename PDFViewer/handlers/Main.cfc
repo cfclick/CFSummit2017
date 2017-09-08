@@ -144,7 +144,7 @@
 			var noextFileName = replace(fileName, ".pdf", "");
 			uploadFile.destination = pathtosave & fileName;
 			sleep(200);
-			cffile(action="move",
+			cffile(action="copy",
 			       source="#uploadResult.ServerDirectory#\#uploadResult.ServerFile#",
 			       destination="#uploadFile.destination#", mode="644");
 			
@@ -155,7 +155,7 @@
 			thread name="thumbThread" action="run" priority="low" src=uploadFile.destination dest=thumb {
 				cfpdf( action="thumbnail", source=src, destination=dest, overwrite="yes" );
 			}
-			sleep(200);		
+			sleep(350);		
 		    //rc.files.append({success:true}); 
 			setNextEvent(event="main.index",queryString="pdfFileName=#uploadResult.ServerFile#"); 
      

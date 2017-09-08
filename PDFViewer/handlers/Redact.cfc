@@ -41,18 +41,20 @@ component{
 
 	function add( event, rc, prc ){
 		rc.cord = "#rc.x1#,#rc.y1#,#rc.x2#,#rc.y2#";
-
-		rc.pathtosave = application.cbcontroller.getconfigSettings().workFolder & session.sessionID & "\";
-		rc.pathAndName = rc.pathtosave & rc.fileName;
+		var destination = application.cbcontroller.getconfigSettings().workFolder & session.sessionID & "\" & rc.fileName;
+		rc.pathAndName = GetTempDirectory() & rc.fileName;
 		var source = trim( rc.pathAndName );
-		var destination = GetTempDirectory() & session.sessionID & '_' & rc.fileName;
-		
+//writeDump(destination);writeDump(source);abort;
 		cfpdf( action="redact"
 				, source=source
 				, destination=destination
 				, overwrite=true ) {
 	 	 		cfpdfparam( coordinates=rc.cord, pages=rc.page);
   		};
+		
+		cffile(action="copy",
+			       source=destination,
+			       destination=source, mode="644");
 		
 		event.renderData( data=rc.fileName, type="json" ).nolayout();
 	}

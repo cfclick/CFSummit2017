@@ -7,10 +7,10 @@ function Redact(){
 	//inputs
 	this.fileName = $('#fileName');
 	this.fieldName = $('#fieldName');
-	this.d_x1 = $("#d_x1");
-	this.d_y1 = $("#d_y1");
-	this.d_x2 = $("#d_x2");
-	this.d_y2 = $("#d_y2");
+	this.r_x1 = $("#r_x1");
+	this.r_y1 = $("#r_y1");
+	this.r_x2 = $("#r_x2");
+	this.r_y2 = $("#r_y2");
 	this.page = $("#page");
 	
 	
@@ -24,10 +24,10 @@ Redact.prototype.setEventListeners = function(event){
 	redact.redact_apply_btn.on('click',function(e){
 			var view_model = {
 						newuserpassword: main.newuserpassword.val()
-						,x1:redact.d_x1.val()
-						,y1:redact.d_y1.val()
-						,x2:redact.d_x2.val()
-						,y2:redact.d_y2.val()
+						,x1:redact.r_x1.val()
+						,y1:redact.r_y1.val()
+						,x2:redact.r_x2.val()
+						,y2:redact.r_y2.val()
 						,page:redact.page.val()
 						,fileName:workBench.fileName.val()
 					};
