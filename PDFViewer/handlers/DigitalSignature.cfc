@@ -42,7 +42,7 @@ component{
 	function addField(event,rc,prc){
 		
 		var destination = application.cbcontroller.getconfigSettings().workFolder & session.sessionID & "\" & rc.fileName;
-		rc.pathAndName = GetTempDirectory() & rc.fileName;
+		rc.pathAndName = GetTempDirectory() & session.sessionID & '\' & rc.fileName;
 		var source = trim( rc.pathAndName );
 
 	//	rc.pathtosave = application.cbcontroller.getconfigSettings().workFolder & session.sessionID & "\";

@@ -33,28 +33,18 @@
 		event.setView("Main/fileUploadForm").noLayout();
 	}
   
-	/*
-	function preview( event, rc, prc ){
-		
-		if( !isDefined( "rc.pdfFile" ) )
-			rc.pdfFile = application.cbcontroller.getconfigSettings().blankPDF;
-		
-		if( isDefined( "rc.orgPdfFile" ) )
-			rc.pdfFile = rc.orgPdfFile;
+	
+	function ping( event, rc, prc ){
 
-		if( isdefined("rc.newuserpassword" ) ){
-			cfpdf( action="getinfo", name="reader", source=rc.pdfFile, password=rc.newuserpassword );
-		}else{
-			cfpdf( action="getinfo", name="reader", source=rc.pdfFile);
-		}
-
-
-		var binaryobj = filereadBinary( rc.pdfFile  );
-		//cfpdf( action="getinfo", name="reader", source=rc.pdfFile);
-		
-		event.renderData( data=binaryobj, type="PDF" ).nolayout();
+		event.renderData( data=session, type="json" ).nolayout();
 	}
-	*/
+	
+	function logout( event, rc, prc ){
+		sessioninvalidate();
+		getPageContext().getSession().invalidate();
+		//event.renderData( data=session, type="json" ).nolayout();
+	}
+	
 
 	public any function uploadFiles( event, rc, prc ){
 		
@@ -72,9 +62,13 @@
         	if( f.size > 29999000 ){
         		throw(message="Invalid file size, max file size allowed is 29.9mb.", type='file',detail='',errorcode='801');
         	}
+        	var tempdir = GetTempDirectory()& session.sessionID;
+        	if( ! directoryExists( tempdir ) ){
+        		cfdirectory(action="create" ,directory=tempdir);
+        	}
         	
         	cffile(action="upload", filefield="files[]",
-	            destination="#GetTempDirectory()#", mode="600",
+	            destination=tempdir, mode="600",
 	            accept="#StructKeyList(validMimeTypes)#",
 	            strict="true",
 	            result="uploadResult",
@@ -153,7 +147,7 @@
 				cfdirectory(action="create" ,directory=thumb);
 
 			thread name="thumbThread" action="run" priority="low" src=uploadFile.destination dest=thumb {
-				cfpdf( action="thumbnail", source=src, destination=dest, overwrite="yes" );
+				cfpdf( action="thumbnail", source=src, destination=dest, overwrite="yes", pages="1" );
 			}
 			sleep(350);		
 		    //rc.files.append({success:true}); 

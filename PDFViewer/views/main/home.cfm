@@ -20,7 +20,7 @@
 				</li>
 				<li>
 					<p>
-						The most powerful and free PDF Sercvice for YOU!
+						The most powerful and free PDF Service for YOU!
 					</p>
 				</li>
 				<li>

@@ -2,10 +2,10 @@ function WorkBench(){
 	workBench = this;
 	
 	//buttons
-	this.reset_btn   = $('#reset_btn');
-	this.delete_btn  = $('#delete_btn');
-	this.restore_btn = $('#restore_btn');
-
+	this.reset_btn    = $('#reset_btn');
+	this.delete_btn   = $('#delete_btn');
+	this.restore_btn  = $('#restore_btn');
+	this.sanitize_btn = $('#sanitize_btn');
 	
 	//inputs
 	this.fileName = $('#fileName');
@@ -37,6 +37,12 @@ WorkBench.prototype.setEventListeners = function(event){
 			redact = new Redact();
 			
 	});
+	
+	/*workBench.confirmation_modal.on('shown.bs.modal', function (){
+		
+			redact = new Redact();
+			
+	});*/
 	
 	workBench.delete_btn.on('click', function(){
 		
@@ -87,7 +93,39 @@ WorkBench.prototype.setEventListeners = function(event){
         	},
        	 	async: true
     	});		
-	})
+	});
+	
+	workBench.sanitize_btn.on('click', function(event){
+		main.confirmation_text.html('Are you sure you want to Sanitize the PDF?');
+		
+		main.confirmation_modal.modal('show');
+		
+		main.confirm_yes.on('click', function(event){
+			var view_model = {
+				fileName:workBench.fileName.val()
+			};
+	
+			var url = main.config.urls.sanitize.apply;
+			$.ajax(	{
+	        	type: "post",
+	        	url: url,		
+	        	data: view_model,
+	       		beforeSend: function( xhr ){  	 
+				},
+	    		success: function( fileName ){
+	    			workBench.preview( fileName, true );
+	    			//$('#tab'+nextTab).html( data ).append( new Client( main.loggedInIdentity, viewModel ) );
+	    		},
+				error: function( objRequest, strError ){
+	        		console.log(objRequest);   
+	        		console.log(strError);   
+	        	},
+	       	 	async: true
+	    	});	
+	    	
+	    	main.confirmation_modal.modal('hide');	
+		});
+	});
 	
 				
 }

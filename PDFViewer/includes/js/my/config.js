@@ -11,17 +11,18 @@ function Config() {
 	
 			index 						: protocol + theActualServer + appFolder + CGIScriptName + "?event=main.index", 
 			fileUploadForm				: protocol + theActualServer + appFolder + CGIScriptName + "?event=main.fileUploadForm",
-			preview 					: protocol + theActualServer + appFolder + CGIScriptName + "?event=main.preview",
 			uploadFiles					: protocol + theActualServer + appFolder + CGIScriptName + "?event=main.uploadFiles",
 			passwordProtect				: protocol + theActualServer + appFolder + CGIScriptName + "?event=main.passwordProtect",
-			sanitize					: protocol + theActualServer + appFolder + CGIScriptName + "?event=main.sanitize",
-			readMetadata				: protocol + theActualServer + appFolder + CGIScriptName + "?event=main.readMetadata",
-			
-			resetToOrginal				: protocol + theActualServer + appFolder + CGIScriptName + "?event=main.resetToOrginal"
+			readMetadata				: protocol + theActualServer + appFolder + CGIScriptName + "?event=main.readMetadata",			
+			ping						: protocol + theActualServer + appFolder + CGIScriptName + "?event=main.ping"
 		 };
 		 
 		 this.urls.digitalsignature = {
 		 	addField	: protocol + theActualServer + appFolder + CGIScriptName + "?event=digitalsignature.addField"
+		 };
+		 
+		 this.urls.sanitize = {
+		 	apply	: protocol + theActualServer + appFolder + CGIScriptName + "?event=sanitize.apply"
 		 };
 		 
 		 this.urls.redact = {

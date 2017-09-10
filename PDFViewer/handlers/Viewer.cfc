@@ -15,17 +15,13 @@ component{
 	
 	function preview( event, rc, prc ){
 		
-		//if( isdefined('rc.istemp') && len(rc.istemp) ){
-			rc.pathAndName = GetTempDirectory() & rc.fileName;
-		/*}else{
-			rc.pathtosave = application.cbcontroller.getconfigSettings().workFolder & session.sessionID & "\";
-			rc.pathAndName = rc.pathtosave & rc.fileName;
-		}*/
+		rc.pathAndName = GetTempDirectory() & session.sessionID & '\' & rc.fileName;
+
 		if( fileexists( rc.pathAndName ) ){
 			var binaryobj = filereadBinary( rc.pathAndName  );
 			event.renderData( data=binaryobj, type="PDF" ).nolayout();
 		}else{
-			writedump(rc);abort;
+			     
 			throw(message:"file #rc.fileName# not found.");
 		}
 		
@@ -35,7 +31,7 @@ component{
 	function restore( event, rc, prc ){
 		
 		rc.originalFile = application.cbcontroller.getconfigSettings().workFolder & session.sessionID & "\original\" & rc.fileName;
-		rc.destination1 = GetTempDirectory() & rc.fileName;
+		rc.destination1 = GetTempDirectory() & session.sessionID & '\' & rc.fileName;
 		rc.destination2 = application.cbcontroller.getconfigSettings().workFolder & session.sessionID & "\";
 
 		thread name="restoreThread01" action="run" priority="high" src=rc.originalFile dest=rc.destination1 {
@@ -44,16 +40,7 @@ component{
 					source=src,
 					destination=dest, mode="644");
 			}catch( any e ){
-				mailerService = new mail(); 
-				mailerService.setTo( 'shirak.avakian@qbillc.com'); 
-				mailerService.setFrom( "no-reply@qbillc.com"); 
-				mailerService.setSubject( "debug"); 
-				mailerService.setType("html"); 
-				savecontent variable="mailBody"{ 
-									writeDump(src); 
-									writeDump(dest); 
-									writeDump(e);  } 
-				mailerService.send(body=mailBody);
+				throw( e );
 			}
 			
 		}
@@ -66,16 +53,7 @@ component{
 					source=src,
 					destination=dest, mode="644");
 			}catch( any e ){
-				mailerService = new mail(); 
-				mailerService.setTo( 'shirak.avakian@qbillc.com'); 
-				mailerService.setFrom( "no-reply@qbillc.com"); 
-				mailerService.setSubject( "debug"); 
-				mailerService.setType("html"); 
-				savecontent variable="mailBody"{
-									writeDump(src); 
-									writeDump(dest); 
-									writeDump(e);  } 
-				mailerService.send(body=mailBody);
+				throw( e );
 			}
 		}
 
@@ -89,7 +67,7 @@ component{
 		
 		rc.originalFile 	= application.cbcontroller.getconfigSettings().workFolder & session.sessionID & "\original\" & rc.fileName;
 		rc.thumbnailFolder 	= application.cbcontroller.getconfigSettings().workFolder & session.sessionID & "\thumbnail\";
-		rc.tempWorkFile 	= GetTempDirectory() & rc.fileName;
+		rc.tempWorkFile 	= GetTempDirectory() & session.sessionID & '\' & rc.fileName;
 		rc.workFile 		= application.cbcontroller.getconfigSettings().workFolder & session.sessionID & "\" & rc.fileName;
 
 		filedelete( rc.originalFile );
@@ -103,7 +81,7 @@ component{
 	
 	function workbench(event,rc,prc){
 		rc.homepage = application.cbcontroller.getconfigSettings().urls.homepage;
-		rc.pathtosave = GetTempDirectory(); // application.cbcontroller.getconfigSettings().workFolder & session.sessionID & "\";
+		rc.pathtosave = GetTempDirectory() & session.sessionID & '\'; // application.cbcontroller.getconfigSettings().workFolder & session.sessionID & "\";
 		rc.pathAndName = rc.pathtosave & rc.fileName;
 		
 		if( fileexists( rc.pathAndName ) )

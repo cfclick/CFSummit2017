@@ -42,20 +42,25 @@ component{
 	function add( event, rc, prc ){
 		rc.cord = "#rc.x1#,#rc.y1#,#rc.x2#,#rc.y2#";
 		var destination = application.cbcontroller.getconfigSettings().workFolder & session.sessionID & "\" & rc.fileName;
-		rc.pathAndName = GetTempDirectory() & rc.fileName;
+		rc.pathAndName = GetTempDirectory() & session.sessionID & '\' & rc.fileName;
 		var source = trim( rc.pathAndName );
-//writeDump(destination);writeDump(source);abort;
-		cfpdf( action="redact"
+		if( directoryExists( source) ){
+			cfpdf( action="redact"
 				, source=source
 				, destination=destination
 				, overwrite=true ) {
-	 	 		cfpdfparam( coordinates=rc.cord, pages=rc.page);
-  		};
+	 	 			cfpdfparam( coordinates=rc.cord, pages=rc.page);
+  				};
 		
-		cffile(action="copy",
+			cffile(action="copy",
 			       source=destination,
 			       destination=source, mode="644");
 		
-		event.renderData( data=rc.fileName, type="json" ).nolayout();
+			event.renderData( data=rc.fileName, type="json" ).nolayout();
+		}else{
+			event.renderData( data="File #rc.fileName# not found.", type="json" ).nolayout();
+
+		}
+		
 	}
 }

@@ -34,8 +34,17 @@ component{
 	}
 	*/
 		
-	function index(event,rc,prc){
-		event.setView("Sanitize/index");
+	function apply(event,rc,prc){
+		
+		var destination = application.cbcontroller.getconfigSettings().workFolder & session.sessionID & "\" & rc.fileName;
+		rc.pathAndName = GetTempDirectory() & session.sessionID & '\' & rc.fileName;
+		var source = trim( rc.pathAndName );
+		
+		cfpdf( action="sanitize" ,source=destination, overwrite="yes");
+		cfpdf( action="sanitize" ,source=source, 	 overwrite="yes");
+			
+		event.renderData( data=rc.fileName, type="json" ).nolayout();
+		
 	}	
 	
 }

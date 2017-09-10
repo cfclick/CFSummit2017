@@ -8,7 +8,7 @@ component{
 	// Application properties
 	this.name = hash( getCurrentTemplatePath() );
 	this.sessionManagement = true;
-	this.sessionTimeout = createTimeSpan(0,0,10,0);
+	this.sessionTimeout = createTimeSpan(0,0,5,0);
 	this.setClientCookies = true;
 
 	// COLDBOX STATIC PROPERTY, DO NOT CHANGE UNLESS THIS IS NOT THE ROOT OF YOUR COLDBOX APP
@@ -43,8 +43,11 @@ component{
 		try{
 
 			var dir = arguments.appScope.cbcontroller.getconfigSettings().workFolder & arguments.sessionScope.sessionID & "/";
-			writelog(text=dir,application="yes", file="cfsummit2017_info", type="Info");
 			cfdirectory( directory = dir, action = "delete", name = "deletedDir", recurse = "true");
+			var temp_dir = GetTempDirectory() & arguments.sessionScope.sessionID & '\';
+			
+			cfdirectory( directory = temp_dir, action = "delete", name = "deletedTempDir", recurse = "true");
+			
 			arguments.appScope.cbBootStrap.onSessionEnd( argumentCollection=arguments );
 		}catch( any e ){
 			writelog(text=e.message,application="yes", file="cfsummit2017_error", type="Error");

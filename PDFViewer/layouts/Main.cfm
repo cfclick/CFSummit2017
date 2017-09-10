@@ -138,7 +138,7 @@
     <footer class="page-footer center-on-small-only">
 
         <!--Footer links-->
-        <div class="container-fluid">
+        <!---<div class="container-fluid">
             <div class="row">
                 <!--First column-->
                 <div class="col-lg-3 col-md-6 ml-auto">
@@ -209,13 +209,13 @@
                 </div>
                 <!--/.Fourth column-->
             </div>
-        </div>
+        </div>--->
         <!--/.Footer links-->
 
         <hr>
 
         <!--Call to action-->
-        <div class="call-to-action">
+       <!--- <div class="call-to-action">
             <h4 class="mb-5">Material Design for Bootstrap</h4>
             <ul>
                 <li>
@@ -224,7 +224,7 @@
                 <li><a target="_blank" href="https://mdbootstrap.com/material-design-for-bootstrap/" class="btn btn-default" rel="nofollow">Learn more</a></li>
             </ul>
         </div>
-        <!--/.Call to action-->
+        ---><!--/.Call to action-->
 
         <!--Copyright-->
         <div class="footer-copyright">
@@ -252,7 +252,8 @@
     <script type="text/javascript" src="includes/MDB/js/mdb.min.js"></script>
 
 	<script src="includes/js/my/config.js"></script>
-	<script src="includes/js/my/main.js"></script>
+	<script src="includes/js/main/main.js"></script>
+	<script src="includes/js/main/sessionManager.js"></script>
 	
 	<script>
 	$(function() {
@@ -268,46 +269,113 @@
 			if( !application.main )
 				application.main = new Main();
 			
+			if( !application.sessionManager )
+				application.sessionManager = new SessionManager();
+			
 			
 		});
 	</script>
-	
-	 <script>/* */</script>
-<!-- The jQuery UI widget factory, can be omitted if jQuery UI is already included -->
 
-<!--- <script type="text/javascript" src="includes/js/fileUpload/jquery.ui.widget.js"></script>
-<!-- The Templates plugin is included to render the upload/download listings -->
-<script type="text/javascript" src="//blueimp.github.io/JavaScript-Templates/js/tmpl.min.js"></script>
-<!-- The Load Image plugin is included for the preview images and image resizing functionality -->
-<script type="text/javascript" src="//blueimp.github.io/JavaScript-Load-Image/js/load-image.all.min.js"></script>
-<!-- The Canvas to Blob plugin is included for image resizing functionality -->
-<script type="text/javascript" src="//blueimp.github.io/JavaScript-Canvas-to-Blob/js/canvas-to-blob.min.js"></script>
-<!-- blueimp Gallery script -->
-<script type="text/javascript" src="//blueimp.github.io/Gallery/js/jquery.blueimp-gallery.min.js"></script>
-<!-- The Iframe Transport is required for browsers without support for XHR file uploads -->
-<script type="text/javascript" src="includes/js/fileUpload/jquery.iframe-transport.js"></script>
-<!-- The basic File Upload plugin -->
-<script type="text/javascript" src="includes/js/fileUpload/jquery.fileupload.js"></script>
-<!-- The File Upload processing plugin -->
-<script type="text/javascript" src="includes/js/fileUpload/jquery.fileupload-process.js"></script>
-<!-- The File Upload image preview & resize plugin -->
-<script type="text/javascript" src="includes/js/fileUpload/jquery.fileupload-image.js"></script>
-<!-- The File Upload audio preview plugin -->
-<script type="text/javascript" src="includes/js/fileUpload/jquery.fileupload-audio.js"></script>
-<!-- The File Upload video preview plugin -->
-<script type="text/javascript" src="includes/js/fileUpload/jquery.fileupload-video.js"></script>
-<!-- The File Upload validation plugin -->
-<script type="text/javascript" src="includes/js/fileUpload/jquery.fileupload-validate.js"></script>
-<!-- The File Upload user interface plugin -->
-<script type="text/javascript" src="includes/js/fileUpload/jquery.fileupload-ui.js"></script>
-<!-- The main application script -->
-<script type="text/javascript" src="includes/js/fileUpload/main.js"></script> --->
 <!-- The XDomainRequest Transport is included for cross-domain file deletion for IE 8 and IE 9 -->
 <!--[if (gte IE 8)&(lt IE 10)]>
 <script src="js/cors/jquery.xdr-transport.js"></script>
 <![endif]-->
+<!-- Modal -->
+<div class="modal fade top" id="confirmation_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-frame modal-top" role="document">
+        <!--Content-->
+        <div class="modal-content">
+            <!--Header-->
+            <div class="modal-header">
+                <h4 class="modal-title w-100" id="myModalLabel">Confirmation</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <!--Body-->
+            <div class="modal-body">
+                <p id="confirmation_text"></p>
+            </div>
+            <!--Footer-->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                <button id="confirm_yes" type="button" class="btn btn-primary">Yes</button>
+            </div>
+        </div>
+        <!--/.Content-->
+    </div>
+</div>
+<!-- Modal -->
 
 
+<!-- session expire modal -->
+<div class="modal fade" id="session_expire_warning_modal" aria-hidden="true" data-keyboard="false" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+
+        <div class="modal-dialog" role="document">
+
+            <div class="modal-content">
+
+                <div class="modal-header">                 
+
+                    <h4 class="modal-title">Session Expire Warning</h4>
+
+                </div>
+
+                <div class="modal-body">
+
+                    Your session will expire in <span id="seconds-timer"></span> seconds. Do you want to extend the session?
+
+                </div>
+
+                <div class="modal-footer">
+
+                    <button id="btnOk" type="button" class="btn btn-default" style="padding: 6px 12px; margin-bottom: 0; font-size: 14px; font-weight: normal; border: 1px solid transparent; border-radius: 4px;  background-color: #428bca; color: #FFF;">Ok</button>
+
+                    <button id="btnSessionExpiredCancelled" type="button" class="btn btn-default" data-dismiss="modal" style="padding: 6px 12px; margin-bottom: 0; font-size: 14px; font-weight: normal; border: 1px solid transparent; border-radius: 4px; background-color: #428bca; color: #FFF;">Cancel</button>
+
+                    <button id="btnLogoutNow" type="button" class="btn btn-default" style="padding: 6px 12px; margin-bottom: 0; font-size: 14px; font-weight: normal; border: 1px solid transparent; border-radius: 4px;  background-color: #428bca; color: #FFF;">Logout now</button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!--End Show Session Expire Warning Popup here -->
+
+    <!--Start Show Session Expire Popup here -->
+
+    <div class="modal fade" id="session_expired_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+
+        <div class="modal-dialog" role="document">
+
+            <div class="modal-content">
+
+                <div class="modal-header">
+
+                    <h4 class="modal-title">Session Expired</h4>
+
+                </div>
+
+                <div class="modal-body">
+
+                    Your session is expired.
+
+                </div>
+
+                <div class="modal-footer">
+
+                    <button id="btnExpiredOk" onclick="sessionExpiredRedirect()" type="button" class="btn btn-primary" data-dismiss="modal" style="padding: 6px 12px; margin-bottom: 0; font-size: 14px; font-weight: normal; border: 1px solid transparent; border-radius: 4px; background-color: #428bca; color: #FFF;">Ok</button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
 </body>
 
 </html>

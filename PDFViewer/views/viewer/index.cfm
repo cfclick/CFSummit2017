@@ -30,7 +30,7 @@
 				<button type="button" class="btn btn-outline-info waves-effect btn-block" data-toggle="modal" data-target="##redact_modal">
 					Redact
 				</button>
-				<button type="button" class="btn btn-outline-info waves-effect btn-block">
+				<button id="sanitize_btn" type="button" class="btn btn-outline-info waves-effect btn-block" >
 					Sanitize
 				</button>				
 				<button type="button" class="btn btn-outline-info waves-effect btn-block">
