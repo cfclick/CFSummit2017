@@ -44,7 +44,8 @@ component{
 		var destination = application.cbcontroller.getconfigSettings().workFolder & session.sessionID & "\" & rc.fileName;
 		rc.pathAndName = GetTempDirectory() & session.sessionID & '\' & rc.fileName;
 		var source = trim( rc.pathAndName );
-		if( directoryExists( source) ){
+		sleep(5000);
+		if( fileExists( source) ){
 			cfpdf( action="redact"
 				, source=source
 				, destination=destination

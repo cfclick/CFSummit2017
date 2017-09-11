@@ -22,7 +22,7 @@ function Main(){
 	//DIV
 	this.fileUploadModal_body = $('#fileUploadModal_body');
 	this.confirmation_text	= $('#confirmation_text');
-	
+	this.preload_div		= $("#preload_div");
 	
 	this.setEventListeners();
 	

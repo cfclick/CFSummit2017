@@ -37,14 +37,16 @@ Redact.prototype.setEventListeners = function(event){
 			        	type: "post",
 			        	url: url,		
 			        	data: view_model,
-			       		beforeSend: function( xhr ){  	 
+			       		beforeSend: function( xhr ){  
+							   main.preload_div.removeClass('invisible');	 
 						},
 			    		success: function( fileName ){
-			    			console.log(fileName);
+			    			main.preload_div.addClass('invisible');
 			    			workBench.preview( fileName, true );
 			    			//$('#tab'+nextTab).html( data ).append( new Client( main.loggedInIdentity, viewModel ) );
 			    		},
 						error: function( objRequest, strError ){
+							main.preload_div.addClass('invisible');
 			        		console.log(objRequest);   
 			        		console.log(strError);   
 			        	},
