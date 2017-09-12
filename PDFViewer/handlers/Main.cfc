@@ -149,7 +149,7 @@
 			thread name="thumbThread" action="run" priority="low" src=uploadFile.destination dest=thumb {
 				cfpdf( action="thumbnail", source=src, destination=dest, overwrite="yes", pages="1" );
 			}
-			sleep(350);		
+			sleep(550);		
 		    //rc.files.append({success:true}); 
 			setNextEvent(event="main.index",queryString="pdfFileName=#uploadResult.ServerFile#"); 
      

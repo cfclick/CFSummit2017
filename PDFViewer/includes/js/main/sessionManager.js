@@ -1,7 +1,7 @@
 function SessionManager(){
 	sessionManager = this;
 	
-	this.sessServerAliveTime = 10 * 60 * 8;
+	this.sessServerAliveTime = 10 * 60 * 4;
 	this.sessionTimeout = 1 * 60000;
 	this.sessLastActivity;
 	this.idleTimer;
@@ -33,24 +33,36 @@ function SessionManager(){
 SessionManager.prototype.setEventListener = function(){
 	
 	sessionManager.btnOk.click(function () {
-	    $("#session_expire_warning_modal").modal('hide');
+	    
 	    $('.modal-backdrop').css("z-index", parseInt($('.modal-backdrop').css('z-index')) - 500);
 	    sessionManager.startIdleTime();
 	    clearInterval(sessionManager.remainingTimer);
+	    sessionManager.isTimout = true;
+	    clearInterval(sessionManager.sess_intervalID);
+        clearInterval(sessionManager.idleIntervalID);
 	    localStorage.setItem('sessionSlide', 'isStarted');
+	   /* Manually */
+		$('.modal').remove();
+		//$('.modal-backdrop').remove();
+		//$('body').removeClass( "modal-open" );
+	    
 	});
 	
 	sessionManager.btnLogoutNow.click(function () {
 	    localStorage.setItem('sessionSlide', 'loggedOut');
-	    window.location = main.config.urls.root;
+	    
 	    sessionManager.sessLogOut();
-	    sessionManager.session_expired_modal.modal('hide');
+	    /* Manually */
+		$('.modal').remove();
+		//$('.modal-backdrop').remove();
+		//$('body').removeClass( "modal-open" );
+		window.location = main.config.urls.root;
 	
 	});
 	
 	sessionManager.btnSessionExpiredCancelled.click(function () {
 	    $('.modal-backdrop').css("z-index", parseInt($('.modal-backdrop').css('z-index')) - 500);
-	    $("#session_expire_warning_modal").modal('hide');
+	    
 	});
 	
 	sessionManager.session_expired_modal.on("click", sessionManager.sessionExpiredClicked, false);

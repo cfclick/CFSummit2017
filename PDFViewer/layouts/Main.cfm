@@ -126,10 +126,11 @@
 
     <!--/.Navbar-->
     <!--Mask-->
-    <div id="preload_div" class="progress invisible">
-        <div class="indeterminate bg-danger" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-    </div>
+    
     <div class="view hm-black-light">
+    	<div id="preload_div" class="progress invisible">
+	        <div class="indeterminate bg-danger" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+	    </div>
         <div class="full-bg-img flex-center">
             
         	<cfoutput><div class="container-fluid" style="padding-top:120px">#renderView()#</div></cfoutput>

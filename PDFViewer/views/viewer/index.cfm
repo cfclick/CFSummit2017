@@ -36,7 +36,7 @@
 				<button type="button" class="btn btn-outline-info waves-effect btn-block">
 					Stamp
 				</button>
-				<button type="button" class="btn btn-outline-info waves-effect btn-block">
+				<button type="button" class="btn btn-outline-info waves-effect btn-block" data-toggle="modal" data-target="##property_modal">
 					Properties
 				</button>
 			</div>
@@ -262,6 +262,113 @@
 		</div>
 	</div><!--/ Modal -->
 	<!-- ==============================================END REDACT MODAL================================================ -->
+	
+	
+	<!-- ================================================PROPERTIES MODAL================================================== -->
+	<!-- Modal -->
+	<div class="modal fade right" id="property_modal" tabindex="-1" role="dialog"
+	     aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-lg" role="document">
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header text-center modal-heade-black">
+					<h4>
+						<i class="fa fa-user">
+						</i>
+						Properties 
+					</h4>
+					
+					<button type="submit" class="btn btn-default btn-default pull-right" data-dismiss="modal">
+						X
+					</button>
+				</div>
+				<div class="modal-body" style="padding:40px 50px;">
+					<ul class="nav md-pills nav-justified pills-secondary">
+					    <li class="nav-item">
+					        <a class="nav-link active" data-toggle="tab" href="##panel4" role="tab">Description</a>
+					    </li>
+					    <li class="nav-item">
+					        <a class="nav-link" data-toggle="tab" href="##panel11" role="tab">Security</a>
+					    </li>
+					    <li class="nav-item">
+					        <a class="nav-link" data-toggle="tab" href="##panel12" role="tab">Custom</a>
+					    </li>
+					    <!---<li class="nav-item">
+					        <a class="nav-link" data-toggle="tab" href="##panel13" role="tab">Help</a>
+					    </li>--->
+					</ul>
+					
+					<!-- Tab panels -->
+					<div class="tab-content">
+					
+					    <!--Panel 1-->
+					    <div class="tab-pane fade in show active" id="panel11" role="tabpanel">
+					        <br>
+					
+					        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil odit magnam minima, soluta doloribus
+					            reiciendis molestiae placeat unde eos molestias. Quisquam aperiam, pariatur. Tempora, placeat ratione
+					            porro voluptate odit minima.</p>
+					
+					    </div>
+					    <!--/.Panel 1-->
+					
+					    <!--Panel 2-->
+					    <div class="tab-pane fade" id="panel12" role="tabpanel">
+					        <br>
+					
+					        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil odit magnam minima, soluta doloribus
+					            reiciendis molestiae placeat unde eos molestias. Quisquam aperiam, pariatur. Tempora, placeat ratione
+					            porro voluptate odit minima.</p>
+					        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil odit magnam minima, soluta doloribus
+					            reiciendis molestiae placeat unde eos molestias. Quisquam aperiam, pariatur. Tempora, placeat ratione
+					            porro voluptate odit minima.</p>
+					
+					    </div>
+					    <!--/.Panel 2-->
+					
+					    <!--Panel 3-->
+					    <div class="tab-pane fade" id="panel13" role="tabpanel">
+					        <br>
+					
+					        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil odit magnam minima, soluta doloribus
+					            reiciendis molestiae placeat unde eos molestias. Quisquam aperiam, pariatur. Tempora, placeat ratione
+					            porro voluptate odit minima.</p>
+					
+					    </div>
+					    <!--/.Panel 3-->
+					
+					    <!--Panel 4-->
+					    <!---<div class="tab-pane fade" id="panel14" role="tabpanel">
+					        <br>
+					
+					        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil odit magnam minima, soluta doloribus
+					            reiciendis molestiae placeat unde eos molestias. Quisquam aperiam, pariatur. Tempora, placeat ratione
+					            porro voluptate odit minima.</p>
+					        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil odit magnam minima, soluta doloribus
+					            reiciendis molestiae placeat unde eos molestias. Quisquam aperiam, pariatur. Tempora, placeat ratione
+					            porro voluptate odit minima.</p>
+					
+					    </div>--->
+					    <!--/.Panel 4-->
+					
+					</div>
+				</div>
+				<!--Footer-->
+				<div class="modal-footer">
+					
+					<button type="button" id="reset_to_btn" class="btn btn-danger btn-success pull-right">
+						Reset
+					</button>
+					<button type="button" id="redact_apply_btn" class="btn btn-danger btn-danger pull-right">
+						Apply
+					</button>
+				</div>
+				<!--/.Footer-->
+			</div>
+			<!-- /.Modal content-->
+		</div>
+	</div><!--/ Modal -->
+	<!-- ==============================================END PROPERTIES MODAL================================================ -->
 </cfoutput>
 
 <script src="includes/js/viewer/workbench.js" type="application/javascript" ></script>
