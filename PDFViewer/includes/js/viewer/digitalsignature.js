@@ -23,8 +23,7 @@ DigitalSignature.prototype.setEventListeners = function(event){
 	
 	digitalSignature.add_signature_field_btn.on('click',function(e){
 			var view_model = {
-						pdfFile: main.pdfFile.val()
-						,newuserpassword: main.newuserpassword.val()
+						newuserpassword: main.newuserpassword.val()
 						,x1:digitalSignature.d_x1.val()
 						,y1:digitalSignature.d_y1.val()
 						,x2:digitalSignature.d_x2.val()
@@ -39,9 +38,11 @@ DigitalSignature.prototype.setEventListeners = function(event){
 			        	type: "post",
 			        	url: url,		
 			        	data: view_model,
-			       		beforeSend: function( xhr ){  	 
+			       		beforeSend: function( xhr ){  
+			       			main.preload_div.removeClass('invisible');	 
 						},
 			    		success: function( fileName ){
+			    			main.preload_div.addClass('invisible');
 			    			//console.log(fileName);
 							workBench.preview( fileName, true );
 							toastr.info('Signature field will not show up if you are using Chrome/Firefox/Safari browesers! download the PDF and open it using Adobe Acrobat Reader.');

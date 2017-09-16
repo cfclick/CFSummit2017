@@ -9,11 +9,13 @@ function Main(){
 	
 	/*this.fieldName				 = $('#fieldName');
 	this.fileName				 = $('#fileName');*/
-	
+	//inputs
+	this.url_input	= $('#url_input');
 	
 	//button
 	this.upload_pdf_btn = $('#upload_pdf_btn');	
 	this.confirm_yes = $('#confirm_yes');
+	this.urltoPDF_btn = $('#urltoPDF_btn');
 	
 	//modal
 	this.confirmation_modal		= $('#confirmation_modal');
@@ -82,7 +84,28 @@ Main.prototype.setEventListeners = function(event){
     	});		
 	});
 	
-	
+	main.urltoPDF_btn.on('click', function(){
+		var view_model = { url : main.url_input.val()};
+		
+		var url = main.config.urls.main.urlToPDF;
+		$.ajax(	{
+        	type: "post",
+        	url: url,		
+        	data: view_model,
+       		beforeSend: function( xhr ){  	 
+			},
+    		success: function( data ){
+    			console.log(data);
+    			main.loadPDF(data);
+    			//$('#tab'+nextTab).html( data ).append( new Client( main.loggedInIdentity, viewModel ) );
+    		},
+			error: function( objRequest, strError ){
+        		console.log(objRequest);   
+        		console.log(strError);   
+        	},
+       	 	async: true
+    	});		
+	});
 	
 	main.fileUploadModal.on('shown.bs.modal', function (){
 	  	var url = main.config.urls.main.fileUploadForm;

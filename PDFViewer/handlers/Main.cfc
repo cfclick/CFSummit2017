@@ -164,6 +164,50 @@
 	        throw( e );
         }
 	}
+	
+	
+	public any function urlToPDF( event, rc, prc ){
+		
+		if( !directoryExists( application.cbcontroller.getconfigSettings().uploadFolder ) )
+				cfdirectory(action="create" ,directory=application.cbcontroller.getconfigSettings().uploadFolder);
+				
+		var pathtosave = application.cbcontroller.getconfigSettings().workFolder & session.sessionID & "/";
+		var filename = "sample.pdf";
+		var noextFileName = replace(fileName, ".pdf", "");
+		if( !directoryExists( pathtosave ) )
+			cfdirectory(action="create" ,directory=pathtosave);
+			
+		var org = pathtosave & "original/";	
+
+		if( !directoryExists( org ) )
+			cfdirectory(action="create" ,directory=org);
+		
+		var tempdir = GetTempDirectory()& session.sessionID;
+    	if( ! directoryExists( tempdir ) ){
+    		cfdirectory(action="create" ,directory=tempdir);
+    	}
+				
+		cfhtmlTopdf( source="#rc.url_input#", destination="#pathtosave##filename#", overwrite="true" );
+		
+		cffile(action="copy",
+			       source="#pathtosave##fileName#",
+			       destination="#org#", mode="644");
+		
+		cffile(action="copy",
+			       source="#pathtosave##fileName#",
+			       destination="#tempdir#", mode="644");
+			       
+		var thumb = pathtosave & "thumbnail/" & noextFileName & "/";
+			if( !directoryExists( thumb ) )
+				cfdirectory(action="create" ,directory=thumb);
+					       
+		thread name="thumbThread" action="run" priority="low" src="#pathtosave##fileName#" dest=thumb {
+				cfpdf( action="thumbnail", source=src, destination=dest, overwrite="yes", pages="1" );
+			}
+			sleep(550);			
+		    //rc.files.append({success:true}); 
+			setNextEvent(event="main.index",queryString="pdfFileName=#fileName#"); 
+	}
 
 	public any function passwordProtect( event, rc, prc ){
 		

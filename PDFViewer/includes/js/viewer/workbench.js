@@ -6,6 +6,7 @@ function WorkBench(){
 	this.delete_btn   = $('#delete_btn');
 	this.restore_btn  = $('#restore_btn');
 	this.sanitize_btn = $('#sanitize_btn');
+	this.property_btn = $('#property_btn');
 	
 	//inputs
 	this.fileName = $('#fileName');
@@ -14,9 +15,11 @@ function WorkBench(){
 	//modals
 	this.digital_signature_modal = $('#digital_signature_modal');
 	this.redact_modal = $('#redact_modal');
+	this.property_modal = $('#property_modal');
 	
-	//other
+	//other/DIV
 	this.pdf_iframe = $('#pdf_iframe');
+	this.property_modal_body = $('#property_modal_body');
 	
 	
 	this.setEventListeners();
@@ -127,7 +130,37 @@ WorkBench.prototype.setEventListeners = function(event){
 		});
 	});
 	
-				
+	workBench.property_btn.on('click', function(event){
+		
+	//	main.confirmation_modal.modal('show');
+		
+			var view_model = {
+				fileName:workBench.fileName.val()
+			};
+	
+			var url = main.config.urls.properties.index;
+			$.ajax(	{
+	        	type: "post",
+	        	url: url,		
+	        	data: view_model,
+	       		beforeSend: function( xhr ){ 
+	       			main.preload_div.removeClass('invisible'); 	 
+				},
+	    		success: function( html ){
+	    			main.preload_div.addClass('invisible');
+	    			workBench.property_modal_body.html( html );
+	    			workBench.property_modal.modal('show');
+	    		},
+				error: function( objRequest, strError ){
+	        		console.log(objRequest);   
+	        		console.log(strError);   
+	        	},
+	       	 	async: true
+	    	});	
+	    	
+	    	main.confirmation_modal.modal('hide');	
+		});
+			
 }
 
 WorkBench.prototype.preview = function( fileName, istemp ){

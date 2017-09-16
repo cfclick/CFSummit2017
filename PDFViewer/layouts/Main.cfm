@@ -258,7 +258,7 @@
 
 	<script src="includes/js/my/config.js"></script>
 	<script src="includes/js/main/main.js"></script>
-	<script src="includes/js/main/sessionManager.js"></script>
+	<!---<script src="includes/js/main/sessionManager.js"></script>--->
 	
 	<script>
 	$(function() {
@@ -274,8 +274,8 @@
 			if( !application.main )
 				application.main = new Main();
 			
-			if( !application.sessionManager )
-				application.sessionManager = new SessionManager();
+			/*if( !application.sessionManager )
+				application.sessionManager = new SessionManager();*/
 			
 			
 		});

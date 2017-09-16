@@ -14,7 +14,8 @@ function Config() {
 			uploadFiles					: protocol + theActualServer + appFolder + CGIScriptName + "?event=main.uploadFiles",
 			passwordProtect				: protocol + theActualServer + appFolder + CGIScriptName + "?event=main.passwordProtect",
 			readMetadata				: protocol + theActualServer + appFolder + CGIScriptName + "?event=main.readMetadata",			
-			ping						: protocol + theActualServer + appFolder + CGIScriptName + "?event=main.ping"
+			ping						: protocol + theActualServer + appFolder + CGIScriptName + "?event=main.ping",
+			urlToPDF					: protocol + theActualServer + appFolder + CGIScriptName + "?event=main.urlToPDF"
 		 };
 		 
 		 this.urls.digitalsignature = {
@@ -27,6 +28,10 @@ function Config() {
 		 
 		 this.urls.redact = {
 		 	add	: protocol + theActualServer + appFolder + CGIScriptName + "?event=redact.add"
+		 };
+		 
+		 this.urls.properties = {
+		 	index	: protocol + theActualServer + appFolder + CGIScriptName + "?event=properties.index"
 		 };
 		 
 		 this.urls.viewer = {
