@@ -30,8 +30,8 @@
 					<div class="pt-1 pb-4">
 						<form id="urlForm" action="?event=Main.urlToPDF" method="POST" >
 						<div class="input-group md-form form-sm form-2 pl-0">
-						    <input id="url_input" name="url_input" class="form-control my-0 py-1 red-border" type="text" placeholder="http://qbillc.com" aria-label="Search">
-						    <button type="submit" class="input-group-addon red text-white" id="urltoPDF_btn"><i class="fa fa-file-pdf-o fa-lg" aria-hidden="true"></i> &nbsp; Convert to PDF</a>
+						    <input id="url_input" name="url_input" class="form-control my-0 py-1 red-border text-white " type="text" placeholder="http://qbillc.com" aria-label="Search">
+						    <button type="submit" class="input-group-addon red text-white waves-effect" style="cursor:pointer" id="urltoPDF_btn"><i class="fa fa-file-pdf-o fa-lg" aria-hidden="true"></i> &nbsp; Convert to PDF</a>
 						</div>
 						</form>
 					</div>
@@ -45,7 +45,7 @@
 									<input type="file" name="files[]" multiple>
 								</div>
 								<div class="file-path-wrapper">
-									<input class="file-path validate" type="text" placeholder="Upload one or more files">
+									<input class="file-path validate text-white" type="text" placeholder="Upload one or more files">
 								</div>
 
 								<button type="submit" class="btn btn-primary">

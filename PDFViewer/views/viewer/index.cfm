@@ -23,20 +23,20 @@
 	
 		<div class="row">
 			<div class="col-sm-2 col-md-2 col-lg-2">
-				<button type="button" class="btn btn-outline-info waves-effect btn-block" data-toggle="modal" 
+				<button type="button" class="btn btn-mdb waves-effect btn-block" data-toggle="modal" 
 				        data-target="##digital_signature_modal">
 					Signature
 				</button>
-				<button type="button" class="btn btn-outline-info waves-effect btn-block" data-toggle="modal" data-target="##redact_modal">
+				<button type="button" class="btn btn-mdb waves-effect btn-block" data-toggle="modal" data-target="##redact_modal">
 					Redact
 				</button>
-				<button id="sanitize_btn" type="button" class="btn btn-outline-info waves-effect btn-block" >
+				<button id="sanitize_btn" type="button" class="btn btn-mdb waves-effect btn-block" >
 					Sanitize
 				</button>				
-				<button type="button" class="btn btn-outline-info waves-effect btn-block">
+				<button type="button" class="btn btn-mdb waves-effect btn-block">
 					Stamp
 				</button>
-				<button id="property_btn" type="button" class="btn btn-outline-info waves-effect btn-block" >
+				<button id="property_btn" type="button" class="btn btn-mdb waves-effect btn-block" >
 					Properties
 				</button>
 			</div>
