@@ -227,34 +227,11 @@
 		//setNextEvent(event="main.index",queryString="pdfFile=#rc.pdfFile#&newuserpassword=#rc.newuserpassword#");
 	}
 
-	public any function sanitize( event, rc, prc ){
-		
-		cfpdf( action="sanitize" ,source=rc.pdfFile, overwrite="yes");
-		cfpdf( action="getinfo", name="reader", source=rc.pdfFile, password=rc.newuserpassword);
-		rc.reader = reader;
-		event.renderData(type='json',data=rc ).nolayout();
-	}
+	
 
-	public any function readMetadata( event, rc, prc ){
-		cfpdf( action="getinfo", name="reader", source=rc.pdfFile, password=rc.newuserpassword );
-		rc.reader = reader;	  
-		event.renderData( data=rc, type="json" ).nolayout();
-	}
+	
 
-	/*public any function redact( event, rc, prc ){
-		rc.cord = "#rc.x1#,#rc.y1#,#rc.x2#,#rc.y2#";
-
-		cfpdf(action="redact"
-				, source=rc.pdfFile
-				, overwrite=true ) {
-	 	 		cfpdfparam( coordinates=rc.cord, pages=1);
-  		};
-		cfpdf( action="getinfo", name="reader", source=rc.pdfFile, password=rc.newuserpassword );
-		rc.reader = reader;	  
-		event.renderData( data=rc, type="json" ).nolayout();
-	}*/
-
-	public any function addDigitalSignatureField( event, rc, prc ){
+	/*public any function addDigitalSignatureField( event, rc, prc ){
 		
 		var source = trim( rc.pdfFile );
 		var destination = GetTempDirectory() & rc.fileName;//"C:\Temp\pdfs\_signfield.pdf";// trim( arguments.destinationPDFPath );
@@ -280,7 +257,7 @@
 		rc.reader = reader;	  
 		rc.PDFFILE = destination;
 		event.renderData( data=rc, type="json" ).nolayout();
-	}
+	}*/
 	
 	public any function resetToOrginal( event, rc, prc ){
 		//filecopy( rc.orgPDFFile, rc.pdfFile,  );
