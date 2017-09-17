@@ -23,9 +23,6 @@
 		<tbody>
 			<cfloop collection="#rc.pdf.Properties#" item="prop">
 				<tr>
-					<th scope="row">
-						1
-					</th>
 					<td>
 						#prop#
 					</td>
@@ -33,7 +30,7 @@
 						#rc.pdf.Properties[prop]#
 					</td>
 					<td>
-						delete
+						<a href="##" onclick="properties.deleteCustomProperty('#prop#')">delete</a>
 					</td>
 				</tr>
 			</cfloop>

@@ -285,17 +285,7 @@
 				<div id="property_modal_body" class="modal-body" style="padding:40px 50px;">
 					
 				</div>
-				<!--Footer-->
-				<div class="modal-footer">
-					
-					<button type="button" id="reset_to_btn" class="btn btn-danger btn-success pull-right">
-						Reset
-					</button>
-					<button type="button" id="redact_apply_btn" class="btn btn-danger btn-danger pull-right">
-						Apply
-					</button>
-				</div>
-				<!--/.Footer-->
+				
 			</div>
 			<!-- /.Modal content-->
 		</div>

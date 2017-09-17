@@ -31,8 +31,10 @@ function Config() {
 		 };
 		 
 		 this.urls.properties = {
-		 	index	: protocol + theActualServer + appFolder + CGIScriptName + "?event=properties.index",
-		 	add		: protocol + theActualServer + appFolder + CGIScriptName + "?event=properties.add"
+		 	index			: protocol + theActualServer + appFolder + CGIScriptName + "?event=properties.index",
+		 	add				: protocol + theActualServer + appFolder + CGIScriptName + "?event=properties.add",
+		 	delete			: protocol + theActualServer + appFolder + CGIScriptName + "?event=properties.delete",
+		 	save 	: protocol + theActualServer + appFolder + CGIScriptName + "?event=properties.save"
 		 };
 		 
 		 this.urls.viewer = {
