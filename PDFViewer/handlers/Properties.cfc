@@ -50,6 +50,36 @@ component{
 
 		}
 		
-	}	
+	}	
+	
+	function add( event, rc, prc ){
+		
+		var destination = application.cbcontroller.getconfigSettings().workFolder & session.sessionID & "\" & rc.fileName;
+		rc.pathAndName = GetTempDirectory() & session.sessionID & '\' & rc.fileName;
+		var source = trim( rc.pathAndName );
+		
+		var fileOutputStream = CreateObject("java", "java.io.FileOutputStream").init( destination );
+		//Read the source
+		var reader = createobject("java","com.lowagie.text.pdf.PdfReader").init( source );
+		//Initialize the stamper
+    	var stamper = createobject("java","com.lowagie.text.pdf.PdfStamper").init( reader, fileOutputStream);
+    	//Read source file   
+    	info = reader.getInfo();
+    	//Create custom property (tracking number )
+    	info.put(rc.name, rc.value);
+    	//Pushing data 
+	    stamper.setMoreInfo(info);
+	    stamper.close();  
+   		
+   		cffile(action="copy",
+			   source=destination,
+			   destination=source, mode="644");
+			       
+   		cfpdf( action="getinfo" ,name="reader", source=source);
+		rc.pdf = reader;
+		
+		event.setView("Properties/customPropertyTable").nolayout();
+	}
+	
 	
 }

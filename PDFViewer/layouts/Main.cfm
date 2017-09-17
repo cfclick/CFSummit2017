@@ -266,7 +266,8 @@
 		$('.dropdown-toggle').dropdown();
 		// Tooltips
 		$("[rel=tooltip]").tooltip();
-	})
+	});
+	
 
 		$(document).ready( function() {
 			application = this;
@@ -277,6 +278,9 @@
 			/*if( !application.sessionManager )
 				application.sessionManager = new SessionManager();*/
 			
+			$('.popover-dismiss').popover({
+				  trigger: 'focus'
+				})
 			
 		});
 	</script>

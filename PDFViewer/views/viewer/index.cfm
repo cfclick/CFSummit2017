@@ -268,7 +268,7 @@
 	<!-- Modal -->
 	<div class="modal fade right" id="property_modal" tabindex="-1" role="dialog"
 	     aria-labelledby="myModalLabel" aria-hidden="true">
-		<div class="modal-dialog modal-lg" role="document">
+		<div class="modal-dialog modal-fluid" role="document">
 			<!-- Modal content-->
 			<div class="modal-content">
 				<div class="modal-header text-center modal-heade-black">
@@ -306,6 +306,7 @@
 <script src="includes/js/viewer/workbench.js" type="application/javascript" ></script>
 <script src="includes/js/viewer/digitalsignature.js" type="application/javascript" ></script>
 <script src="includes/js/viewer/redact.js" type="application/javascript" ></script>
+<script src="includes/js/viewer/properties.js" type="application/javascript" ></script>
 
 <script >
 

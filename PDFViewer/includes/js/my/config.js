@@ -31,7 +31,8 @@ function Config() {
 		 };
 		 
 		 this.urls.properties = {
-		 	index	: protocol + theActualServer + appFolder + CGIScriptName + "?event=properties.index"
+		 	index	: protocol + theActualServer + appFolder + CGIScriptName + "?event=properties.index",
+		 	add		: protocol + theActualServer + appFolder + CGIScriptName + "?event=properties.add"
 		 };
 		 
 		 this.urls.viewer = {

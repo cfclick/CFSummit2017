@@ -148,8 +148,10 @@ WorkBench.prototype.setEventListeners = function(event){
 				},
 	    		success: function( html ){
 	    			main.preload_div.addClass('invisible');
+	    			
 	    			workBench.property_modal_body.html( html );
 	    			workBench.property_modal.modal('show');
+	    			properties = new Properties();
 	    		},
 				error: function( objRequest, strError ){
 	        		console.log(objRequest);   
