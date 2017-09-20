@@ -4,22 +4,29 @@ function WorkBench(){
 	//buttons
 	this.reset_btn    = $('#reset_btn');
 	this.delete_btn   = $('#delete_btn');
+	this.email_btn	  = $('#email_btn');
+	this.send_email_btn = $('#send_email_btn');
 	this.restore_btn  = $('#restore_btn');
 	this.sanitize_btn = $('#sanitize_btn');
 	this.property_btn = $('#property_btn');
 	
 	//inputs
-	this.fileName = $('#fileName');
+	this.fileName 		= $('#fileName');
+	this.your_email 	= $('#your_email');
+	this.your_subject 	= $('#your_subject');
+	this.your_message 	= $('#your_message');
 	
 	
 	//modals
 	this.digital_signature_modal = $('#digital_signature_modal');
-	this.redact_modal = $('#redact_modal');
-	this.property_modal = $('#property_modal');
+	this.redact_modal 			 = $('#redact_modal');
+	this.property_modal 		 = $('#property_modal');
+	this.email_modal			 = $('#email_modal');
 	
 	//other/DIV
 	this.pdf_iframe = $('#pdf_iframe');
 	this.property_modal_body = $('#property_modal_body');
+	this.attached_fileName	= $('#attached_fileName');
 	
 	
 	this.setEventListeners();
@@ -58,13 +65,16 @@ WorkBench.prototype.setEventListeners = function(event){
         	type: "post",
         	url: url,		
         	data: view_model,
-       		beforeSend: function( xhr ){  	 
+       		beforeSend: function( xhr ){  
+       			main.preload_div.removeClass('invisible');	 
 			},
     		success: function( fileName ){
+    			main.preload_div.addClass('invisible');
     			self.location = main.config.urls.root;
     			//$('#tab'+nextTab).html( data ).append( new Client( main.loggedInIdentity, viewModel ) );
     		},
 			error: function( objRequest, strError ){
+				main.preload_div.addClass('invisible');
         		console.log(objRequest);   
         		console.log(strError);   
         	},
@@ -72,6 +82,7 @@ WorkBench.prototype.setEventListeners = function(event){
 		});		
 		
 	});
+	
 
 	workBench.restore_btn.on('click', function(event){
 
@@ -84,19 +95,62 @@ WorkBench.prototype.setEventListeners = function(event){
         	type: "post",
         	url: url,		
         	data: view_model,
-       		beforeSend: function( xhr ){  	 
+       		beforeSend: function( xhr ){  	
+       			main.preload_div.removeClass('invisible'); 
 			},
     		success: function( fileName ){
+    			main.preload_div.addClass('invisible');
     			workBench.preview( fileName, true );
     			//$('#tab'+nextTab).html( data ).append( new Client( main.loggedInIdentity, viewModel ) );
     		},
 			error: function( objRequest, strError ){
+				main.preload_div.addClass('invisible');
         		console.log(objRequest);   
         		console.log(strError);   
         	},
        	 	async: true
     	});		
 	});
+	
+	
+	workBench.email_btn.on('click', function(){
+		workBench.attached_fileName.html( workBench.fileName.val() );
+		workBench.email_modal.modal('show');
+	});
+	
+	workBench.send_email_btn.on('click', function(){
+		
+		
+		var view_model = {
+				fileName:workBench.fileName.val(),
+				mailto: workBench.your_email.val(),
+				subject:workBench.your_subject.val(),
+				message:workBench.your_message.val()
+			};
+	
+			var url = main.config.urls.viewer.email;
+			$.ajax(	{
+	        	type: "post",
+	        	url: url,		
+	        	data: view_model,
+	       		beforeSend: function( xhr ){ 
+	       			main.preload_div.removeClass('invisible'); 	 
+				},
+	    		success: function( fileName ){
+	    			main.preload_div.addClass('invisible');
+	    			workBench.email_modal.modal('hide');
+	    			toastr.info('Email has been sent.');
+	    		},
+				error: function( objRequest, strError ){
+					main.preload_div.addClass('invisible');
+	        		console.log(objRequest);   
+	        		console.log(strError);   
+	        	},
+	       	 	async: true
+	    	});	
+	    	
+	});
+	
 	
 	workBench.sanitize_btn.on('click', function(event){
 		main.confirmation_text.html('Are you sure you want to Sanitize the PDF?');
@@ -113,13 +167,16 @@ WorkBench.prototype.setEventListeners = function(event){
 	        	type: "post",
 	        	url: url,		
 	        	data: view_model,
-	       		beforeSend: function( xhr ){  	 
+	       		beforeSend: function( xhr ){ 
+	       			main.preload_div.removeClass('invisible'); 	 
 				},
 	    		success: function( fileName ){
+	    			main.preload_div.addClass('invisible');
 	    			workBench.preview( fileName, true );
 	    			//$('#tab'+nextTab).html( data ).append( new Client( main.loggedInIdentity, viewModel ) );
 	    		},
 				error: function( objRequest, strError ){
+					main.preload_div.addClass('invisible');
 	        		console.log(objRequest);   
 	        		console.log(strError);   
 	        	},

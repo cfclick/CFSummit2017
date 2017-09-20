@@ -291,6 +291,58 @@
 		</div>
 	</div><!--/ Modal -->
 	<!-- ==============================================END PROPERTIES MODAL================================================ -->
+	
+	
+	<!-- ================================================EMAIL MODAL================================================== -->
+	<!-- Modal -->
+	<div class="modal fade right" id="email_modal" tabindex="-1" role="dialog"
+	     aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog " role="document">
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header text-center modal-heade-black">
+					<h4>
+						<i class="fa fa-user">
+						</i>
+						Email 
+					</h4>
+					
+					<button type="submit" class="btn btn-default btn-default pull-right" data-dismiss="modal">
+						X
+					</button>
+				</div>
+				<div id="property_modal_body" class="modal-body" style="padding:40px 50px;">
+					
+					<blockquote class="blockquote bq-warning">
+					    <p class="bq-title">Attached File</p>
+					    <p style="color:##000000" id="attached_fileName"></p>
+					</blockquote>
+
+					<div class="md-form form-sm" style="color:##000000">
+                        <i class="fa fa-envelope prefix"></i>
+                        <input type="text" id="your_email" class="form-control">
+                        <label for="your_email">Your email</label>
+                    </div>
+                    
+                    <div class="md-form form-sm">                     
+                        <input type="text" id="your_subject" class="form-control">
+                        <label for="your_subject">Subject</label>
+                    </div>
+                    
+                    <div class="md-form form-sm">                     
+                        <textarea type="text" id="your_message" class="md-textarea" rows="3" cols="50"></textarea>
+                        <label for="your_message">Message</label>
+                    </div>
+                    
+                    <button class="btn btn-primary" id="send_email_btn">Send</button>
+
+				</div>
+				
+			</div>
+			<!-- /.Modal content-->
+		</div>
+	</div><!--/ Modal -->
+	<!-- ==============================================END EMAIL MODAL================================================ -->
 </cfoutput>
 
 <script src="includes/js/viewer/workbench.js" type="application/javascript" ></script>

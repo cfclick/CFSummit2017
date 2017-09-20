@@ -101,10 +101,10 @@
                                 <a class="nav-link" href="#" id="delete_btn"><i class="fa fa-trash-o fa-lg" aria-hidden="true"></i></a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#" id="email_btn"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i></a>
+                                <a class="nav-link"  id="email_btn" data-toggle="modal" data-target="##myemail_modal"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i></a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#"><i class="fa fa-share fa-lg" aria-hidden="true"></i></a>
+                                <a class="nav-link disabled" href="#"><i class="fa fa-share fa-lg" aria-hidden="true"></i></a>
                             </li>
                         </cfif>
                        <!---   <li class="nav-item btn-group">
@@ -320,37 +320,36 @@
 <!-- session expire modal -->
 <div class="modal fade" id="session_expire_warning_modal" aria-hidden="true" data-keyboard="false" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 
-        <div class="modal-dialog" role="document">
+    <div class="modal-dialog" role="document">
 
-            <div class="modal-content">
+        <div class="modal-content">
 
-                <div class="modal-header">                 
+            <div class="modal-header">                 
 
-                    <h4 class="modal-title">Session Expire Warning</h4>
+                <h4 class="modal-title">Session Expire Warning</h4>
 
-                </div>
+            </div>
 
-                <div class="modal-body">
+            <div class="modal-body">
 
-                    Your session will expire in <span id="seconds-timer"></span> seconds. Do you want to extend the session?
+                Your session will expire in <span id="seconds-timer"></span> seconds. Do you want to extend the session?
 
-                </div>
+            </div>
 
-                <div class="modal-footer">
+            <div class="modal-footer">
 
-                    <button id="btnOk" type="button" class="btn btn-default" style="padding: 6px 12px; margin-bottom: 0; font-size: 14px; font-weight: normal; border: 1px solid transparent; border-radius: 4px;  background-color: #428bca; color: #FFF;">Ok</button>
+                <button id="btnOk" type="button" class="btn btn-default" style="padding: 6px 12px; margin-bottom: 0; font-size: 14px; font-weight: normal; border: 1px solid transparent; border-radius: 4px;  background-color: #428bca; color: #FFF;">Ok</button>
 
-                    <button id="btnSessionExpiredCancelled" type="button" class="btn btn-default" data-dismiss="modal" style="padding: 6px 12px; margin-bottom: 0; font-size: 14px; font-weight: normal; border: 1px solid transparent; border-radius: 4px; background-color: #428bca; color: #FFF;">Cancel</button>
+                <button id="btnSessionExpiredCancelled" type="button" class="btn btn-default" data-dismiss="modal" style="padding: 6px 12px; margin-bottom: 0; font-size: 14px; font-weight: normal; border: 1px solid transparent; border-radius: 4px; background-color: #428bca; color: #FFF;">Cancel</button>
 
-                    <button id="btnLogoutNow" type="button" class="btn btn-default" style="padding: 6px 12px; margin-bottom: 0; font-size: 14px; font-weight: normal; border: 1px solid transparent; border-radius: 4px;  background-color: #428bca; color: #FFF;">Logout now</button>
-
-                </div>
+                <button id="btnLogoutNow" type="button" class="btn btn-default" style="padding: 6px 12px; margin-bottom: 0; font-size: 14px; font-weight: normal; border: 1px solid transparent; border-radius: 4px;  background-color: #428bca; color: #FFF;">Logout now</button>
 
             </div>
 
         </div>
 
     </div>
+</div>
 
     <!--End Show Session Expire Warning Popup here -->
 
@@ -385,6 +384,35 @@
         </div>
 
     </div>
+
+<!-- ================================================PROPERTIES MODAL================================================== -->
+	<!-- Modal -->
+	<div class="modal fade right" id="myemail_modal" tabindex="-1" role="dialog"
+	     aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-fluid" role="document">
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header text-center modal-heade-black">
+					<h4>
+						<i class="fa fa-user">
+						</i>
+						Email 
+					</h4>
+					
+					<button type="submit" class="btn btn-default btn-default pull-right" data-dismiss="modal">
+						X
+					</button>
+				</div>
+				<div id="property_modal_body" class="modal-body" style="padding:40px 50px;">
+					
+				</div>
+				
+			</div>
+			<!-- /.Modal content-->
+		</div>
+	</div><!--/ Modal -->
+	<!-- ==============================================END PROPERTIES MODAL================================================ -->
+
 </body>
 
 </html>

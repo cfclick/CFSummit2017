@@ -77,6 +77,34 @@ component{
 	
 		event.renderData( data=rc.fileName, type="json" ).nolayout();
 	}
+	
+	
+	function email( event, rc, prc ){
+		
+		rc.workFile 		= application.cbcontroller.getconfigSettings().workFolder & session.sessionID & "\" & rc.fileName;	
+		
+		 /* create mailer service */ 
+	    mailerService = new mail(); 
+	    if(IsDefined("rc.mailto")) 
+	    { 
+	        
+	            savecontent variable="mailBody"{ 
+	                WriteOutput("This message was sent by an automatic mailer from MyAcrobat:" & "<br><br>" & rc.message); 
+	            } 
+	            /* set mail attributes using implicit setters provided */ 
+	            mailerService.setTo(rc.mailto); 
+	            mailerService.setFrom('ShirakAvakian@gamil.com'); 
+	            mailerService.setSubject(rc.subject); 
+	            mailerService.setType("html"); 
+	            /* add mailparams */ 
+	            mailerService.addParam(file= rc.workFile,type="text/plain",remove=false);         
+	            /* send mail using send(). Attribute values specified in an end action like "send" will not persist after the action is performed */ 
+	            mailerService.send(body=mailBody); 
+	            
+	        
+	    } 
+		event.renderData( data="success", type="json" ).nolayout();
+	}
 		
 	
 	function workbench(event,rc,prc){

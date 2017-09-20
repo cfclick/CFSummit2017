@@ -40,7 +40,8 @@ function Config() {
 		 this.urls.viewer = {
 			 preview	: protocol + theActualServer + appFolder + CGIScriptName + "?event=viewer.preview",
 			 delete		: protocol + theActualServer + appFolder + CGIScriptName + "?event=viewer.delete",
-			 restore	: protocol + theActualServer + appFolder + CGIScriptName + "?event=viewer.restore"
+			 restore	: protocol + theActualServer + appFolder + CGIScriptName + "?event=viewer.restore",
+			 email		: protocol + theActualServer + appFolder + CGIScriptName + "?event=viewer.email"
 		 };
 		 
 		 this.urls.root   =  protocol + theActualServer + appFolder + CGIScriptName ;
