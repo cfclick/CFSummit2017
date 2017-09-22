@@ -145,11 +145,12 @@
 			var thumb = pathtosave & "thumbnail/" & noextFileName & "/";
 			if( !directoryExists( thumb ) )
 				cfdirectory(action="create" ,directory=thumb);
-
-			thread name="thumbThread" action="run" priority="low" src=uploadFile.destination dest=thumb {
+			
+			cfpdf( action="thumbnail", source=uploadFile.destination, destination=thumb, overwrite="yes", pages="1" );
+			/*thread name="thumbThread" action="run" priority="low" src=uploadFile.destination dest=thumb {
 				cfpdf( action="thumbnail", source=src, destination=dest, overwrite="yes", pages="1" );
-			}
-			sleep(550);		
+			}*/
+			sleep(1550);		
 		    //rc.files.append({success:true}); 
 			setNextEvent(event="main.index",queryString="pdfFileName=#uploadResult.ServerFile#"); 
      
@@ -172,7 +173,14 @@
 				cfdirectory(action="create" ,directory=application.cbcontroller.getconfigSettings().uploadFolder);
 				
 		var pathtosave = application.cbcontroller.getconfigSettings().workFolder & session.sessionID & "/";
-		var filename = "sample.pdf";
+		//  /^(?:www\.)?(.*?)\.(?:com|au\.uk|co\.in)$/
+		//  .*([^\.]+)(com|net|org|info|coop|int|co\.uk|org\.uk|ac\.uk|uk)$
+		var filename = ReplaceNoCase( rc.url_input, "https://", "", "all");
+		filename = ReplaceNoCase( filename, "http://", "", "all");
+		filename = ReplaceNoCase( filename, "www.", "", "all");
+		
+	
+		filename = filename & '.pdf';
 		var noextFileName = replace(fileName, ".pdf", "");
 		if( !directoryExists( pathtosave ) )
 			cfdirectory(action="create" ,directory=pathtosave);
@@ -206,7 +214,8 @@
 			}
 			sleep(550);			
 		    //rc.files.append({success:true}); 
-			setNextEvent(event="main.index",queryString="pdfFileName=#fileName#"); 
+			event.renderData(type='json',data=rc ).nolayout();
+			//setNextEvent(event="main.index",queryString="pdfFileName=#fileName#"); 
 	}
 
 	public any function passwordProtect( event, rc, prc ){

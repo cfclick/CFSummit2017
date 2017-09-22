@@ -28,34 +28,34 @@
 						Convert any website to PDF
 					</p>
 					<div class="pt-1 pb-4">
-						<form id="urlForm" action="?event=Main.urlToPDF" method="POST" >
+						<!--- <form id="urlForm" action="?event=Main.urlToPDF" method="POST"  > --->
 						<div class="input-group md-form form-sm form-2 pl-0">
 						    <input id="url_input" name="url_input" class="form-control my-0 py-1 red-border text-white " type="text" placeholder="http://qbillc.com" aria-label="Search">
-						    <button type="submit" class="input-group-addon red text-white waves-effect" style="cursor:pointer" id="urltoPDF_btn"><i class="fa fa-file-pdf-o fa-lg" aria-hidden="true"></i> &nbsp; Convert to PDF</a>
+						    <button class="input-group-addon red text-white waves-effect" style="cursor:pointer" id="urltoPDF_btn"><i class="fa fa-file-pdf-o fa-lg" aria-hidden="true"></i> &nbsp; Convert to PDF</a>
 						</div>
-						</form>
+						<!--- </form> --->
 					</div>
 				</li>
 				<li>
 					<div class="pt-1 pb-4 ">
-						<form id="fileupload" action="?event=Main.uploadFiles" method="POST" enctype="multipart/form-data" onsubmit="return beforeUpload();">
+						<!--- <form id="fileupload" action="?event=Main.uploadFiles" method="POST" enctype="multipart/form-data" onsubmit="return beforeUpload();"> --->
 							<div class="file-field">
 								<div class="btn btn-primary btn-sm">
 									<span>Choose files</span>
-									<input type="file" name="files[]" multiple>
+									<input type="file" id="uploaded_file" name="files[]" multiple>
 								</div>
 								<div class="file-path-wrapper">
 									<input class="file-path validate text-white" type="text" placeholder="Upload one or more files">
 								</div>
 
-								<button type="submit" class="btn btn-primary">
+								<button id="upload_pdf_btn" type="button" class="btn btn-primary">
 									<i class="glyphicon glyphicon-upload"></i>
 									<span>Start upload</span>
 								</button>
 							</div>
 
 							
-						</form>
+						<!--- </form> --->
 					</div>
 				</li>
 				<br>

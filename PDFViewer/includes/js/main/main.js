@@ -5,12 +5,13 @@ function Main(){
 	this.add_password_btn 	= $('#add_password_btn');
 	this.newuserpassword 	= $('#newuserpassword');
 	
-	this.metadata_modal 	= $('#metadata_modal');
+	this.loading_modal		= $('#loading_modal');
 	
 	/*this.fieldName				 = $('#fieldName');
 	this.fileName				 = $('#fileName');*/
 	//inputs
 	this.url_input	= $('#url_input');
+	this.uploaded_file = $('#uploaded_file');
 	
 	//button
 	this.upload_pdf_btn = $('#upload_pdf_btn');	
@@ -84,22 +85,80 @@ Main.prototype.setEventListeners = function(event){
     	});		
 	});
 	
+	
+
+	main.upload_pdf_btn.on('click', function(){
+		var view_model = { 'files[]' : main.uploaded_file.val()};
+		
+		var url = main.config.urls.main.uploadFiles;
+		$.ajax(	{
+        	type: "post",
+        	url: url,		
+        	data: view_model,
+       		beforeSend: function( xhr ){  
+				main.loading_modal.modal({show:true,backdrop: 'static',keyboard: false});	 
+			},
+    		success: function( data ){
+				main.loading_modal.modal('hide');
+    			
+    			self.location = main.config.urls.root;
+    			//$('#tab'+nextTab).html( data ).append( new Client( main.loggedInIdentity, viewModel ) );
+    		},
+			error: function( objRequest, strError ){
+				main.loading_modal.modal('hide');
+        		console.log(objRequest);   
+        		console.log(strError);   
+        	},
+       	 	async: true
+    	});		
+	});
+
 	main.urltoPDF_btn.on('click', function(){
-		var view_model = { url : main.url_input.val()};
+		var view_model = { url_input : main.url_input.val()};
 		
 		var url = main.config.urls.main.urlToPDF;
 		$.ajax(	{
         	type: "post",
         	url: url,		
         	data: view_model,
-       		beforeSend: function( xhr ){  	 
+       		beforeSend: function( xhr ){  
+				main.loading_modal.modal({show:true,backdrop: 'static',keyboard: false});	 
 			},
     		success: function( data ){
-    			console.log(data);
-    			main.loadPDF(data);
+				main.loading_modal.modal('hide');
+    			
+    			self.location = main.config.urls.root;
     			//$('#tab'+nextTab).html( data ).append( new Client( main.loggedInIdentity, viewModel ) );
     		},
 			error: function( objRequest, strError ){
+				main.loading_modal.modal('hide');
+        		console.log(objRequest);   
+        		console.log(strError);   
+        	},
+       	 	async: true
+    	});		
+	});
+
+
+	main.urltoPDF_btn.on('click', function(){
+		var view_model = { url_input : main.url_input.val()};
+		
+		var url = main.config.urls.main.urlToPDF;
+		$.ajax(	{
+        	type: "post",
+        	url: url,		
+        	data: view_model,
+       		beforeSend: function( xhr ){  
+				main.loading_modal.modal({show:true,backdrop: 'static',keyboard: false});	 
+			},
+    		success: function( data ){
+				main.loading_modal.modal('hide');
+    			
+    			self.location = main.config.urls.root;
+    			//$('#tab'+nextTab).html( data ).append( new Client( main.loggedInIdentity, viewModel ) );
+    		},
+			error: function( objRequest, strError ){
+				main.loading_modal.modal('hide');
         		console.log(objRequest);   
         		console.log(strError);   
         	},
@@ -153,6 +212,7 @@ Main.prototype.loadPDF = function( pdfobj ){
 
 }
 */
+/*
 Main.prototype.readMetadata = function(){
 	var view_model = {};
 	view_model.newuserpassword = main.newuserpassword.val();
@@ -199,4 +259,4 @@ Main.prototype.readMetadata = function(){
    	 	async: true
 	});		
 }
-
+*/

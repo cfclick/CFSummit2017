@@ -117,9 +117,9 @@
                             </div>
                         </li> --->
                     </ul>
-                    <form class="form-inline">
+                    <!--- <form class="form-inline">
                         <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-                    </form>
+                    </form> --->
                 </div>
             </div>
         </nav>
@@ -387,30 +387,20 @@
 
 <!-- ================================================PROPERTIES MODAL================================================== -->
 	<!-- Modal -->
-	<div class="modal fade right" id="myemail_modal" tabindex="-1" role="dialog"
+	<div class="modal fade right" id="loading_modal" tabindex="-1" role="dialog"
 	     aria-labelledby="myModalLabel" aria-hidden="true">
-		<div class="modal-dialog modal-fluid" role="document">
+		<div class="modal-dialog modal-sm" role="document">
 			<!-- Modal content-->
-			<div class="modal-content">
-				<div class="modal-header text-center modal-heade-black">
-					<h4>
-						<i class="fa fa-user">
-						</i>
-						Email 
-					</h4>
-					
-					<button type="submit" class="btn btn-default btn-default pull-right" data-dismiss="modal">
-						X
-					</button>
-				</div>
-				<div id="property_modal_body" class="modal-body" style="padding:40px 50px;">
-					
-				</div>
+			<div class="modal-content text-center">
 				
+				<h3>Loading please wait</h3>
+                <div class="progress primary-color-dark">
+                    <div class="indeterminate"></div>
+                </div>
 			</div>
 			<!-- /.Modal content-->
 		</div>
-	</div><!--/ Modal -->
+	</div> <!--/ Modal -->
 	<!-- ==============================================END PROPERTIES MODAL================================================ -->
 
 </body>

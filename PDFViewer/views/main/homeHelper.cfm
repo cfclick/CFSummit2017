@@ -14,7 +14,7 @@
             	<cfloop query="rc.qry_workingfolder" >
                 	<cfset noextFileName = replace(name, ".pdf", "") />
                 	<cfset thumb_img = "#rc.currentWorkingURL#thumbnail/#noextFileName#/#noextFileName#_page_1.jpg" />
-                	<div class="col-md-2">
+                	<div class="col-md-2" style="padding-top:15px;padding-bottom:15px">
                         <div class="card">
                         	<a href="?event=viewer.workbench&fileName=#name#">
                             <img class="img-fluid" src="#thumb_img#" alt="Card image cap" />
