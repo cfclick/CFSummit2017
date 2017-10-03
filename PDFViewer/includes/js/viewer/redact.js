@@ -38,15 +38,16 @@ Redact.prototype.setEventListeners = function(event){
 			        	url: url,		
 			        	data: view_model,
 			       		beforeSend: function( xhr ){  
-							   main.preload_div.removeClass('invisible');	 
+			       			main.action_label.html('Redacting');
+							  main.loading_modal.modal({show:true,backdrop: 'static',keyboard: false});	 
 						},
 			    		success: function( fileName ){
-			    			main.preload_div.addClass('invisible');
+			    			main.loading_modal.modal('hide');
 			    			workBench.preview( fileName, true );
 			    			//$('#tab'+nextTab).html( data ).append( new Client( main.loggedInIdentity, viewModel ) );
 			    		},
 						error: function( objRequest, strError ){
-							main.preload_div.addClass('invisible');
+							main.loading_modal.modal('hide');
 			        		console.log(objRequest);   
 			        		console.log(strError);   
 			        	},

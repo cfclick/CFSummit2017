@@ -91,8 +91,9 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav mr-auto">
-                        <cfif CompareNoCase( event.getCurrentEvent() , 'viewer.workbench') eq 0 >
+                    <ul class="navbar-nav mr-auto text-white">
+                    	<cfdump var="#event.getCurrentEvent()#">
+                        <cfif event.getCurrentEvent() eq 'viewer.workbench'>
                             
                             <li class="nav-item">
                                 <a class="nav-link" href="#" id="restore_btn"><i class="fa fa-undo fa-lg" aria-hidden="true"></i></a>
@@ -100,7 +101,7 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="#" id="delete_btn"><i class="fa fa-trash-o fa-lg" aria-hidden="true"></i></a>
                             </li>
-                            <li class="nav-item">
+                            <li class="nav-item text-white">
                                 <a class="nav-link"  id="email_btn" data-toggle="modal" data-target="##myemail_modal"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i></a>
                             </li>
                             <li class="nav-item">
@@ -393,7 +394,7 @@
 			<!-- Modal content-->
 			<div class="modal-content text-center">
 				
-				<h3>Loading please wait</h3>
+				<h3><span id='action_label'>Loading</span>, please wait</h3>
                 <div class="progress primary-color-dark">
                     <div class="indeterminate"></div>
                 </div>

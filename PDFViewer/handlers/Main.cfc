@@ -51,7 +51,7 @@
 		if( isdefined('rc.ping'))
 			return rc.ping;
 		
-		
+		//writeDump(rc);abort;
         rc.files = [];
         var validMimeTypes =  {'application/pdf': {extension: 'pdf', application: 'Adobe Acrobat'}};
 

@@ -5,7 +5,7 @@ function Main(){
 	this.add_password_btn 	= $('#add_password_btn');
 	this.newuserpassword 	= $('#newuserpassword');
 	
-	this.loading_modal		= $('#loading_modal');
+	
 	
 	/*this.fieldName				 = $('#fieldName');
 	this.fileName				 = $('#fileName');*/
@@ -21,11 +21,13 @@ function Main(){
 	//modal
 	this.confirmation_modal		= $('#confirmation_modal');
 	this.fileUploadModal = $('#fileUploadModal');
+	this.loading_modal		= $('#loading_modal');
 	
-	//DIV
-	this.fileUploadModal_body = $('#fileUploadModal_body');
-	this.confirmation_text	= $('#confirmation_text');
-	this.preload_div		= $("#preload_div");
+	//DIV/span/label
+	this.fileUploadModal_body 	= $('#fileUploadModal_body');
+	this.confirmation_text		= $('#confirmation_text');
+	this.preload_div			= $("#preload_div");
+	this.action_label			= $("#action_label");
 	
 	this.setEventListeners();
 	
@@ -89,8 +91,9 @@ Main.prototype.setEventListeners = function(event){
 
 	main.upload_pdf_btn.on('click', function(){
 		var view_model = { 'files[]' : main.uploaded_file.val()};
-		
-		var url = main.config.urls.main.uploadFiles;
+		main.action_label.html('Uploading');
+		main.loading_modal.modal({show:true,backdrop: 'static',keyboard: false});
+		/*var url = main.config.urls.main.uploadFiles;
 		$.ajax(	{
         	type: "post",
         	url: url,		
@@ -110,9 +113,37 @@ Main.prototype.setEventListeners = function(event){
         		console.log(strError);   
         	},
        	 	async: true
+    	});	*/	
+	});
+
+	main.urltoPDF_btn.on('click', function(){
+		var view_model = { url_input : main.url_input.val()};
+		
+		var url = main.config.urls.main.urlToPDF;
+		$.ajax(	{
+        	type: "post",
+        	url: url,		
+        	data: view_model,
+       		beforeSend: function( xhr ){  
+       			main.action_label.html('Converting to PDF');
+				main.loading_modal.modal({show:true,backdrop: 'static',keyboard: false});	 
+			},
+    		success: function( data ){
+				main.loading_modal.modal('hide');
+    			
+    			self.location = main.config.urls.root;
+    			//$('#tab'+nextTab).html( data ).append( new Client( main.loggedInIdentity, viewModel ) );
+    		},
+			error: function( objRequest, strError ){
+				main.loading_modal.modal('hide');
+        		console.log(objRequest);   
+        		console.log(strError);   
+        	},
+       	 	async: true
     	});		
 	});
 
+/*
 	main.urltoPDF_btn.on('click', function(){
 		var view_model = { url_input : main.url_input.val()};
 		
@@ -137,33 +168,12 @@ Main.prototype.setEventListeners = function(event){
         	},
        	 	async: true
     	});		
-	});
-
-
-	main.urltoPDF_btn.on('click', function(){
-		var view_model = { url_input : main.url_input.val()};
+	});*/
+	
+	main.loading_modal.on('shown.bs.modal', function(){
 		
-		var url = main.config.urls.main.urlToPDF;
-		$.ajax(	{
-        	type: "post",
-        	url: url,		
-        	data: view_model,
-       		beforeSend: function( xhr ){  
-				main.loading_modal.modal({show:true,backdrop: 'static',keyboard: false});	 
-			},
-    		success: function( data ){
-				main.loading_modal.modal('hide');
-    			
-    			self.location = main.config.urls.root;
-    			//$('#tab'+nextTab).html( data ).append( new Client( main.loggedInIdentity, viewModel ) );
-    		},
-			error: function( objRequest, strError ){
-				main.loading_modal.modal('hide');
-        		console.log(objRequest);   
-        		console.log(strError);   
-        	},
-       	 	async: true
-    	});		
+		setTimeout(main.loading_modal.modal('hide'),950);
+		
 	});
 	
 	main.fileUploadModal.on('shown.bs.modal', function (){

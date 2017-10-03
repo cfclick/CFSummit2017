@@ -65,16 +65,17 @@ WorkBench.prototype.setEventListeners = function(event){
         	type: "post",
         	url: url,		
         	data: view_model,
-       		beforeSend: function( xhr ){  
-       			main.preload_div.removeClass('invisible');	 
+       		beforeSend: function( xhr ){
+       			main.action_label.html('Deleting the file'); 
+       			main.loading_modal.modal({show:true,backdrop: 'static',keyboard: false});	 
 			},
     		success: function( fileName ){
-    			main.preload_div.addClass('invisible');
+    			main.loading_modal.modal('hide');
     			self.location = main.config.urls.root;
     			//$('#tab'+nextTab).html( data ).append( new Client( main.loggedInIdentity, viewModel ) );
     		},
 			error: function( objRequest, strError ){
-				main.preload_div.addClass('invisible');
+				main.loading_modal.modal('hide');
         		console.log(objRequest);   
         		console.log(strError);   
         	},
@@ -95,17 +96,17 @@ WorkBench.prototype.setEventListeners = function(event){
         	type: "post",
         	url: url,		
         	data: view_model,
-       		beforeSend: function( xhr ){  	
-       			main.preload_div.removeClass('invisible'); 
+       		beforeSend: function( xhr ){  
+       			main.action_label.html('Restoring');	
+       			main.loading_modal.modal({show:true,backdrop: 'static',keyboard: false});
 			},
     		success: function( fileName ){
-    			main.preload_div.addClass('invisible');
+    			main.loading_modal.modal('hide');
     			workBench.preview( fileName, true );
     			//$('#tab'+nextTab).html( data ).append( new Client( main.loggedInIdentity, viewModel ) );
     		},
 			error: function( objRequest, strError ){
-				main.preload_div.addClass('invisible');
-        		console.log(objRequest);   
+				main.loading_modal.modal('hide');
         		console.log(strError);   
         	},
        	 	async: true
@@ -134,15 +135,16 @@ WorkBench.prototype.setEventListeners = function(event){
 	        	url: url,		
 	        	data: view_model,
 	       		beforeSend: function( xhr ){ 
-	       			main.preload_div.removeClass('invisible'); 	 
+	       			main.action_label.html('Emailing');
+	       			main.loading_modal.modal({show:true,backdrop: 'static',keyboard: false}); 
 				},
 	    		success: function( fileName ){
-	    			main.preload_div.addClass('invisible');
+	    			main.loading_modal.modal('hide');
 	    			workBench.email_modal.modal('hide');
 	    			toastr.info('Email has been sent.');
 	    		},
 				error: function( objRequest, strError ){
-					main.preload_div.addClass('invisible');
+					main.loading_modal.modal('hide');
 	        		console.log(objRequest);   
 	        		console.log(strError);   
 	        	},
@@ -168,15 +170,16 @@ WorkBench.prototype.setEventListeners = function(event){
 	        	url: url,		
 	        	data: view_model,
 	       		beforeSend: function( xhr ){ 
-	       			main.preload_div.removeClass('invisible'); 	 
+	       			main.action_label.html('Sanitizing');
+	       			main.loading_modal.modal({show:true,backdrop: 'static',keyboard: false});
 				},
 	    		success: function( fileName ){
-	    			main.preload_div.addClass('invisible');
+	    			main.loading_modal.modal('hide');
 	    			workBench.preview( fileName, true );
 	    			//$('#tab'+nextTab).html( data ).append( new Client( main.loggedInIdentity, viewModel ) );
 	    		},
 				error: function( objRequest, strError ){
-					main.preload_div.addClass('invisible');
+					main.loading_modal.modal('hide');
 	        		console.log(objRequest);   
 	        		console.log(strError);   
 	        	},
@@ -201,18 +204,18 @@ WorkBench.prototype.setEventListeners = function(event){
 	        	url: url,		
 	        	data: view_model,
 	       		beforeSend: function( xhr ){ 
-	       			main.preload_div.removeClass('invisible'); 	 
+	       			main.action_label.html('Loading');
+	       			main.loading_modal.modal({show:true,backdrop: 'static',keyboard: false});	 
 				},
 	    		success: function( html ){
-	    			main.preload_div.addClass('invisible');
-	    			
+	    			main.loading_modal.modal('hide');
 	    			workBench.property_modal_body.html( html );
 	    			workBench.property_modal.modal('show');
+	    			
 	    			properties = new Properties();
 	    		},
 				error: function( objRequest, strError ){
-	        		console.log(objRequest);   
-	        		console.log(strError);   
+	        		main.loading_modal.modal('hide');  
 	        	},
 	       	 	async: true
 	    	});	

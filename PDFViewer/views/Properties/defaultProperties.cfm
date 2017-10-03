@@ -57,7 +57,7 @@
 					Created
 				</dt>
 				<dd class="col-sm-9">
-					#rc.pdf.Created#
+					#dateformat(rc.pdf.Created,'mm.dd.yyyy')#
 				</dd>
 				<dt class="col-sm-3">
 					Modified

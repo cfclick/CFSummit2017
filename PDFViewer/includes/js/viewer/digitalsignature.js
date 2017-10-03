@@ -39,10 +39,11 @@ DigitalSignature.prototype.setEventListeners = function(event){
 			        	url: url,		
 			        	data: view_model,
 			       		beforeSend: function( xhr ){  
-			       			main.preload_div.removeClass('invisible');	 
+			       			main.action_label.html('Adding signature field');
+			       			main.loading_modal.modal({show:true,backdrop: 'static',keyboard: false});	 
 						},
 			    		success: function( fileName ){
-			    			main.preload_div.addClass('invisible');
+			    			main.loading_modal.modal('hide');
 			    			//console.log(fileName);
 							workBench.preview( fileName, true );
 							toastr.info('Signature field will not show up if you are using Chrome/Firefox/Safari browesers! download the PDF and open it using Adobe Acrobat Reader.');

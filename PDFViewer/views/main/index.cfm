@@ -352,7 +352,7 @@
         </div>
     </div>
     <!--/ Modal -->
-    
+<!---    
     
     <!-- Modal -->
     <div class="modal fade right" id="redact_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -414,7 +414,7 @@
             <!-- /.Modal content-->
         </div>
     </div>
-    <!--/ Modal -->
+    <!--/ Modal -->--->
     
     <!-- Modal -->
    <!--- <div class="modal fade right" id="digital_signature_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">

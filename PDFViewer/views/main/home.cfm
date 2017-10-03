@@ -38,7 +38,7 @@
 				</li>
 				<li>
 					<div class="pt-1 pb-4 ">
-						<!--- <form id="fileupload" action="?event=Main.uploadFiles" method="POST" enctype="multipart/form-data" onsubmit="return beforeUpload();"> --->
+						<form id="fileupload" action="?event=Main.uploadFiles" method="POST" enctype="multipart/form-data" onsubmit="return beforeUpload();">
 							<div class="file-field">
 								<div class="btn btn-primary btn-sm">
 									<span>Choose files</span>
@@ -48,14 +48,14 @@
 									<input class="file-path validate text-white" type="text" placeholder="Upload one or more files">
 								</div>
 
-								<button id="upload_pdf_btn" type="button" class="btn btn-primary">
+								<button id="upload_pdf_btn" type="submit" class="btn btn-primary">
 									<i class="glyphicon glyphicon-upload"></i>
 									<span>Start upload</span>
 								</button>
 							</div>
 
 							
-						<!--- </form> --->
+						</form>
 					</div>
 				</li>
 				<br>

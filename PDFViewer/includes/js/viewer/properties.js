@@ -45,10 +45,11 @@ Properties.prototype.setEventListeners = function(event){
 			        	url: url,		
 			        	data: view_model,
 			       		beforeSend: function( xhr ){  
-							   main.preload_div.removeClass('invisible');	 
+			       			main.action_label.html('Adding');
+							   main.loading_modal.modal({show:true,backdrop: 'static',keyboard: false});	 
 						},
 			    		success: function( html ){
-			    			main.preload_div.addClass('invisible');
+			    			main.loading_modal.modal('hide');
 			    			properties.custom_prop_div.html( html );
 			    		},
 						error: function( objRequest, strError ){
@@ -78,11 +79,12 @@ Properties.prototype.setEventListeners = function(event){
 			        	url: url,		
 			        	data: view_model,
 			       		beforeSend: function( xhr ){  
-							   main.preload_div.removeClass('invisible');	 
+			       			main.action_label.html('Saving');
+							  main.loading_modal.modal({show:true,backdrop: 'static',keyboard: false});	 
 						},
 			    		success: function( html ){
 			    			
-			    			main.preload_div.addClass('invisible');
+			    			main.loading_modal.modal('hide');
 			    			properties.main_properties_body.html( html );
 			    		},
 						error: function( objRequest, strError ){
@@ -109,14 +111,15 @@ Properties.prototype.deleteCustomProperty = function(prop){
 			        	url: url,		
 			        	data: view_model,
 			       		beforeSend: function( xhr ){  
-							   main.preload_div.removeClass('invisible');	 
+			       			main.action_label.html('Deleting');
+							   main.loading_modal.modal({show:true,backdrop: 'static',keyboard: false});	 
 						},
 			    		success: function( html ){
-			    			main.preload_div.addClass('invisible');
+			    			main.loading_modal.modal('hide');
 			    			properties.custom_prop_div.html( html );
 			    		},
 						error: function( objRequest, strError ){
-							main.preload_div.addClass('invisible');
+							main.loading_modal.modal('hide');
 			        		console.log(objRequest);   
 			        		console.log(strError);   
 			        	},
