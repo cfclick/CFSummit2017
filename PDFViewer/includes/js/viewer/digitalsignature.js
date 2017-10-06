@@ -43,13 +43,14 @@ DigitalSignature.prototype.setEventListeners = function(event){
 			       			main.loading_modal.modal({show:true,backdrop: 'static',keyboard: false});	 
 						},
 			    		success: function( fileName ){
-			    			main.loading_modal.modal('hide');
+			    			setTimeout(function (){main.loading_modal.modal('hide');},1500);
 			    			//console.log(fileName);
 							workBench.preview( fileName, true );
 							toastr.info('Signature field will not show up if you are using Chrome/Firefox/Safari browesers! download the PDF and open it using Adobe Acrobat Reader.');
 			    			//$('#tab'+nextTab).html( data ).append( new Client( main.loggedInIdentity, viewModel ) );
 			    		},
 						error: function( objRequest, strError ){
+							setTimeout(function (){main.loading_modal.modal('hide');},1500);
 			        		console.log(objRequest);   
 			        		console.log(strError);   
 			        	},

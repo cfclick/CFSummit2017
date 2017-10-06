@@ -42,9 +42,11 @@ component{
 		
 		cfpdf( action="sanitize" ,source=destination, overwrite="yes");
 		cfpdf( action="sanitize" ,source=source, 	 overwrite="yes");
-			
-		event.renderData( data=rc.fileName, type="json" ).nolayout();
+		rc.success = true;	
+		event.renderData( data=rc, type="json" ).nolayout();
 		
-	}	
+	}	
+
+
 	
 }

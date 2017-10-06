@@ -11,11 +11,16 @@
 	top: 0;
 	left: 0;
 	width: 100%;
-	height: 100%;
+	height: 96%;
 	}
 	.modal-heade-black{
 	color:#000000;
 	}
+	
+	.modal-body {
+    max-height: calc(100vh - 210px);
+    overflow-y: auto;
+}
 </style>
 <cfoutput>
 	<input type="hidden" name="fileName" id="fileName" value="#rc.fileName#" />

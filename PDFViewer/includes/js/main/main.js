@@ -19,16 +19,18 @@ function Main(){
 	this.urltoPDF_btn = $('#urltoPDF_btn');
 	
 	//modal
-	this.confirmation_modal		= $('#confirmation_modal');
-	this.fileUploadModal = $('#fileUploadModal');
+	this.confirmation_modal	= $('#confirmation_modal');
+	this.fileUploadModal 	= $('#fileUploadModal');
 	this.loading_modal		= $('#loading_modal');
+	this.errorModalDanger	= $('#errorModalDanger');
 	
 	//DIV/span/label
 	this.fileUploadModal_body 	= $('#fileUploadModal_body');
 	this.confirmation_text		= $('#confirmation_text');
 	this.preload_div			= $("#preload_div");
 	this.action_label			= $("#action_label");
-	
+	this.errorModalMessage		= $('#errorModalMessage');
+
 	this.setEventListeners();
 	
 }

@@ -74,8 +74,8 @@ component{
 		filedelete( rc.tempWorkFile );
 		filedelete( rc.workFile );
 		cfdirectory( directory=rc.thumbnailFolder, action="delete", recurse="true");
-	
-		event.renderData( data=rc.fileName, type="json" ).nolayout();
+		rc.success = true; 
+		event.renderData( data=rc, type="json" ).nolayout();
 	}
 	
 	

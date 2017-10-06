@@ -237,8 +237,6 @@
 	}
 
 	
-
-	
 	public any function resetToOrginal( event, rc, prc ){
 		//filecopy( rc.orgPDFFile, rc.pdfFile,  );
 		var workingFolder = application.cbcontroller.getconfigSettings().workFolder;
@@ -246,6 +244,7 @@
 		var destFile = workingFolder & '\' & fileName;
 		//cfpdf( action="getinfo", name="reader", source=destFile );
 		rc.PDFFILE = destFile;	  
+		rc.sucess = true;
 		event.renderData( data=rc, type="json" ).nolayout();
 	}
     

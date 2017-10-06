@@ -42,12 +42,12 @@ Redact.prototype.setEventListeners = function(event){
 							  main.loading_modal.modal({show:true,backdrop: 'static',keyboard: false});	 
 						},
 			    		success: function( fileName ){
-			    			main.loading_modal.modal('hide');
+			    			setTimeout(function (){main.loading_modal.modal('hide');},1500);
 			    			workBench.preview( fileName, true );
 			    			//$('#tab'+nextTab).html( data ).append( new Client( main.loggedInIdentity, viewModel ) );
 			    		},
 						error: function( objRequest, strError ){
-							main.loading_modal.modal('hide');
+							setTimeout(function (){main.loading_modal.modal('hide');},1500);
 			        		console.log(objRequest);   
 			        		console.log(strError);   
 			        	},

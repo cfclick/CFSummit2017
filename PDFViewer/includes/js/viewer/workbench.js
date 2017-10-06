@@ -69,16 +69,22 @@ WorkBench.prototype.setEventListeners = function(event){
        			main.action_label.html('Deleting the file'); 
        			main.loading_modal.modal({show:true,backdrop: 'static',keyboard: false});	 
 			},
-    		success: function( fileName ){
+    		success: function( data ){
     			setTimeout(function (){main.loading_modal.modal('hide');},1500);
+				
+				if( data.success )
+					self.location = main.config.urls.root;
+				else{
+					main.errorModalDanger.modal('show');
+					main.errorModalMessage.html(data);
+				}
     			
-    			self.location = main.config.urls.root;
     			//$('#tab'+nextTab).html( data ).append( new Client( main.loggedInIdentity, viewModel ) );
     		},
 			error: function( objRequest, strError ){
-				main.loading_modal.modal('hide');
-        		console.log(objRequest);   
-        		console.log(strError);   
+				setTimeout(function (){main.loading_modal.modal('hide');},1500);
+        		main.errorModalDanger.modal('show');
+				main.errorModalMessage.html(objRequest); 
         	},
        	 	async: true
 		});		
@@ -107,7 +113,7 @@ WorkBench.prototype.setEventListeners = function(event){
     			//$('#tab'+nextTab).html( data ).append( new Client( main.loggedInIdentity, viewModel ) );
     		},
 			error: function( objRequest, strError ){
-				main.loading_modal.modal('hide');
+				setTimeout(function (){main.loading_modal.modal('hide');},1500);
         		console.log(strError);   
         	},
        	 	async: true
@@ -179,15 +185,21 @@ WorkBench.prototype.setEventListeners = function(event){
 	       			main.action_label.html('Sanitizing');
 	       			main.loading_modal.modal({show:true,backdrop: 'static',keyboard: false});
 				},
-	    		success: function( fileName ){
-	    			main.loading_modal.modal('hide');
-	    			workBench.preview( fileName, true );
+	    		success: function( data ){
+					setTimeout(function (){main.loading_modal.modal('hide');},1500);
+					if( data.success )
+						workBench.preview( data.fileName, true );
+					else{
+						main.errorModalDanger.modal('show');
+						main.errorModalMessage.html(data);
+					}
+						
 	    			//$('#tab'+nextTab).html( data ).append( new Client( main.loggedInIdentity, viewModel ) );
 	    		},
 				error: function( objRequest, strError ){
-					main.loading_modal.modal('hide');
-	        		console.log(objRequest);   
-	        		console.log(strError);   
+					setTimeout(function (){main.loading_modal.modal('hide');},1500);
+	        		main.errorModalDanger.modal('show');
+					main.errorModalMessage.html(objRequest);
 	        	},
 	       	 	async: true
 	    	});	
