@@ -239,35 +239,6 @@
 	
 
 	
-
-	/*public any function addDigitalSignatureField( event, rc, prc ){
-		
-		var source = trim( rc.pdfFile );
-		var destination = GetTempDirectory() & rc.fileName;//"C:\Temp\pdfs\_signfield.pdf";// trim( arguments.destinationPDFPath );
-		var reader = createobject("java","com.lowagie.text.pdf.PdfReader").init( source );
-		var fileOutputStream = CreateObject("java", "java.io.FileOutputStream").init( destination );
-		var stamper = createobject("java","com.lowagie.text.pdf.PdfStamper").init( reader, fileOutputStream );		
-    	// create a signature form field
-        var pdfFormField = createobject("java","com.lowagie.text.pdf.PdfFormField");
-        var field = pdfFormField.createSignature( stamper.getWriter() );
-        field.setFieldName( rc.fieldName );
-        // set the widget properties
-        var rectangle = createobject("java","com.lowagie.text.Rectangle");              
-       	var pdfAnnotation = createobject("java","com.lowagie.text.pdf.PdfAnnotation");
-        field.setWidget( rectangle.init(rc.x1, rc.y1, rc.x2, rc.y2), pdfAnnotation.HIGHLIGHT_OUTLINE);
-        field.setFlags( pdfAnnotation.FLAGS_PRINT );
-        // add the annotation        
-        var pdfAppearance = createobject("java","com.lowagie.text.pdf.PdfAppearance");
-        stamper.addAnnotation( field, rc.page );
-        // close the stamper
-    	stamper.close();
-		sleep(200);
-		cfpdf( action="getinfo", name="reader", source=destination, password=rc.newuserpassword );
-		rc.reader = reader;	  
-		rc.PDFFILE = destination;
-		event.renderData( data=rc, type="json" ).nolayout();
-	}*/
-	
 	public any function resetToOrginal( event, rc, prc ){
 		//filecopy( rc.orgPDFFile, rc.pdfFile,  );
 		var workingFolder = application.cbcontroller.getconfigSettings().workFolder;

@@ -172,8 +172,12 @@ Main.prototype.setEventListeners = function(event){
 	
 	main.loading_modal.on('shown.bs.modal', function(){
 		
-		setTimeout(main.loading_modal.modal('hide'),950);
+		//setTimeout(main.loading_modal.modal('hide'),950);
 		
+	});
+	
+	main.loading_modal.on('hidden.bs.modal', function () {
+	    $(this).data('bs.modal', null);
 	});
 	
 	main.fileUploadModal.on('shown.bs.modal', function (){

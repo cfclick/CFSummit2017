@@ -84,7 +84,7 @@
 <body>
 
     <!--Navbar-->
-        <nav class="navbar navbar-expand-lg navbar-dark fixed-top scrolling-navbar">
+        <nav class="navbar navbar-expand-lg navbar-dark fixed-top unique-color-dark">
             <div class="container">
                 <a class="navbar-brand" href="<cfoutput>#application.cbcontroller.getconfigSettings().urls.homepage#</cfoutput>">My Acrobat</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -92,7 +92,7 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto text-white">
-                    	<cfdump var="#event.getCurrentEvent()#">
+                    	
                         <cfif event.getCurrentEvent() eq 'viewer.workbench'>
                             
                             <li class="nav-item">

@@ -40,8 +40,13 @@ component{
 		var source = trim( rc.pathAndName );
 		
 		if( fileExists( source) ){
+			//var reader = createobject("java","com.lowagie.text.pdf.PdfReader").init( source );
 			cfpdf( action="getinfo" ,name="reader", source=source);
+			reader.Created = formatPDFdate( reader.Created );
+			reader.Modified = formatPDFdate( reader.Modified );
 			rc.pdf = reader;
+			
+			rc.Created = "D:" & DateFormat(now(), "YYYYMMDD") & TimeFormat(now(), "HHmmss") & "-00'00'";
 			//writeDump(rc);abort;
 			event.setView("Properties/index").nolayout();
 		}else{
@@ -147,6 +152,12 @@ component{
 		rc.pdf = reader;
 		
 		event.setView("Properties/defaultProperties").nolayout();
+	}
+	
+	private string function formatPDFdate( required string psdDateString ){
+		
+		var temp = replace( psdDateString,'D:','');		
+		return dateFormat(createDateTime( left( temp,4), mid( temp,5,2), mid( temp,7,2), mid( temp,9,2), mid( temp,11,2),mid( temp,13,2) ), 'mm/dd/yyyy hh:mm:ss');
 	}
 	
 	

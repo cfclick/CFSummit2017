@@ -70,7 +70,8 @@ WorkBench.prototype.setEventListeners = function(event){
        			main.loading_modal.modal({show:true,backdrop: 'static',keyboard: false});	 
 			},
     		success: function( fileName ){
-    			main.loading_modal.modal('hide');
+    			setTimeout(function (){main.loading_modal.modal('hide');},1500);
+    			
     			self.location = main.config.urls.root;
     			//$('#tab'+nextTab).html( data ).append( new Client( main.loggedInIdentity, viewModel ) );
     		},
@@ -101,7 +102,7 @@ WorkBench.prototype.setEventListeners = function(event){
        			main.loading_modal.modal({show:true,backdrop: 'static',keyboard: false});
 			},
     		success: function( fileName ){
-    			main.loading_modal.modal('hide');
+    			setTimeout(function (){main.loading_modal.modal('hide');},1500);
     			workBench.preview( fileName, true );
     			//$('#tab'+nextTab).html( data ).append( new Client( main.loggedInIdentity, viewModel ) );
     		},
@@ -135,16 +136,21 @@ WorkBench.prototype.setEventListeners = function(event){
 	        	url: url,		
 	        	data: view_model,
 	       		beforeSend: function( xhr ){ 
+	       			workBench.email_modal.modal('hide');
 	       			main.action_label.html('Emailing');
 	       			main.loading_modal.modal({show:true,backdrop: 'static',keyboard: false}); 
 				},
 	    		success: function( fileName ){
-	    			main.loading_modal.modal('hide');
-	    			workBench.email_modal.modal('hide');
+	    			setTimeout(function (){main.loading_modal.modal('hide');},1500);
+	    		
+	    			//workBench.email_modal.modal('hide');
 	    			toastr.info('Email has been sent.');
 	    		},
 				error: function( objRequest, strError ){
-					main.loading_modal.modal('hide');
+					setTimeout(function (){main.loading_modal.modal('hide');},1500);
+				
+					workBench.email_modal.modal('hide');
+					toastr.error('Unable to send the email.');
 	        		console.log(objRequest);   
 	        		console.log(strError);   
 	        	},
@@ -208,14 +214,14 @@ WorkBench.prototype.setEventListeners = function(event){
 	       			main.loading_modal.modal({show:true,backdrop: 'static',keyboard: false});	 
 				},
 	    		success: function( html ){
-	    			main.loading_modal.modal('hide');
+	    			setTimeout(function (){main.loading_modal.modal('hide');},1500);
 	    			workBench.property_modal_body.html( html );
 	    			workBench.property_modal.modal('show');
 	    			
 	    			properties = new Properties();
 	    		},
 				error: function( objRequest, strError ){
-	        		main.loading_modal.modal('hide');  
+	        		setTimeout(function (){main.loading_modal.modal('hide');},1500);  
 	        	},
 	       	 	async: true
 	    	});	

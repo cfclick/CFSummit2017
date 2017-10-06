@@ -93,7 +93,7 @@ component{
 	            } 
 	            /* set mail attributes using implicit setters provided */ 
 	            mailerService.setTo(rc.mailto); 
-	            mailerService.setFrom('ShirakAvakian@gamil.com'); 
+	            mailerService.setFrom('no-reply@qbillc.com'); 
 	            mailerService.setSubject(rc.subject); 
 	            mailerService.setType("html"); 
 	            /* add mailparams */ 

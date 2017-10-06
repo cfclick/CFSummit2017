@@ -1,4 +1,5 @@
 <cfoutput>
+
 	<div id="main_properties_body">
 		<dl class="row" style="color:black">
 			<!---<cfdump var="#rc#">--->
@@ -57,7 +58,7 @@
 					Created
 				</dt>
 				<dd class="col-sm-9">
-					#dateformat(rc.pdf.Created,'mm.dd.yyyy')#
+					#rc.pdf.Created#
 				</dd>
 				<dt class="col-sm-3">
 					Modified
