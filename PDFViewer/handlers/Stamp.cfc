@@ -34,15 +34,20 @@ component{
 	}
 	*/
 		
-	function apply(event,rc,prc){
+	function add(event,rc,prc){
 		
 		var destination = application.cbcontroller.getconfigSettings().workFolder & session.sessionID & "\" & rc.fileName;
 		rc.pathAndName = GetTempDirectory() & session.sessionID & '\' & rc.fileName;
 		var source = trim( rc.pathAndName );
-		//writeDump(destination);
-		//writeDump(source);abort;
-		cfpdf( action="sanitize" ,source=destination, overwrite="yes");
-		cfpdf( action="sanitize" ,source=source, 	 overwrite="yes");
+		
+		cfpdf(action="addstamp"
+				, source=source
+				, destination=destination
+				, overwrite=true ) {
+	 	 		cfpdfparam(iconname=rc.type, coordinates="#rc.x1#,#rc.y1#,#rc.x2#,#rc.y2#", pages=rc.pages, note=rc.note);
+  		};
+  		sleep(500);
+		filecopy(destination,source);
 		rc.success = true;	
 		rc["fileName"]= rc.fileName;
 		event.renderData( data=rc, type="json" ).nolayout();

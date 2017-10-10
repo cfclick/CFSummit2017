@@ -22,6 +22,10 @@ function Config() {
 		 	addField	: protocol + theActualServer + appFolder + CGIScriptName + "?event=digitalsignature.addField"
 		 };
 		 
+		 this.urls.stamp = {
+		 	add	: protocol + theActualServer + appFolder + CGIScriptName + "?event=stamp.add"
+		 };
+		 
 		 this.urls.sanitize = {
 		 	apply	: protocol + theActualServer + appFolder + CGIScriptName + "?event=sanitize.apply"
 		 };

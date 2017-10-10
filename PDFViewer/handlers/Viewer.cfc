@@ -33,7 +33,10 @@ component{
 		rc.originalFile = application.cbcontroller.getconfigSettings().workFolder & session.sessionID & "\original\" & rc.fileName;
 		rc.destination1 = GetTempDirectory() & session.sessionID & '\' & rc.fileName;
 		rc.destination2 = application.cbcontroller.getconfigSettings().workFolder & session.sessionID & "\";
-
+		
+		/*cffile(action="copy",source=rc.originalFile,destination=rc.destination1, mode="644");
+		sleep(2000);
+		cffile(action="copy",source=rc.originalFile,destination=rc.destination2, mode="644");		*/
 		thread name="restoreThread01" action="run" priority="high" src=rc.originalFile dest=rc.destination1 {
 			try{
 					cffile(action="copy",
@@ -58,8 +61,11 @@ component{
 		}
 
 		thread name="restoreThread01,restoreThread03" action="join";
-	
-		event.renderData( data=rc.fileName, type="json" ).nolayout();
+		
+		rc.success = true;
+		rc['fileName'] = rc.fileName;
+		sleep(2000);
+		event.renderData( data=rc, type="json" ).nolayout();
 	}
 
 

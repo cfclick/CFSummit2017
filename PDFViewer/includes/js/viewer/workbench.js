@@ -19,6 +19,7 @@ function WorkBench(){
 	
 	//modals
 	this.digital_signature_modal = $('#digital_signature_modal');
+	this.stamp_modal 			 = $('#stamp_modal');
 	this.redact_modal 			 = $('#redact_modal');
 	this.property_modal 		 = $('#property_modal');
 	this.email_modal			 = $('#email_modal');
@@ -48,11 +49,11 @@ WorkBench.prototype.setEventListeners = function(event){
 			
 	});
 	
-	/*workBench.confirmation_modal.on('shown.bs.modal', function (){
+	workBench.stamp_modal.on('shown.bs.modal', function (){
 		
-			redact = new Redact();
+			stamp = new Stamp();
 			
-	});*/
+	});
 	
 	workBench.delete_btn.on('click', function(){
 		
@@ -107,10 +108,21 @@ WorkBench.prototype.setEventListeners = function(event){
        			main.action_label.html('Restoring');	
        			main.loading_modal.modal({show:true,backdrop: 'static',keyboard: false});
 			},
-    		success: function( fileName ){
+    		success: function( data ){
     			setTimeout(function (){main.loading_modal.modal('hide');},1500);
-    			workBench.preview( fileName, true );
-    			//$('#tab'+nextTab).html( data ).append( new Client( main.loggedInIdentity, viewModel ) );
+    			
+    			if(data.fileName)
+    				var fileName = data.fileName;
+    			else
+    				var fileName = data.FILENAME;
+			
+				if( data.success )
+					workBench.preview( fileName, true );
+				else{
+					main.errorModalDanger.modal('show');
+					main.errorModalMessage.html(data);
+				}
+
     		},
 			error: function( objRequest, strError ){
 				setTimeout(function (){main.loading_modal.modal('hide');},1500);
@@ -186,9 +198,15 @@ WorkBench.prototype.setEventListeners = function(event){
 	       			main.loading_modal.modal({show:true,backdrop: 'static',keyboard: false});
 				},
 	    		success: function( data ){
+	    		
+	    			if(data.fileName)
+	    				var fileName = data.fileName;
+	    			else
+	    				var fileName = data.FILENAME;
+	    			
 					setTimeout(function (){main.loading_modal.modal('hide');},1500);
 					if( data.success )
-						workBench.preview( data.fileName, true );
+						workBench.preview( fileName, true );
 					else{
 						main.errorModalDanger.modal('show');
 						main.errorModalMessage.html(data);
