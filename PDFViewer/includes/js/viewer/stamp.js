@@ -32,6 +32,7 @@ Stamp.prototype.setEventListeners = function(event){
 						,pages:stamp.spage.val()
 						,fileName:workBench.fileName.val()
 						,type:$("#stamp_type").find(":selected").text()
+						,typeValue:$("#stamp_type").find(":selected").val()
 						,note:stamp.stamp_note.val()
 					};
 					var url = main.config.urls.stamp.add;

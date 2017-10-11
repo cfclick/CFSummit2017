@@ -38,7 +38,9 @@ function Config() {
 		 	index			: protocol + theActualServer + appFolder + CGIScriptName + "?event=properties.index",
 		 	add				: protocol + theActualServer + appFolder + CGIScriptName + "?event=properties.add",
 		 	delete			: protocol + theActualServer + appFolder + CGIScriptName + "?event=properties.delete",
-		 	save 	: protocol + theActualServer + appFolder + CGIScriptName + "?event=properties.save"
+		 	save 			: protocol + theActualServer + appFolder + CGIScriptName + "?event=properties.save",
+		 	export		 	: protocol + theActualServer + appFolder + CGIScriptName + "?event=properties.exportMeta",
+		 	import		 	: protocol + theActualServer + appFolder + CGIScriptName + "?event=properties.importMeta"
 		 };
 		 
 		 this.urls.viewer = {

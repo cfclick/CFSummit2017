@@ -2,8 +2,10 @@ function Properties(){
 	properties = this;
 	
 	//buttons
-	this.add_custom_prop_btn = $('#add_custom_prop_btn');
-	this.save_properties_btn = $('#save_properties_btn');
+	this.add_custom_prop_btn 	= $('#add_custom_prop_btn');
+	this.save_properties_btn 	= $('#save_properties_btn');
+	this.export_meta_btn 		= $('#export_meta_btn');
+	this.import_meta_btn 		= $('#import_meta_btn');
 	
 	//divs
 	this.custom_prop_div = $('#custom_prop_div');
@@ -91,6 +93,46 @@ Properties.prototype.setEventListeners = function(event){
 							main.preload_div.addClass('invisible');
 			        		console.log(objRequest);   
 			        		console.log(strError);   
+			        	},
+			       	 	async: true
+			    	});		
+	});
+	
+	
+	properties.export_meta_btn.on('click',function(e){
+			
+			properties.reinitInputs();
+			var view_model = {
+						fileName:workBench.fileName.val(),
+						Title: properties.title_input.val(),
+						Author:properties.author_input.val(),
+						Subject:properties.subject_input.val(),
+						Keywords:properties.keywords_input.val()
+					};
+					var url = main.config.urls.properties.export;
+					
+					$.ajax(	{
+			        	type: "post",
+			        	url: url,		
+			        	data: view_model,
+			       		beforeSend: function( xhr ){  
+			       			main.action_label.html('Exporting');
+							  main.loading_modal.modal({show:true,backdrop: 'static',keyboard: false});	 
+						},
+			    		success: function( data ){
+			    			
+			    			setTimeout(function (){main.loading_modal.modal('hide');},1500);			    			
+						
+							if( data.success ){
+								toastr.success('Metadata expoted successfully');
+							}else{
+								main.errorModalDanger.modal('show');
+								main.errorModalMessage.html(data);
+							}
+			    		},
+						error: function( objRequest, strError ){
+							main.errorModalDanger.modal('show');
+							main.errorModalMessage.html(objRequest); 
 			        	},
 			       	 	async: true
 			    	});		

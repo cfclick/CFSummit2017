@@ -122,21 +122,6 @@ component{
 		var destination = application.cbcontroller.getconfigSettings().workFolder & session.sessionID & "\" & rc.fileName;
 		rc.pathAndName = GetTempDirectory() & session.sessionID & '\' & rc.fileName;
 		var source = trim( rc.pathAndName );
-		
-		/*var fileOutputStream = CreateObject("java", "java.io.FileOutputStream").init( destination );
-		//Read the source
-		var reader = createobject("java","com.lowagie.text.pdf.PdfReader").init( source );
-		//Initialize the stamper
-    	var stamper = createobject("java","com.lowagie.text.pdf.PdfStamper").init( reader, fileOutputStream);*/
-    	//Read source file   
-    	/*info = reader.getInfo();
-    	info.put("Title", rc.Title);
-    	info.put("Author", rc.Author);
-    	info.put("Subject", rc.Subject);
-    	info.put("Keywords", rc.Keywords);   	
-    	//Pushing data 
-	    stamper.setMoreInfo(info);
-	    stamper.close();  */
    		str = {};
    		str['Title'] = rc.Title;
    		str['Author'] = rc.Author;
@@ -152,6 +137,32 @@ component{
 		rc.pdf = reader;
 		
 		event.setView("Properties/defaultProperties").nolayout();
+	}
+	
+	
+	function exportMeta( event, rc, prc ){
+		
+		var destination = application.cbcontroller.getconfigSettings().workFolder & session.sessionID & "\#rc.fileName#.xmp";
+		rc.pathAndName = GetTempDirectory() & session.sessionID & '\' & rc.fileName;
+		var source = trim( rc.pathAndName );
+		
+		cfpdf( action="export", type="metadata", source=source, exportTo=destination);
+   		rc.success = true;
+		rc['fileName'] = rc.fileName;
+		sleep(2000);
+		event.renderData( data=rc, type="json" ).nolayout();
+	}
+	
+	
+	function importMeta( event, rc, prc ){
+		
+		var destination = application.cbcontroller.getconfigSettings().workFolder & session.sessionID & "\#rc.fileName#";
+		rc.pathAndName = GetTempDirectory() & session.sessionID & '\' & rc.fileName;
+		var source = trim( rc.pathAndName );	
+		cfpdf( action="import", type="metadata", source=source, importFrom=rc.xmpfile, destination=destination);
+		rc.success = true;
+		rc['fileName'] = rc.fileName;		
+		event.renderData( data=rc, type="json" ).nolayout();
 	}
 	
 	private string function formatPDFdate( required string psdDateString ){

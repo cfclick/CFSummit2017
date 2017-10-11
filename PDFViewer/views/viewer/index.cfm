@@ -166,10 +166,7 @@
 				</div>
 				<!--Footer-->
 				<div class="modal-footer">
-					<button type="button" id="reset_to_btn" class="btn btn-danger btn-success pull-right">
-						Reset
-					</button>
-					<button type="button" id="add_signature_field_btn" class="btn btn-danger btn-danger pull-right">
+					<button type="button" id="add_signature_field_btn" class="btn btn-mdb pull-right">
 						Add
 					</button>
 				</div>
@@ -258,11 +255,7 @@
 				</div>
 				<!--Footer-->
 				<div class="modal-footer">
-					
-					<button type="button" id="reset_to_btn" class="btn btn-danger btn-success pull-right">
-						Reset
-					</button>
-					<button type="button" id="redact_apply_btn" class="btn btn-danger btn-danger pull-right">
+					<button type="button" id="redact_apply_btn" class="btn btn-mdb pull-right">
 						Apply
 					</button>
 				</div>
@@ -296,7 +289,7 @@
 						<form class="col-md-12">
 							<div class="row">
 								<div class="md-form form-group form-sm">
-									<input type="text" id="s_x1" value="100" class="form-control"
+									<input type="text" id="s_x1" value="100" class="form-control" required
 									       style="width:40px"/>
 									<label for="s_x1">
 										x1
@@ -304,7 +297,7 @@
 								</div>
 								
 								<div class="md-form form-group form-sm">
-									<input type="text" id="s_y1" value="775" class="form-control"
+									<input type="text" id="s_y1" value="775" class="form-control" required
 									       style="width:40px"/>
 									<label for="s_y1">
 										y1
@@ -320,7 +313,7 @@
 							<br>
 							<div class="row pull-right">
 								<div class="md-form form-group form-sm">
-									<input type="text" id="s_x2" value="270" class="form-control"
+									<input type="text" id="s_x2" value="270" class="form-control" required
 									       style="width:40px"/>
 									<label for="s_x2">
 										x2
@@ -328,7 +321,7 @@
 								</div>
 								
 								<div class="md-form form-group form-sm">
-									<input type="text" id="s_y2" value="738" class="form-control"
+									<input type="text" id="s_y2" value="738" class="form-control" required
 									       style="width:40px"/>
 									<label for="s_y2">
 										y2
@@ -341,8 +334,8 @@
 							<br>
 							<div class="row">
 								<div class="md-form form-group form-sm">
-									<select id="stamp_type" class="mdb-select">
-										<option value="" disabled selected>Choose your option</option>
+									<select id="stamp_type" class="mdb-select" required>
+										<option value="" selected>Choose your option</option>
 											<option value="Approved">
 												Approved
 											</option>
@@ -382,16 +375,26 @@
 											<option value="Draft">
 												Draft
 											</option>
-											<option value="Draft">
+											<option value="ForPublicRelease">
 												ForPublicRelease
 											</option>
+											<option value="paid_stamp.png">
+												Paid
+											</option>
+											<option value="classified-stamp.png">
+												Classified
+											</option>
+											<option value="Rejected-Stamp.png">
+												Rejected
+											</option>
+											
 										</select>
 								</div>
 							</div>
 
 							<div class="row">
 								<div class="md-form form-group form-sm">
-									<input type="text" id="spage" class="form-control" value="1" />
+									<input type="text" id="spage" class="form-control" value="1" required/>
 									<label for="page">
 										Pages 
 									</label>
@@ -402,7 +405,7 @@
 								<div class="md-form form-group form-sm">
 									<i class="fa fa-pencil prefix"></i>
 									    <textarea type="text" id="stamp_note" class="md-textarea"></textarea>
-									    <label for="form8">Icon Prefix</label>
+									    <label for="form8">Note</label>
 								</div>
 							</div>
 						</form>
@@ -410,7 +413,7 @@
 				</div>
 				<!--Footer-->
 				<div class="modal-footer">
-					<button type="button" id="add_stamp_btn" class="btn btn-danger btn-unique pull-right">
+					<button type="button" id="add_stamp_btn" class="btn btn-mdb pull-right">
 						Add
 					</button>
 				</div>
@@ -494,7 +497,7 @@
                         <label for="your_message">Message</label>
                     </div>
                     
-                    <button class="btn btn-primary" id="send_email_btn">Send</button>
+                    <button class="btn btn-mdb" id="send_email_btn">Send</button>
 
 				</div>
 				
