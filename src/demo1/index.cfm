@@ -1,41 +1,49 @@
 <!doctype html>
 <html>
 <head>
-<meta charset="utf-8">
-<title>Create Signature Field</title>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+	<title>Encrypt & Password</title>
+	
+	 <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">
+    <!-- Bootstrap core CSS -->
+    <link href="../../MDBFree/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="../../MDBFree/css/mdb.min.css" rel="stylesheet">
+    <!-- Your custom styles (optional) -->
+    <link href="../../MDBFree/css/style.css" rel="stylesheet">
+		
+	
 </head>
 
 <body>
-	<cfscript>
-		//create signature field
-		public void function addSignatureField(String src, String dest, string fieldName, string page, numeric x1, numeric y1, numeric x2, numeric y2 ) {
-			//Read source file
-	    	reader = createobject('java','com.lowagie.text.pdf.PdfReader').init( src );
-	    	//create output stream instance
-	    	fileOutputStream = CreateObject("java", "java.io.FileOutputStream").init( dest );
-	    	//create stamper instance
-	    	stamper = createobject('java','com.lowagie.text.pdf.PdfStamper').init( reader, fileOutputStream );
-	        // create a signature form field
-	        pdfFormField = createobject("java","com.lowagie.text.pdf.PdfFormField");
-	        field = pdfFormField.createSignature( stamper.getWriter() );
-	        field.setFieldName( arguments.fieldName );
-	        // set the widget properties
-	        rectangle = createobject("java","com.lowagie.text.Rectangle");              
-	       	pdfAnnotation = createobject("java","com.lowagie.text.pdf.PdfAnnotation");
-	        field.setWidget( rectangle.init( arguments.x1, arguments.y1, arguments.x2, arguments.y2 ), pdfAnnotation.HIGHLIGHT_OUTLINE );
-	        field.setFlags( pdfAnnotation.FLAGS_PRINT );    
-	        
-	       	// add the annotation
-	        stamper.addAnnotation( field, arguments.page );	      
-	        // close the stamper
-	    	stamper.close();
-	    }
-	    currentFolder = getDirectoryFromPath( getCurrentTemplatePath() );
-	    des = currentFolder & "SpeakerFormCFSummit2017_signature_field.pdf";
-	    src = currentFolder & "SpeakerFormCFSummit2017.pdf";
-	    addSignatureField(src,des,'manager_signature_field',1,440,75,570,38);  
-	    writeoutput("New signature field create #des#") ;
-    </cfscript>
-
+	<div class="container">
+		<blockquote class="blockquote bq-primary">
+		    <p class="bq-title">DEMO 1</p>
+		    <p>Encrypt and password protection</p>
+		</blockquote>
+		<br>
+		<div class="row">
+			<ul class="list-group">
+			  <li class="list-group-item"><a href="/CFSummit2017/src/demo1/encryptPDF.cfm">Encrypt PDF</a></li>
+			  <li class="list-group-item"><a href="/CFSummit2017/src/demo1/owner_password.cfm">Owner Password</a></li>
+			  <li class="list-group-item"><a href="/CFSummit2017/src/demo1/user_password.cfm">User Password</a></li>
+			 
+			</ul>
+		</div>
+	</div>
+	
+	<!-- SCRIPTS -->
+    <!-- JQuery -->
+    <script type="text/javascript" src="../../MDBFree/js/jquery-3.1.1.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="../../MDBFree/js/tether.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="../../MDBFree/js/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="../../MDBFree/js/mdb.min.js"></script>
 </body>
 </html>

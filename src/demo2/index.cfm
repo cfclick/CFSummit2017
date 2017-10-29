@@ -1,69 +1,49 @@
 <!doctype html>
 <html>
 <head>
-<meta charset="utf-8">
-<title>Sign a pdf</title>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+	<title>Encrypt & Password</title>
+	
+	 <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">
+    <!-- Bootstrap core CSS -->
+    <link href="../../MDBFree/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="../../MDBFree/css/mdb.min.css" rel="stylesheet">
+    <!-- Your custom styles (optional) -->
+    <link href="../../MDBFree/css/style.css" rel="stylesheet">
+		
+	
 </head>
 
 <body>
-	<h2>You have to run demo2 first</h2>
-	<cfscript>
-		util = new CFSummit2017.src.Util();
-		root = util.getColdFusionRootPath();
-		writedump(root);
-		currentFolder = getDirectoryFromPath( getCurrentTemplatePath() );
-	    des = currentFolder & "SpeakerFormCFSummit2017_signature_field_signed.pdf";
-	    des_unsign = currentFolder & "SpeakerFormCFSummit2017_signature_field_unsigned.pdf";
-	    src = root & "\demo2\SpeakerFormCFSummit2017_signature_field.pdf";
-	    cert = "C:\F\cert\shirak_key.pfx";
-	    
-	    cfpdf( action="readsignaturefields"
-			   ,source=src
-			   ,name="signinfo"
-			   );
-		
-		writedump(signinfo);
-		
-		for( q in signinfo ){
-			
-			cfpdf( action="sign" 
-	    	  ,source=src
-	    	  ,destination=des 
-	    	  ,keystore=cert 
-	    	  ,keystorepassword="123456"
-	    	  ,signaturefieldname=q.FIELDNAME
-	    	  ,overwrite="yes") ;
-	    	  
-	    	 cfpdf( action="readsignaturefields"
-			   ,source=des
-			   ,name="signedinfo"
-			   );
-		
-			writedump(signedinfo);
-			
-			cfpdf( action="validatesignature"
-				  , source=des
-				  , name="pdfInfo");
-			
-			writedump(pdfInfo);
-			
-			cfpdf( action="unsign" 
-	    	  ,source=des
-	    	  ,destination=des_unsign 
-	    	  ,signaturefieldname=q.FIELDNAME
-	    	  ,overwrite="yes") ;
-	    	
-	    	cfpdf( action="readsignaturefields"
-			   ,source=des_unsign
-			   ,name="unsignedinfo"
-			   );
-			   
-			writedump(unsignedinfo);
-		}
-	    	
-	    
-	   
-    </cfscript>
-	<h2><cfoutput>PDF signed #des#</cfoutput></h2>	
+	<div class="container">
+		<blockquote class="blockquote bq-primary">
+		    <p class="bq-title">DEMO 2</p>
+		    <p>Digital Signature</p>
+		</blockquote>
+		<br>
+		<div class="row">
+			<ul class="list-group">
+			  <li class="list-group-item"><a href="/CFSummit2017/src/demo2/addSignatureField.cfm">Add Signature Field</a></li>
+			  <li class="list-group-item"><a href="/CFSummit2017/src/demo2/readAndSign.cfm">Read & Sign</a></li>
+			  <li class="list-group-item"><a href="/CFSummit2017/src/demo2/validateAndUnsign.cfm">Validate Signature & Unsign</a></li>
+			 
+			</ul>
+		</div>
+	</div>
+	
+	<!-- SCRIPTS -->
+    <!-- JQuery -->
+    <script type="text/javascript" src="../../MDBFree/js/jquery-3.1.1.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="../../MDBFree/js/tether.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="../../MDBFree/js/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="../../MDBFree/js/mdb.min.js"></script>
 </body>
 </html>
