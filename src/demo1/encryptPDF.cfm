@@ -10,7 +10,7 @@
 		  ,source=src
 		  ,destination=des
 		  ,newownerpassword="ownerP@ss"
-		  ,encrypt="RC4_40"
+		  ,encrypt="RC4_128"
 		  ,permissions="AllowPrinting"		  
 		  ,overwrite="yes");
 		  
